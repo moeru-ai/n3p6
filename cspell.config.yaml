@@ -1,0 +1,13 @@
+version: '0.2'
+ignorePaths: []
+dictionaryDefinitions: []
+dictionaries: []
+words:
+  - bumpp
+  - importantimport
+  - masknet
+  - moeru
+  - moeru-ai
+  - sonarjs
+ignoreWords: []
+import: []

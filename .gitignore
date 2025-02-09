@@ -1,0 +1,18 @@
+# Logs
+logs
+*.log
+pnpm-debug.log*
+
+node_modules
+dist
+*.local
+.eslintcache
+
+# Editor directories and files
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
