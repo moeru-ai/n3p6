@@ -1,13 +1,16 @@
-version: '0.2'
+version: "0.2"
 ignorePaths: []
 dictionaryDefinitions: []
 dictionaries: []
 words:
   - bumpp
+  - foxact
   - importantimport
   - masknet
   - moeru
   - moeru-ai
+  - onreading
+  - pkgroll
   - sonarjs
 ignoreWords: []
 import: []
