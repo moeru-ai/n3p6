@@ -23,6 +23,9 @@ importers:
 
   .:
     dependencies:
+      '@n3p6/use-illuminance':
+        specifier: workspace:^
+        version: link:packages/use-illuminance
       react:
         specifier: 'catalog:'
         version: 19.0.0

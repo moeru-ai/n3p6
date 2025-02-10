@@ -12,6 +12,7 @@
     "lint": "eslint --cache ."
   },
   "dependencies": {
+    "@n3p6/use-illuminance": "workspace:^",
     "react": "catalog:",
     "react-dom": "catalog:"
   },
