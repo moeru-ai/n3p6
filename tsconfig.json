@@ -1,5 +1,6 @@
 {
   "references": [
+    { "path": "./packages/use-illuminance/tsconfig.json" },
     { "path": "./tsconfig.app.json" },
     { "path": "./tsconfig.node.json" }
   ],
