@@ -8,12 +8,14 @@
     "dev": "vite"
   },
   "dependencies": {
+    "@generouted/react-router": "^1.20.0",
     "@n3p6/use-illuminance": "workspace:",
     "react": "catalog:",
-    "react-dom": "catalog:"
+    "react-dom": "catalog:",
+    "react-router": "^7.1.5"
   },
   "devDependencies": {
-    "@types/react": "^19.0.8",
-    "@types/react-dom": "^19.0.3"
+    "@types/react": "catalog:",
+    "@types/react-dom": "catalog:"
   }
 }

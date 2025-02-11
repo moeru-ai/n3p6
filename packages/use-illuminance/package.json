@@ -36,6 +36,7 @@
     "react": "catalog:"
   },
   "devDependencies": {
+    "@types/react": "catalog:",
     "foxact": "^0.2.44"
   }
 }

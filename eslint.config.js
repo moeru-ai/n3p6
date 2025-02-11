@@ -7,7 +7,7 @@ export default antfu({
   react: true,
   typescript: { tsconfigPath: './tsconfig.json' },
 }, {
-  // ignores: ['src/router.ts'],
+  ignores: ['app/src/router.ts'],
 })
   .append(ii())
   .append({

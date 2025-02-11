@@ -1,7 +1,7 @@
 import { useIlluminance } from '@n3p6/use-illuminance'
 import { useState } from 'react'
 
-export const App = () => {
+const Index = () => {
   const [count, setCount] = useState(0)
   const illuminance = useIlluminance()
 
@@ -25,3 +25,5 @@ export const App = () => {
     </>
   )
 }
+
+export default Index

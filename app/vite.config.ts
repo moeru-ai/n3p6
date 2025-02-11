@@ -1,4 +1,4 @@
-// import generouted from '@generouted/react-router/plugin'
+import generouted from '@generouted/react-router/plugin'
 import react from '@vitejs/plugin-react'
 import { defineConfig } from 'vite'
 
@@ -17,7 +17,7 @@ export default defineConfig({
         ['babel-plugin-react-compiler', { target: '19' }],
       ] },
     }),
-    // generouted(),
+    generouted(),
   ],
 //   server: {
 //     headers: {
