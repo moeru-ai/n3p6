@@ -5,12 +5,6 @@ import { defineConfig } from 'vite'
 // https://vite.dev/config/
 export default defineConfig({
   build: { target: 'esnext' },
-  //   optimizeDeps: {
-  //     esbuildOptions: {
-  //       target: 'esnext',
-  //     },
-  //     exclude: ['sqlocal'],
-  //   },
   plugins: [
     react({
       babel: { plugins: [
@@ -19,6 +13,15 @@ export default defineConfig({
     }),
     generouted(),
   ],
+  //   optimizeDeps: {
+  //     esbuildOptions: {
+  //       target: 'esnext',
+  //     },
+  //     exclude: ['sqlocal'],
+  //   },
+  resolve: {
+    dedupe: ['react', 'three'],
+  },
 //   server: {
 //     headers: {
 //       'Cross-Origin-Embedder-Policy': 'require-corp',

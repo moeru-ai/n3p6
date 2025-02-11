@@ -10,12 +10,22 @@
   "dependencies": {
     "@generouted/react-router": "^1.20.0",
     "@n3p6/use-illuminance": "workspace:",
+    "@react-three/drei": "^10.0.0-rc.2",
+    "@react-three/fiber": "^9.0.0-rc.7",
+    "@react-three/handle": "^6.6.3",
+    "@react-three/rapier": "^1.5.0",
+    "@react-three/uikit": "^0.8.7",
+    "@react-three/uikit-default": "^0.8.7",
+    "@react-three/uikit-lucide": "^0.8.7",
+    "@react-three/xr": "^6.6.3",
     "react": "catalog:",
     "react-dom": "catalog:",
-    "react-router": "^7.1.5"
+    "react-router": "^7.1.5",
+    "three": "^0.173.0"
   },
   "devDependencies": {
     "@types/react": "catalog:",
-    "@types/react-dom": "catalog:"
+    "@types/react-dom": "catalog:",
+    "@types/three": "^0.173.0"
   }
 }
