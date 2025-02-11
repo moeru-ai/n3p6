@@ -52,10 +52,21 @@ declare global {
  * Get illuminance from {@link https://developer.mozilla.org/en-US/docs/Web/API/AmbientLightSensor | AmbientLightSensor API}.
  *
  * @example
- * ```ts
+ * ```tsx
  * import { useIlluminance } from '@n3p6/use-illuminance'
  *
- * const illuminance = useIlluminance() // number | undefined
+ * const App = () => {
+ *   const illuminance = useIlluminance()
+ *
+ *   return (
+ *     <div>
+ *       <h1>Illuminance:</h1>
+ *       <span>{illuminance}</span>
+ *     </div>
+ *   )
+ * }
+ *
+ * export default App
  * ```
  */
 export const useIlluminance = () => {
