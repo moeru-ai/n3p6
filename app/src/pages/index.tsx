@@ -1,12 +1,8 @@
 import { CanvasLayout } from '../components/canvas-layout'
-import { Environment } from '../components/environment'
 
-const Index = () => {
-  return (
-    <CanvasLayout>
-      <Environment />
-    </CanvasLayout>
-  )
-}
+const Index = () => (
+  <CanvasLayout>
+  </CanvasLayout>
+)
 
 export default Index

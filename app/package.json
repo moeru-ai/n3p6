@@ -21,7 +21,8 @@
     "react": "catalog:",
     "react-dom": "catalog:",
     "react-router": "^7.1.5",
-    "three": "^0.173.0"
+    "three": "^0.173.0",
+    "three-stdlib": "^2.35.13"
   },
   "devDependencies": {
     "@types/react": "catalog:",

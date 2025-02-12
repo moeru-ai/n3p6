@@ -17,6 +17,6 @@ export const Environment = () => (
     />
     <ambientLight intensity={0.1} />
     <color args={[colors.background.value]} attach="background" />
-    {isDarkMode.value && <Stars count={99} fade />}
+    {isDarkMode.value && <Stars count={99} depth={99} fade />}
   </IfInSessionMode>
 )

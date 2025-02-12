@@ -113,6 +113,9 @@ importers:
       three:
         specifier: ^0.173.0
         version: 0.173.0
+      three-stdlib:
+        specifier: ^2.35.13
+        version: 2.35.13(three@0.173.0)
     devDependencies:
       '@types/react':
         specifier: 'catalog:'
