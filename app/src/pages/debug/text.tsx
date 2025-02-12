@@ -1,13 +1,20 @@
-import { Text3D } from '@react-three/drei'
+import type { FontData } from '@react-three/drei'
 
-import fontUrl from '../../../public/assets/fonts/Source Han Sans CN_Regular.json?url'
+import { Text3D } from '@react-three/drei'
+import { useLoader } from '@react-three/fiber'
+import { TTFLoader } from 'three/examples/jsm/loaders/TTFLoader.js'
+
+import ttfUrl from '../../../public/assets/fonts/SourceHanSansCN-Regular.ttf?url'
 import { CanvasLayout } from '../../components/canvas-layout'
 
 const DebugText = () => {
+  const font = useLoader(TTFLoader, ttfUrl)
+
   return (
     <CanvasLayout>
       <Text3D
-        font={fontUrl}
+        // eslint-disable-next-line @masknet/type-no-force-cast-via-top-type
+        font={font as unknown as FontData}
         // rotation={[0, 1, 0]}
       >
         &#x6D4B;&#x8BD5;
