@@ -5,7 +5,7 @@ import { useLoader } from '@react-three/fiber'
 import { RigidBody } from '@react-three/rapier'
 import { TTFLoader } from 'three/examples/jsm/loaders/TTFLoader.js'
 
-import ttfUrl from '../../../public/assets/fonts/SourceHanSansCN-Regular.ttf?url'
+import ttfUrl from '../../../assets/fonts/SourceHanSansCN-Regular.ttf?url'
 import { CanvasLayout } from '../../components/canvas-layout'
 
 const DebugText = () => {
