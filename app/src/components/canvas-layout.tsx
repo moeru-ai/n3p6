@@ -1,8 +1,10 @@
 import type { PropsWithChildren } from 'react'
 
 import { Canvas } from '@react-three/fiber'
+import { OrbitHandles } from '@react-three/handle'
+import { Physics } from '@react-three/rapier'
 import { setPreferredColorScheme } from '@react-three/uikit'
-import { createXRStore, XR } from '@react-three/xr'
+import { createXRStore, PointerEvents, XR } from '@react-three/xr'
 
 import { Environment } from './environment'
 
@@ -21,9 +23,13 @@ export const CanvasLayout = ({ children }: PropsWithChildren) => {
 
   return (
     <Canvas>
+      <PointerEvents />
+      <OrbitHandles />
       <XR store={store}>
-        {children}
-        <Environment />
+        <Physics>
+          {children}
+          <Environment />
+        </Physics>
       </XR>
     </Canvas>
   )
