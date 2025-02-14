@@ -1,10 +1,16 @@
 import { Grid, Stars } from '@react-three/drei'
+import { RigidBody } from '@react-three/rapier'
 import { isDarkMode } from '@react-three/uikit'
 import { colors } from '@react-three/uikit-default'
 import { IfInSessionMode } from '@react-three/xr'
 
 export const Environment = () => (
   <IfInSessionMode deny="immersive-ar">
+    <RigidBody includeInvisible type="fixed">
+      <mesh position={[0, -5, 0]} scale={[100, 0.1, 100]} visible={false}>
+        <boxGeometry />
+      </mesh>
+    </RigidBody>
     <Grid
       cellColor={colors.foreground.value}
       cellSize={3}
