@@ -10,7 +10,14 @@ import { Environment } from './environment'
 setPreferredColorScheme('system')
 
 export const CanvasLayout = ({ children }: PropsWithChildren) => {
-  const store = createXRStore()
+  const store = createXRStore({
+    emulate: import.meta.env.DEV
+      ? {
+          primaryInputMode: 'hand',
+          type: 'metaQuest3',
+        }
+      : false,
+  })
 
   return (
     <Canvas>
