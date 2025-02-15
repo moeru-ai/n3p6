@@ -33,7 +33,10 @@ export const CanvasLayout = ({ children }: PropsWithChildren) => {
       <PointerEvents />
       <OrbitHandles />
       <XR store={store}>
-        <Physics debug gravity={[0, -9.81, 0]}>
+        <Physics
+          debug={import.meta.env.DEV}
+          gravity={[0, -9.81, 0]}
+        >
           <Player />
           {children}
           <Environment />
