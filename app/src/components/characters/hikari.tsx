@@ -1,6 +1,7 @@
 import { VRMLoaderPlugin } from '@pixiv/three-vrm'
 // import { VRMAnimationLoaderPlugin } from '@pixiv/three-vrm-animation'
 import { useGLTF } from '@react-three/drei'
+import { CapsuleCollider, RigidBody } from '@react-three/rapier'
 
 import vrmURL from '../../../assets/models/Hikari_SummerDress.vrm?url'
 
@@ -16,5 +17,15 @@ export const Hikari = () => {
     return loader
   })
 
-  return <primitive object={gltf.scene} position={[0, -5, 0]} rotation={[0, Math.PI, 0]} scale={5}></primitive>
+  return (
+    <RigidBody colliders={false}>
+      <CapsuleCollider args={[2.5, 1]} position={[0, -1.5, 0]} />
+      <primitive
+        object={gltf.scene}
+        position={[0, -5, 0]}
+        rotation={[0, Math.PI, 0]}
+        scale={5}
+      />
+    </RigidBody>
+  )
 }
