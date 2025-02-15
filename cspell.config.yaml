@@ -17,5 +17,6 @@ words:
   - pixiv
   - pkgroll
   - sonarjs
+  - thumbstick
 ignoreWords: []
 import: []
