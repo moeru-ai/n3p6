@@ -1,5 +1,6 @@
 import type { PropsWithChildren } from 'react'
 
+import { Stats } from '@react-three/drei'
 import { Canvas } from '@react-three/fiber'
 import { OrbitHandles } from '@react-three/handle'
 import { Physics } from '@react-three/rapier'
@@ -24,10 +25,11 @@ export const CanvasLayout = ({ children }: PropsWithChildren) => {
 
   return (
     <Canvas
-      camera={{ position: [0, 0, 0.65] }}
+      camera={{ position: [0, 1.75, 1.75] }}
       gl={{ localClippingEnabled: true }}
       style={{ flexGrow: 1, width: '100%' }}
     >
+      {import.meta.env.DEV && <Stats />}
       <PointerEvents />
       <OrbitHandles />
       <XR store={store}>
