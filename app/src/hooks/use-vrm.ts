@@ -11,7 +11,10 @@ export const useVRM = (vrmUrl: string) => {
   const gltf = useLoader(GLTFLoader, vrmUrl, loader =>
     loader.register(parser => new VRMLoaderPlugin(parser)))
 
-  const vrm = gltf.userData.vrm as VRM
+  const { vrm } = gltf.userData as { vrm: VRM }
+
+  VRMUtils.removeUnnecessaryVertices(vrm.scene)
+  VRMUtils.combineSkeletons(vrm.scene)
 
   vrm.scene.traverse((obj) => {
     obj.frustumCulled = false
