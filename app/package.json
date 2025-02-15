@@ -11,6 +11,7 @@
     "@generouted/react-router": "^1.20.0",
     "@n3p6/use-illuminance": "workspace:",
     "@pixiv/three-vrm": "^3.3.4",
+    "@pixiv/three-vrm-animation": "^3.3.4",
     "@react-three/drei": "^10.0.0-rc.2",
     "@react-three/fiber": "^9.0.0-rc.7",
     "@react-three/handle": "^6.6.3",

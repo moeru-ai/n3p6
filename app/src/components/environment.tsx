@@ -7,7 +7,11 @@ import { IfInSessionMode } from '@react-three/xr'
 export const Environment = () => (
   <>
     <RigidBody includeInvisible type="fixed">
-      <mesh position={[0, -5, 0]} scale={[100, 0.1, 100]} visible={false}>
+      <mesh
+        position={[0, 0, 0]}
+        scale={[100, 0.1, 100]}
+        visible={false}
+      >
         <boxGeometry />
       </mesh>
     </RigidBody>
@@ -19,10 +23,10 @@ export const Environment = () => (
         fadeDistance={100}
         fadeStrength={5}
         infiniteGrid
-        position={[0, -5, 0]}
+        position={[0, 0, 0]}
         sectionSize={0}
       />
-      <ambientLight intensity={0.1} />
+      <ambientLight intensity={0.5} />
       <color args={[colors.background.value]} attach="background" />
       {isDarkMode.value && <Stars count={99} depth={99} fade />}
     </IfInSessionMode>

@@ -22,7 +22,11 @@ export const Player = () => {
   })
 
   return (
-    <XROrigin position-y={-1.5} position-z={-0.5} ref={ref}>
+    <XROrigin
+    //   position-y={0}
+      position-z={1}
+      ref={ref}
+    >
       {/* <CapsuleCollider args={[1, 1]} /> */}
     </XROrigin>
   )
