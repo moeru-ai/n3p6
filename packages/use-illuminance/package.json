@@ -13,9 +13,7 @@
   },
   "bugs": "https://github.com/moeru-ai/n3p6/issues",
   "sideEffects": false,
-  "exports": {
-    ".": "./src/index.ts"
-  },
+  "exports": "./src/index.ts",
   "publishConfig": {
     "exports": {
       ".": {
@@ -30,7 +28,7 @@
     "dist"
   ],
   "scripts": {
-    "build": "pkgroll"
+    "build": "tsup"
   },
   "peerDependencies": {
     "react": "catalog:"

@@ -18,6 +18,7 @@ words:
   - pkgroll
   - sonarjs
   - thumbstick
+  - tsup
   - vrma
 ignoreWords: []
 import: []
