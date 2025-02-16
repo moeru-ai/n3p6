@@ -1,9 +1,9 @@
 import { CanvasLayout } from '../components/canvas-layout'
-import { HikariMixamo } from '../components/characters/hikari-mixamo'
+import { AvatarSampleA } from '../components/characters/avatar-sample-a'
 
 const Index = () => (
   <CanvasLayout>
-    <HikariMixamo />
+    <AvatarSampleA />
   </CanvasLayout>
 )
 

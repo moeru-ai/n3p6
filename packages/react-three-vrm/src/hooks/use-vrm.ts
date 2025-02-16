@@ -9,7 +9,7 @@ type UseVRMExtendLoader = (loader: GLTFLoader) => void
 
 const extensions = (extendLoader?: UseVRMExtendLoader) =>
   (loader: GLTFLoader) => {
-    loader.register(parser => new VRMLoaderPlugin(parser))
+    loader.register(parser => new VRMLoaderPlugin(parser, { autoUpdateHumanBones: true }))
 
     if (extendLoader)
       extendLoader(loader)
@@ -25,6 +25,7 @@ const useVRM = (
 
   VRMUtils.removeUnnecessaryVertices(vrm.scene)
   VRMUtils.combineSkeletons(vrm.scene)
+  VRMUtils.combineMorphs(vrm)
 
   vrm.scene.traverse((obj) => {
     obj.frustumCulled = false

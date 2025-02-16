@@ -44,6 +44,7 @@
   },
   "devDependencies": {
     "@types/react": "catalog:",
-    "@types/three": "catalog:"
+    "@types/three": "catalog:",
+    "foxact": "catalog:"
   }
 }

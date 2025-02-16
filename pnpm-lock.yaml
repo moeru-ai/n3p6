@@ -187,6 +187,9 @@ importers:
       '@types/three':
         specifier: 'catalog:'
         version: 0.173.0
+      foxact:
+        specifier: 'catalog:'
+        version: 0.2.44(react@19.0.0)
 
   packages/use-illuminance:
     dependencies:

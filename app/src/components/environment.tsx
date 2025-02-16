@@ -5,7 +5,8 @@ import { colors } from '@react-three/uikit-default'
 import { IfInSessionMode } from '@react-three/xr'
 
 export const Environment = () => {
-  const intensity = isDarkMode.value ? 0.5 : 1
+  // const intensity = isDarkMode.value ? 0.5 : 1
+  const intensity = 1
 
   return (
     <>
