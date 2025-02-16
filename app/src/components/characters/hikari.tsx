@@ -21,7 +21,11 @@ export const Hikari = () => {
   )
 
   useEffect(() => {
-    actions.Clip?.play()
+    actions.Clip!.reset().fadeIn(0.5).play()
+
+    return () => {
+      actions.Clip!.fadeOut(0.5)
+    }
   }, [actions])
 
   useFrame((_, delta) => {
