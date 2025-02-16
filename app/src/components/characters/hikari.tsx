@@ -1,12 +1,8 @@
-import type { AnimationAction } from 'three'
-
 import { createVRMAnimationClip } from '@pixiv/three-vrm-animation'
-import { useGLTF } from '@react-three/drei'
+import { useAnimations, useGLTF } from '@react-three/drei'
 import { useFrame } from '@react-three/fiber'
 import { CapsuleCollider, RigidBody } from '@react-three/rapier'
-import { useSingleton } from 'foxact/use-singleton'
-import { useEffect, useRef } from 'react'
-import { AnimationMixer } from 'three'
+import { useEffect } from 'react'
 
 import vrmUrl from '../../../assets/models/Hikari_SummerDress.vrm?url'
 import vrmaUrl from '../../../assets/motions/waiting.vrma?url'
@@ -19,23 +15,17 @@ export const Hikari = () => {
   const vrm = useVRM(vrmUrl)
   const vrma = useVRMA(vrmaUrl)
 
-  const mixer = useSingleton(() => new AnimationMixer(vrm.scene))
-  const action = useRef<AnimationAction>(undefined)
+  const { actions, mixer } = useAnimations(
+    [createVRMAnimationClip(vrma, vrm)],
+    vrm.scene,
+  )
 
   useEffect(() => {
-    const loadAnimation = async () => {
-      if (!vrma)
-        return
-
-      const clip = createVRMAnimationClip(vrma, vrm)
-      action.current = mixer.current.clipAction(clip)
-      action.current.play()
-    }
-    void loadAnimation()
-  }, [vrm, vrma, mixer])
+    actions.Clip?.play()
+  }, [actions])
 
   useFrame((_, delta) => {
-    mixer.current.update(delta)
+    mixer.update(delta)
     vrm.update(delta)
   })
 

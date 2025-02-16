@@ -7,7 +7,7 @@ import { VRMAnimationLoaderPlugin } from '@pixiv/three-vrm-animation'
 import { useLoader } from '@react-three/fiber'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
 
-export const useVRM = (vrmUrl: string) => {
+export const useVRM = (vrmUrl: string): VRM => {
   const gltf = useLoader(GLTFLoader, vrmUrl, loader =>
     loader.register(parser => new VRMLoaderPlugin(parser)))
 
@@ -28,9 +28,9 @@ export const useVRM = (vrmUrl: string) => {
   return vrm
 }
 
-export const useVRMA = (vrmaUrl: string): undefined | VRMAnimation => {
+export const useVRMA = (vrmaUrl: string): VRMAnimation => {
   const gltf = useLoader(GLTFLoader, vrmaUrl, loader =>
     loader.register(parser => new VRMAnimationLoaderPlugin(parser)))
 
-  return (gltf.userData as { vrmAnimations?: VRMAnimation[] }).vrmAnimations?.[0] ?? undefined
+  return (gltf.userData as { vrmAnimations: VRMAnimation[] }).vrmAnimations[0]
 }
