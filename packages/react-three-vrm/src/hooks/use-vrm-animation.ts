@@ -1,6 +1,8 @@
+import type { VRM } from '@pixiv/three-vrm'
 import type { VRMAnimation } from '@pixiv/three-vrm-animation'
+import type { AnimationClip } from 'three'
 
-import { VRMAnimationLoaderPlugin } from '@pixiv/three-vrm-animation'
+import { createVRMAnimationClip, VRMAnimationLoaderPlugin } from '@pixiv/three-vrm-animation'
 import { useLoader } from '@react-three/fiber'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
 
@@ -14,18 +16,20 @@ const extensions = (extendLoader?: UseVRMExtendLoader) =>
       extendLoader(loader)
   }
 
-const useVRMA = (path: string, extendLoader?: UseVRMExtendLoader): VRMAnimation => {
+const useVRMAnimation = (path: string, vrm: VRM, extendLoader?: UseVRMExtendLoader): AnimationClip => {
   const gltf = useLoader(GLTFLoader, path, extensions(extendLoader))
 
-  return (gltf.userData as { vrmAnimations: VRMAnimation[] }).vrmAnimations[0]
+  const [vrmAnimation] = (gltf.userData as { vrmAnimations: VRMAnimation[] }).vrmAnimations
+
+  return createVRMAnimationClip(vrmAnimation, vrm)
 }
 
 // eslint-disable-next-line @masknet/no-top-level
-useVRMA.preload = (path: string, extendLoader?: UseVRMExtendLoader) =>
+useVRMAnimation.preload = (path: string, extendLoader?: UseVRMExtendLoader) =>
   useLoader.preload(GLTFLoader, path, extensions(extendLoader))
 
 // eslint-disable-next-line @masknet/no-top-level
-useVRMA.clear = (path: string) =>
+useVRMAnimation.clear = (path: string) =>
   useLoader.clear(GLTFLoader, path)
 
-export { useVRMA }
+export { useVRMAnimation }

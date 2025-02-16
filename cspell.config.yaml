@@ -21,6 +21,5 @@ words:
   - sonarjs
   - thumbstick
   - tsup
-  - vrma
 ignoreWords: []
 import: []

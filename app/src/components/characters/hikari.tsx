@@ -1,5 +1,4 @@
-import { useVRM, useVRMA } from '@n3p6/react-three-vrm'
-import { createVRMAnimationClip } from '@pixiv/three-vrm-animation'
+import { useVRM, useVRMAnimation } from '@n3p6/react-three-vrm'
 import { useAnimations } from '@react-three/drei'
 import { useFrame } from '@react-three/fiber'
 import { CapsuleCollider, RigidBody } from '@react-three/rapier'
@@ -13,10 +12,10 @@ useVRM.preload(vrmUrl)
 
 export const Hikari = () => {
   const vrm = useVRM(vrmUrl)
-  const vrma = useVRMA(vrmaUrl)
+  const animation = useVRMAnimation(vrmaUrl, vrm)
 
   const { actions, mixer } = useAnimations(
-    [createVRMAnimationClip(vrma, vrm)],
+    [animation],
     vrm.scene,
   )
 
