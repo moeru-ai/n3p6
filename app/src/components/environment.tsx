@@ -13,7 +13,7 @@ export const Environment = () => {
       <RigidBody includeInvisible type="fixed">
         <mesh
           position={[0, 0, 0]}
-          scale={[100, 0.1, 100]}
+          scale={[50, 0.1, 50]}
           visible={false}
         >
           <boxGeometry />
@@ -22,10 +22,10 @@ export const Environment = () => {
       <IfInSessionMode deny="immersive-ar">
         <Grid
           cellColor={colors.foreground.value}
-          cellSize={3}
+          cellSize={1}
           cellThickness={1}
-          fadeDistance={100}
-          fadeStrength={5}
+          fadeDistance={50}
+          fadeStrength={10}
           infiniteGrid
           position={[0, 0, 0]}
           sectionSize={0}
