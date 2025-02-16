@@ -24,7 +24,7 @@ export const Hikari = () => {
     actions.Clip!.reset().fadeIn(0.5).play()
 
     return () => {
-      actions.Clip!.fadeOut(0.5)
+      actions.Clip!.fadeOut(0.5).stop()
     }
   }, [actions])
 
