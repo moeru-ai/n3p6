@@ -20,6 +20,7 @@
     "@react-three/uikit-default": "^0.8.7",
     "@react-three/uikit-lucide": "^0.8.7",
     "@react-three/xr": "^6.6.3",
+    "foxact": "catalog:",
     "react": "catalog:",
     "react-dom": "catalog:",
     "react-router": "^7.1.5",

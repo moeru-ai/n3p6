@@ -4,6 +4,7 @@ import { createVRMAnimationClip } from '@pixiv/three-vrm-animation'
 import { useGLTF } from '@react-three/drei'
 import { useFrame } from '@react-three/fiber'
 import { CapsuleCollider, RigidBody } from '@react-three/rapier'
+import { useSingleton } from 'foxact/use-singleton'
 import { useEffect, useRef } from 'react'
 import { AnimationMixer } from 'three'
 
@@ -15,31 +16,26 @@ import { useVRM, useVRMA } from '../../hooks/use-vrm'
 useGLTF.preload(vrmUrl)
 
 export const Hikari = () => {
-  const mixer = useRef<AnimationMixer>(undefined)
-  const action = useRef<AnimationAction>(undefined)
-
   const vrm = useVRM(vrmUrl)
   const vrma = useVRMA(vrmaUrl)
+
+  const mixer = useSingleton(() => new AnimationMixer(vrm.scene))
+  const action = useRef<AnimationAction>(undefined)
 
   useEffect(() => {
     const loadAnimation = async () => {
       if (!vrma)
         return
 
-      const mixerTmp: AnimationMixer = new AnimationMixer(vrm.scene)
-      mixer.current = mixerTmp
-
       const clip = createVRMAnimationClip(vrma, vrm)
       action.current = mixer.current.clipAction(clip)
       action.current.play()
     }
     void loadAnimation()
-  }, [vrm, vrma])
+  }, [vrm, vrma, mixer])
 
   useFrame((_, delta) => {
-    if (mixer.current)
-      mixer.current.update(delta)
-
+    mixer.current.update(delta)
     vrm.update(delta)
   })
 
