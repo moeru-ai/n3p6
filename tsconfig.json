@@ -1,6 +1,7 @@
 {
   "references": [
     { "path": "./app/tsconfig.json" },
+    { "path": "./packages/react-three-vrm/tsconfig.json" },
     { "path": "./packages/use-illuminance/tsconfig.json" },
     { "path": "./tsconfig.node.json" }
   ],

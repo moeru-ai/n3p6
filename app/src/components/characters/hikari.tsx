@@ -1,15 +1,15 @@
+import { useVRM, useVRMA } from '@n3p6/react-three-vrm'
 import { createVRMAnimationClip } from '@pixiv/three-vrm-animation'
-import { useAnimations, useGLTF } from '@react-three/drei'
+import { useAnimations } from '@react-three/drei'
 import { useFrame } from '@react-three/fiber'
 import { CapsuleCollider, RigidBody } from '@react-three/rapier'
 import { useEffect } from 'react'
 
 import vrmUrl from '../../../assets/models/Hikari_SummerDress.vrm?url'
 import vrmaUrl from '../../../assets/motions/waiting.vrma?url'
-import { useVRM, useVRMA } from '../../hooks/use-vrm'
 
 // eslint-disable-next-line @masknet/no-top-level
-useGLTF.preload(vrmUrl)
+useVRM.preload(vrmUrl)
 
 export const Hikari = () => {
   const vrm = useVRM(vrmUrl)

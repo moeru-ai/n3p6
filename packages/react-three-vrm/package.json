@@ -1,5 +1,5 @@
 {
-  "name": "@n3p6/use-illuminance",
+  "name": "@n3p6/react-three-vrm",
   "type": "module",
   "version": "0.0.1",
   "private": true,
@@ -9,10 +9,13 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/moeru-ai/n3p6.git",
-    "directory": "packages/use-illuminance"
+    "directory": "packages/react-three-vrm"
   },
   "bugs": "https://github.com/moeru-ai/n3p6/issues",
-  "sideEffects": false,
+  "sideEffects": [
+    "./src/hooks/use-vrm.ts",
+    "./src/hooks/use-vrma.ts"
+  ],
   "exports": "./src/index.ts",
   "publishConfig": {
     "exports": {
@@ -32,10 +35,15 @@
     "build": "tsup"
   },
   "peerDependencies": {
-    "react": "catalog:"
+    "@pixiv/three-vrm": "catalog:",
+    "@pixiv/three-vrm-animation": "catalog:",
+    "@react-three/drei": "catalog:",
+    "@react-three/fiber": "catalog:",
+    "react": "catalog:",
+    "three": "catalog:"
   },
   "devDependencies": {
     "@types/react": "catalog:",
-    "foxact": "catalog:"
+    "@types/three": "catalog:"
   }
 }
