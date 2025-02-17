@@ -1,8 +1,9 @@
 import { useMixamoAnimation, useVRM } from '@n3p6/react-three-vrm'
-import { useAnimations } from '@react-three/drei'
+// import { useAnimations } from '@react-three/drei'
 import { useFrame } from '@react-three/fiber'
 import { CapsuleCollider, RigidBody } from '@react-three/rapier'
 import { useEffect } from 'react'
+import { AnimationMixer } from 'three'
 
 import vrmUrl from '../../../assets/models/AvatarSample_A.vrm?url'
 import fbxUrl from '../../../assets/motions/mixamo/Hip Hop Dancing.fbx?url'
@@ -14,18 +15,27 @@ export const AvatarSampleA = () => {
   const vrm = useVRM(vrmUrl)
   const animation = useMixamoAnimation(fbxUrl, vrm)
 
-  const { actions, mixer } = useAnimations(
-    [animation],
-    vrm.scene,
-  )
-
+  const mixer = new AnimationMixer(vrm.scene)
   useEffect(() => {
-    actions.vrmAnimation!.reset().fadeIn(0.5).play()
-
-    return () => {
-      actions.vrmAnimation!.fadeOut(0.5).stop()
+    const playAnimation = async () => {
+      mixer.clipAction(animation).play()
     }
-  }, [actions])
+
+    void playAnimation()
+  })
+
+  // const { actions, mixer } = useAnimations(
+  //   [animation],
+  //   vrm.scene,
+  // )
+
+  // useEffect(() => {
+  //   actions.vrmAnimation!.reset().fadeIn(0.5).play()
+
+  //   return () => {
+  //     actions.vrmAnimation!.fadeOut(0.5).stop()
+  //   }
+  // }, [actions])
 
   useFrame((_, delta) => {
     mixer.update(delta)

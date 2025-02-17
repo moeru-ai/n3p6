@@ -47,5 +47,8 @@
     "scss",
     "pcss",
     "postcss"
+  ],
+  "cSpell.words": [
+    "mixamo"
   ]
 }
