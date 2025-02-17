@@ -20,22 +20,21 @@ export const AvatarSampleA = () =>
   <Vrm src={vrmUrl} />
 ```
 
-###### useVRM, useVRMA
+###### useVRM & useVRMAnimation
 ```tsx
-import { useVRM } from '@n3p6/react-three-vrm'
-import { createVRMAnimationClip } from '@pixiv/three-vrm-animation'
+import { useVRM, useVRMAnimation } from '@n3p6/react-three-vrm'
 import { useAnimations } from '@react-three/drei'
 
 // https://vite.dev/guide/assets#explicit-url-imports
 import vrmUrl from './assets/models/AvatarSample_A.vrm'
-import vrmaUrl from './assets/motions/waiting.vrma'
+import animationUrl from './assets/motions/waiting.vrma'
 
 export const AvatarSampleA = () => {
   const vrm = useVRM(vrmUrl)
-  const vrma = useVRMA(vrmaUrl)
+  const animation = useVRMAnimation(animationUrl, vrm)
 
   const { actions, mixer } = useAnimations(
-    [createVRMAnimationClip(vrma, vrm)],
+    [animation],
     vrm.scene,
   )
 
