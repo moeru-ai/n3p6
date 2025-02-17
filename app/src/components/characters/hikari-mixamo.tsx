@@ -22,12 +22,12 @@ export const HikariMixamo = () => {
   const mixer = new AnimationMixer(vrm.scene)
 
   useEffect(() => {
-    const playAnimation = async () => {
-      mixer.clipAction(animation).play()
-    }
+    const action = mixer.clipAction(animation)
 
-    void playAnimation()
-  })
+    action.reset().fadeIn(0.5).play()
+
+    return () => { action.fadeOut(0.5).stop() }
+  }, [animation])
 
   // const { actions, mixer } = useAnimations(
   //   [animation],
