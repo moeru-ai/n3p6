@@ -1,4 +1,4 @@
-import { useMixamoAnimation, useVRM } from '@n3p6/react-three-vrm'
+import { useMixamoAnimation, useVRM, useVRMAutoBlink } from '@n3p6/react-three-vrm'
 // import { useAnimations } from '@react-three/drei'
 import { useFrame } from '@react-three/fiber'
 import { CapsuleCollider, RigidBody } from '@react-three/rapier'
@@ -17,7 +17,10 @@ export const HikariMixamo = () => {
   const vrm = useVRM(vrmUrl)
   const animation = useMixamoAnimation(fbxUrl, vrm)
 
+  useVRMAutoBlink(vrm, 5000)
+
   const mixer = new AnimationMixer(vrm.scene)
+
   useEffect(() => {
     const playAnimation = async () => {
       mixer.clipAction(animation).play()
