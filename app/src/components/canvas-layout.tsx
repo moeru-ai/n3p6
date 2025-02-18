@@ -5,7 +5,7 @@ import { Canvas } from '@react-three/fiber'
 import { OrbitHandles } from '@react-three/handle'
 import { Physics } from '@react-three/rapier'
 import { setPreferredColorScheme } from '@react-three/uikit'
-import { createXRStore, PointerEvents, XR } from '@react-three/xr'
+import { createXRStore, noEvents, PointerEvents, XR } from '@react-three/xr'
 
 import { Player } from './characters/player'
 import { Environment } from './environment'
@@ -26,6 +26,7 @@ export const CanvasLayout = ({ children }: PropsWithChildren) => {
   return (
     <Canvas
       camera={{ position: [0, 1.75, 1.75] }}
+      events={noEvents}
       gl={{ localClippingEnabled: true }}
       style={{ flexGrow: 1, width: '100%' }}
     >

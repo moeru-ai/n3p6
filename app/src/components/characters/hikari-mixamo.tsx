@@ -1,7 +1,8 @@
-import { useMixamoAnimation, useVRM, useVRMAutoBlink } from '@n3p6/react-three-vrm'
+import { useMixamoAnimation, useVRM, useVRMAutoBlink, useVRMAutoLookAtDefaultCamera } from '@n3p6/react-three-vrm'
 // import { useAnimations } from '@react-three/drei'
 import { useFrame } from '@react-three/fiber'
 import { CapsuleCollider, RigidBody } from '@react-three/rapier'
+import { useSingleton } from 'foxact/use-singleton'
 import { useEffect } from 'react'
 import { AnimationMixer } from 'three'
 
@@ -18,16 +19,19 @@ export const HikariMixamo = () => {
   const animation = useMixamoAnimation(fbxUrl, vrm)
 
   useVRMAutoBlink(vrm, 5000)
+  useVRMAutoLookAtDefaultCamera(vrm)
 
-  const mixer = new AnimationMixer(vrm.scene)
+  const mixer = useSingleton(() => new AnimationMixer(vrm.scene))
 
   useEffect(() => {
-    const action = mixer.clipAction(animation)
+    const action = mixer.current.clipAction(animation)
 
     action.reset().fadeIn(0.5).play()
 
-    return () => { action.fadeOut(0.5).stop() }
-  }, [animation])
+    return () => {
+      action.fadeOut(0.5).stop()
+    }
+  }, [animation, mixer])
 
   // const { actions, mixer } = useAnimations(
   //   [animation],
@@ -43,7 +47,7 @@ export const HikariMixamo = () => {
   // }, [actions])
 
   useFrame((_, delta) => {
-    mixer.update(delta)
+    mixer.current.update(delta)
     vrm.update(delta)
   })
 
