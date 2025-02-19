@@ -7,9 +7,11 @@ import { TTFLoader } from 'three/examples/jsm/loaders/TTFLoader.js'
 
 import ttfUrl from '../../../assets/fonts/SourceHanSansCN-Regular.ttf?url'
 import { CanvasLayout } from '../../components/canvas-layout'
+// import { useLocalFont } from '../../hooks/use-local-font'
 
 const DebugText = () => {
   const font = useLoader(TTFLoader, ttfUrl)
+  // const font = useLocalFont({ postscriptNames: ['NotoSansCJKSC_400wght'] })
 
   return (
     <CanvasLayout>
