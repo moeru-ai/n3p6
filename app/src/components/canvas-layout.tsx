@@ -7,6 +7,7 @@ import { Physics } from '@react-three/rapier'
 import { setPreferredColorScheme } from '@react-three/uikit'
 import { createXRStore, noEvents, PointerEvents, XR } from '@react-three/xr'
 
+import { Vad } from './ai/vad'
 import { Player } from './characters/player'
 import { Environment } from './environment'
 
@@ -33,6 +34,7 @@ export const CanvasLayout = ({ children }: PropsWithChildren) => {
       {import.meta.env.DEV && <Stats />}
       <PointerEvents />
       <OrbitHandles />
+      <Vad />
       <XR store={store}>
         <Physics
           debug={import.meta.env.DEV}
