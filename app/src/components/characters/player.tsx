@@ -32,6 +32,8 @@ export const Player = () => {
     // TODO: handle text value to LLM
     // eslint-disable-next-line no-console
     console.log(event.target.value)
+
+    speechSynthesis.speak(new SpeechSynthesisUtterance(event.target.value))
   }
 
   return (
