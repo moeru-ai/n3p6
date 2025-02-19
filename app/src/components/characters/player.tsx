@@ -21,11 +21,10 @@ export const Player = () => {
   useXRControllerLocomotion(originRef)
 
   const controller = useXRInputSourceState('controller', 'left')
-  // /** @see {@link https://developers.meta.com/horizon/blog/button-action-mapping-user-inputs-controller-meta-quest-horizon-developers-vr-mr/} */
+  /** @see {@link https://developers.meta.com/horizon/blog/button-action-mapping-user-inputs-controller-meta-quest-horizon-developers-vr-mr/} */
   useXRControllerButtonEvent(controller!, 'y-button', (state) => {
-    if (state === 'pressed' && inputRef.current && isSystemKeyboardSupported) {
+    if (state === 'pressed' && inputRef.current && isSystemKeyboardSupported)
       inputRef.current.focus()
-    }
   })
 
   const handleSubmit: FocusEventHandler<HTMLInputElement> = (event) => {
