@@ -12,6 +12,7 @@ export const useVRMAutoBlink = (vrm: VRM, duration: number) => {
   useEffect(() => {
     const blinkInterval = setInterval(async () => {
       for (const value of [25, 50, 75, 100, 75, 50, 25, 0]) {
+        // eslint-disable-next-line @masknet/prefer-timer-id, react-web-api/no-leaked-timeout
         await new Promise(r => setTimeout(r, 1))
         setBlink(value)
       }
