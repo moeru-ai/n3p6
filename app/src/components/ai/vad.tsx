@@ -1,4 +1,4 @@
-import { Html } from '@react-three/drei'
+import { Text } from '@react-three/drei'
 import { useMicVAD } from '@ricky0123/vad-react'
 
 export const Vad = () => {
@@ -14,11 +14,6 @@ export const Vad = () => {
   })
 
   return (
-    <Html>
-      <div>
-        User speaking:
-        {vad.userSpeaking}
-      </div>
-    </Html>
+    <Text scale={0.1} visible={false}>{vad.userSpeaking}</Text>
   )
 }
