@@ -34,8 +34,8 @@ export const CanvasLayout = ({ children }: PropsWithChildren) => {
       {import.meta.env.DEV && <Stats />}
       <PointerEvents />
       <OrbitHandles />
-      <Vad />
       <XR store={store}>
+        <Vad />
         <Physics
           debug={import.meta.env.DEV}
           gravity={[0, -9.81, 0]}
