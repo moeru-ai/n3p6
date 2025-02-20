@@ -3,7 +3,7 @@ import react from '@vitejs/plugin-react'
 import { defineConfig } from 'vite'
 
 // https://vite.dev/config/
-export default defineConfig({
+export default defineConfig(({ mode }) => ({
   assetsInclude: ['./assets/*'],
   build: { target: 'esnext' },
   plugins: [
@@ -14,6 +14,7 @@ export default defineConfig({
     }),
     generouted(),
   ],
+  publicDir: mode === 'development' ? 'public' : false,
   //   optimizeDeps: {
   //     esbuildOptions: {
   //       target: 'esnext',
@@ -29,4 +30,4 @@ export default defineConfig({
 //       'Cross-Origin-Opener-Policy': 'same-origin',
 //     },
 //   },
-})
+}))

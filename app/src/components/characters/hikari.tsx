@@ -4,8 +4,11 @@ import { useFrame } from '@react-three/fiber'
 import { CapsuleCollider, RigidBody } from '@react-three/rapier'
 import { useEffect } from 'react'
 
-import vrmUrl from '../../../assets/models/Hikari_SummerDress.vrm?url'
 import vrmaUrl from '../../../assets/motions/waiting.vrma?url'
+
+const vrmUrl = import.meta.env.DEV
+  ? '/models/Hikari_SummerDress.vrm'
+  : 'https://dist.ayaka.moe/vrm-models/kwaa/Hikari_SummerDress.vrm'
 
 // eslint-disable-next-line @masknet/no-top-level
 useVRM.preload(vrmUrl)

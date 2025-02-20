@@ -6,8 +6,11 @@ import { useSingleton } from 'foxact/use-singleton'
 import { useEffect } from 'react'
 import { AnimationMixer } from 'three'
 
-import vrmUrl from '../../../assets/models/Hikari_SummerDress.vrm?url'
 import fbxUrl from '../../../assets/motions/mixamo/Standing Idle.fbx?url'
+
+const vrmUrl = import.meta.env.DEV
+  ? '/models/Hikari_SummerDress.vrm'
+  : 'https://dist.ayaka.moe/vrm-models/kwaa/Hikari_SummerDress.vrm'
 
 // eslint-disable-next-line @masknet/no-top-level
 useVRM.preload(vrmUrl)
