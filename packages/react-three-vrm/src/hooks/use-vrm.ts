@@ -2,9 +2,9 @@ import type { VRM } from '@pixiv/three-vrm'
 import type { Mesh } from 'three'
 
 import { VRMLoaderPlugin, VRMUtils } from '@pixiv/three-vrm'
+import { VRMLookAtQuaternionProxy } from '@pixiv/three-vrm-animation'
 import { useLoader } from '@react-three/fiber'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
-import { VRMLookAtQuaternionProxy } from '@pixiv/three-vrm-animation'
 
 type UseVRMExtendLoader = (loader: GLTFLoader) => void
 
@@ -29,7 +29,7 @@ const useVRM = (
   VRMUtils.combineMorphs(vrm)
 
   if (vrm.lookAt) {
-    const lookAtQuatProxy = new VRMLookAtQuaternionProxy(vrm.lookAt!)
+    const lookAtQuatProxy = new VRMLookAtQuaternionProxy(vrm.lookAt)
     lookAtQuatProxy.name = 'lookAtQuaternionProxy'
     vrm.scene.add(lookAtQuatProxy)
   }
