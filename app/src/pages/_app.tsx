@@ -1,20 +1,20 @@
-import type { PropsWithChildren } from 'react'
-
 import { Stats } from '@react-three/drei'
 import { Canvas } from '@react-three/fiber'
 import { OrbitHandles } from '@react-three/handle'
 import { Physics } from '@react-three/rapier'
 import { setPreferredColorScheme } from '@react-three/uikit'
 import { createXRStore, noEvents, PointerEvents, XR } from '@react-three/xr'
+import { Outlet } from 'react-router'
 
-import { Vad } from './ai/vad'
-import { Player } from './characters/player'
-import { Environment } from './environment'
+import { Vad } from '../components/ai/vad'
+import { Player } from '../components/characters/player'
+import { Environment } from '../components/environment'
+import { Navbar } from '../components/navbar'
 
 // eslint-disable-next-line @masknet/no-top-level
 setPreferredColorScheme('system')
 
-export const CanvasLayout = ({ children }: PropsWithChildren) => {
+const AppLayout = () => {
   const store = createXRStore({
     emulate: import.meta.env.DEV
       ? {
@@ -41,10 +41,13 @@ export const CanvasLayout = ({ children }: PropsWithChildren) => {
           gravity={[0, -9.81, 0]}
         >
           <Player />
-          {children}
+          <Outlet />
           <Environment />
         </Physics>
+        <Navbar />
       </XR>
     </Canvas>
   )
 }
+
+export default AppLayout
