@@ -9,7 +9,7 @@ import { Outlet } from 'react-router'
 import { Vad } from '../components/ai/vad'
 import { Player } from '../components/characters/player'
 import { Environment } from '../components/environment'
-import { Navbar } from '../components/navbar'
+import { Navbar } from '../components/ui/navbar'
 
 // eslint-disable-next-line @masknet/no-top-level
 setPreferredColorScheme('system')
