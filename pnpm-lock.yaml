@@ -163,6 +163,8 @@ importers:
         specifier: 'catalog:'
         version: 0.173.0
 
+  packages/n3p6: {}
+
   packages/react-three-vrm:
     dependencies:
       '@pixiv/three-vrm':

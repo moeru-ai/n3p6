@@ -1,0 +1,34 @@
+{
+  "name": "n3p6",
+  "type": "module",
+  "version": "0.0.1",
+  "private": true,
+  "author": "Moeru AI",
+  "license": "MIT",
+  "homepage": "https://github.com/moeru-ai/n3p6",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/moeru-ai/n3p6.git",
+    "directory": "packages/n3p6"
+  },
+  "bugs": "https://github.com/moeru-ai/n3p6/issues",
+  "sideEffects": false,
+  "exports": "./src/index.ts",
+  "publishConfig": {
+    "exports": {
+      ".": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "./package.json": "./package.json"
+    },
+    "main": "./dist/index.js",
+    "types": "./dist/index.d.ts"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup"
+  }
+}
