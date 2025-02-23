@@ -2,7 +2,6 @@
   "name": "@n3p6/react-three-vrm",
   "type": "module",
   "version": "0.0.1",
-  "private": true,
   "author": "Moeru AI",
   "license": "MIT",
   "homepage": "https://github.com/moeru-ai/n3p6",
