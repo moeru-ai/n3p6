@@ -1,7 +1,7 @@
 {
   "name": "@n3p6/app",
   "type": "module",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "private": true,
   "scripts": {
     "build": "tsc -b && vite build",
