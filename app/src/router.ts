@@ -8,6 +8,7 @@ export type Path =
   | `/debug/illuminance`
   | `/debug/ragdoll`
   | `/debug/text`
+  | `/settings`
 
 export type Params = {
   

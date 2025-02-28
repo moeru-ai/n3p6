@@ -5,7 +5,8 @@
   "private": true,
   "scripts": {
     "build": "tsc -b && vite build",
-    "dev": "vite"
+    "dev": "vite",
+    "preview": "vite preview"
   },
   "dependencies": {
     "@generouted/react-router": "^1.20.0",
