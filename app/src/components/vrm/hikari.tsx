@@ -4,7 +4,7 @@ import { useFrame } from '@react-three/fiber'
 import { CapsuleCollider, RigidBody } from '@react-three/rapier'
 import { useEffect } from 'react'
 
-import vrmaUrl from '../../../assets/motions/waiting.vrma?url'
+import vrmaUrl from '~/assets/motions/waiting.vrma?url'
 
 const vrmUrl = import.meta.env.DEV
   ? '/models/Hikari_SummerDress.vrm'

@@ -6,7 +6,7 @@ import { useSingleton } from 'foxact/use-singleton'
 import { useEffect } from 'react'
 import { AnimationMixer } from 'three'
 
-import fbxUrl from '../../../assets/motions/mixamo/Standing Idle.fbx?url'
+import fbxUrl from '~/assets/motions/mixamo/Standing Idle.fbx?url'
 
 const vrmUrl = import.meta.env.DEV
   ? '/models/Hikari_SummerDress.vrm'

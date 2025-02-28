@@ -5,13 +5,11 @@ import { useLoader } from '@react-three/fiber'
 import { RigidBody } from '@react-three/rapier'
 import { TTFLoader } from 'three/examples/jsm/loaders/TTFLoader.js'
 
-import ttfUrl from '../../../assets/fonts/SourceHanSansCN-Regular.ttf?url'
-import { Stage } from '../../components/stage'
-// import { useLocalFont } from '../../hooks/use-local-font'
+import ttfUrl from '~/assets/fonts/SourceHanSansCN-Regular.ttf?url'
+import { Stage } from '~/components/stage'
 
 const DebugText = () => {
   const font = useLoader(TTFLoader, ttfUrl)
-  // const font = useLocalFont({ postscriptNames: ['NotoSansCJKSC_400wght'] })
 
   return (
     <Stage>

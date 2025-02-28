@@ -5,10 +5,10 @@ import { OrbitHandles } from '@react-three/handle'
 import { Physics } from '@react-three/rapier'
 import { createXRStore, PointerEvents, XR } from '@react-three/xr'
 
-import { Vad } from './ai/vad'
-import { Environment } from './environment'
-import { Navbar } from './ui/navbar'
-import { Player } from './xr/player'
+import { Vad } from '~/components/ai/vad'
+import { Environment } from '~/components/environment'
+import { Navbar } from '~/components/ui/navbar'
+import { Player } from '~/components/xr/player'
 
 export const Stage = ({ children }: PropsWithChildren) => {
   const store = createXRStore({

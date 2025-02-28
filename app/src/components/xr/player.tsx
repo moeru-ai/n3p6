@@ -10,7 +10,7 @@ import {
 } from '@react-three/xr'
 import { useRef } from 'react'
 
-import { useXRSessionSystemKeyboardSupported } from '../../hooks/use-xr'
+import { useXRSessionSystemKeyboardSupported } from '~/hooks/use-xr'
 
 export const Player = () => {
   const originRef = useRef<Group>(null)

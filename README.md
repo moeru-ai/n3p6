@@ -4,4 +4,4 @@
 
 [MIT](./LICENSE.md)
 
-[app/assets](./app/assets) and [app/public](./app/public) are third-party resources: see the reference for licenses.
+[app/src/assets](./app/src/assets) and [app/public](./app/public) are third-party resources: see the reference for licenses.
