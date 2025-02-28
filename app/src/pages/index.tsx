@@ -1,5 +1,5 @@
-import { HikariMixamo } from '../components/characters/hikari-mixamo'
 import { Stage } from '../components/stage'
+import { HikariMixamo } from '../components/vrm/hikari-mixamo'
 
 const Index = () => (
   <Stage>

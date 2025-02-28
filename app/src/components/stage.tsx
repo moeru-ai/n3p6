@@ -6,9 +6,9 @@ import { Physics } from '@react-three/rapier'
 import { createXRStore, PointerEvents, XR } from '@react-three/xr'
 
 import { Vad } from './ai/vad'
-import { Player } from './characters/player'
 import { Environment } from './environment'
 import { Navbar } from './ui/navbar'
+import { Player } from './xr/player'
 
 export const Stage = ({ children }: PropsWithChildren) => {
   const store = createXRStore({
