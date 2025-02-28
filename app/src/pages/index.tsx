@@ -1,7 +1,10 @@
 import { HikariMixamo } from '../components/characters/hikari-mixamo'
+import { Stage } from '../components/stage'
 
 const Index = () => (
-  <HikariMixamo />
+  <Stage>
+    <HikariMixamo />
+  </Stage>
 )
 
 export default Index
