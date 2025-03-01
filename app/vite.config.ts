@@ -1,49 +1,49 @@
-import type { AssetPackConfig } from '@assetpack/core'
-import type { Plugin, ResolvedConfig } from 'vite'
+// import type { AssetPackConfig } from '@assetpack/core'
+// import type { Plugin, ResolvedConfig } from 'vite'
 
-import { AssetPack } from '@assetpack/core'
+// import { AssetPack } from '@assetpack/core'
 import generouted from '@generouted/react-router/plugin'
 import react from '@vitejs/plugin-react'
-import { cwd } from 'node:process'
+// import { cwd } from 'node:process'
 import { defineConfig } from 'vite'
 import tsconfigPaths from 'vite-tsconfig-paths'
 
-import assetpackConfig from './assetpack.config'
+// import assetpackConfig from './assetpack.config'
 
-const assetpack = (apConfig: AssetPackConfig): Plugin => {
-  let mode: ResolvedConfig['command']
-  let ap: AssetPack | undefined
+// const assetpack = (apConfig: AssetPackConfig): Plugin => {
+//   let mode: ResolvedConfig['command']
+//   let ap: AssetPack | undefined
 
-  return {
-    buildEnd: async () => {
-      if (!(ap))
-        return
-      await ap.stop()
-      ap = undefined
-    },
-    buildStart: async () => {
-      if (mode === 'serve') {
-        if (ap)
-          return
-        ap = new AssetPack(apConfig)
-        void ap.watch()
-      }
-      else {
-        await new AssetPack(apConfig).run()
-      }
-    },
-    configResolved(resolvedConfig) {
-      mode = resolvedConfig.command
-      if (!resolvedConfig.publicDir)
-        return
-      if (apConfig.output !== undefined)
-        return
-      const publicDir = resolvedConfig.publicDir.replace(cwd(), '')
-      apConfig.output = `.${publicDir}/assets/`
-    },
-    name: 'vite-plugin-assetpack',
-  }
-}
+//   return {
+//     buildEnd: async () => {
+//       if (!(ap))
+//         return
+//       await ap.stop()
+//       ap = undefined
+//     },
+//     buildStart: async () => {
+//       if (mode === 'serve') {
+//         if (ap)
+//           return
+//         ap = new AssetPack(apConfig)
+//         void ap.watch()
+//       }
+//       else {
+//         await new AssetPack(apConfig).run()
+//       }
+//     },
+//     configResolved(resolvedConfig) {
+//       mode = resolvedConfig.command
+//       if (!resolvedConfig.publicDir)
+//         return
+//       if (apConfig.output !== undefined)
+//         return
+//       const publicDir = resolvedConfig.publicDir.replace(cwd(), '')
+//       apConfig.output = `.${publicDir}/assets/`
+//     },
+//     name: 'vite-plugin-assetpack',
+//   }
+// }
 
 // https://vite.dev/config/
 export default defineConfig(({ mode }) => ({
@@ -57,7 +57,7 @@ export default defineConfig(({ mode }) => ({
     }),
     generouted(),
     tsconfigPaths(),
-    assetpack(assetpackConfig),
+    // assetpack(assetpackConfig),
   ],
   publicDir: mode === 'development' ? 'public' : false,
   //   optimizeDeps: {
