@@ -3,6 +3,7 @@ ignorePaths: []
 dictionaryDefinitions: []
 dictionaries: []
 words:
+  - assetpack
   - bumpp
   - drei
   - foxact
@@ -15,6 +16,7 @@ words:
   - mixamorig
   - moeru
   - moeru-ai
+  - msdf
   - onreading
   - pixiv
   - pkgroll

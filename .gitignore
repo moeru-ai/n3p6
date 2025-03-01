@@ -16,3 +16,6 @@ dist
 *.njsproj
 *.sln
 *.sw?
+
+# assetpack
+.assetpack
