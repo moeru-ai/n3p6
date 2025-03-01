@@ -4,11 +4,14 @@ import {
   Text,
 } from '@react-three/uikit'
 import { Button, Defaults, Input } from '@react-three/uikit-default'
-import { GithubIcon } from '@react-three/uikit-lucide'
+import { GithubIcon, SettingsIcon } from '@react-three/uikit-lucide'
 import { IfInSessionMode, useXRStore } from '@react-three/xr'
+
+import { useNavigate } from '~/router'
 
 export const Navbar = () => {
   const store = useXRStore()
+  const navigate = useNavigate()
 
   return (
     <IfInSessionMode deny={['immersive-ar', 'immersive-vr']}>
@@ -24,14 +27,6 @@ export const Navbar = () => {
             <Input maxWidth={256} placeholder="Send message..." />
             <Container gap={8} justifyContent="center">
               <Button
-                data-test-id="github"
-                onClick={() => window.open('https://github.com/moeru-ai/n3p6', '_blank', 'noopener')}
-                size="icon"
-                variant="secondary"
-              >
-                <GithubIcon height={16} width={16} />
-              </Button>
-              <Button
                 data-test-id="enter-vr"
                 onClick={() => void store.enterVR()}
                 variant="secondary"
@@ -44,6 +39,23 @@ export const Navbar = () => {
                 variant="secondary"
               >
                 <Text>Enter AR</Text>
+              </Button>
+              <Button
+                data-test-id="settings"
+                // eslint-disable-next-line ts/no-misused-promises
+                onClick={async () => navigate('/settings')}
+                size="icon"
+                variant="secondary"
+              >
+                <SettingsIcon height={16} width={16} />
+              </Button>
+              <Button
+                data-test-id="github"
+                onClick={() => window.open('https://github.com/moeru-ai/n3p6', '_blank', 'noopener')}
+                size="icon"
+                variant="secondary"
+              >
+                <GithubIcon height={16} width={16} />
               </Button>
             </Container>
           </Container>
