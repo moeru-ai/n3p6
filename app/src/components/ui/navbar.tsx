@@ -4,14 +4,21 @@ import {
   Text,
 } from '@react-three/uikit'
 import { Button, Defaults, Input } from '@react-three/uikit-default'
-import { GithubIcon, SettingsIcon } from '@react-three/uikit-lucide'
+import { GithubIcon, MoonIcon, SettingsIcon, SunIcon } from '@react-three/uikit-lucide'
 import { IfInSessionMode, useXRStore } from '@react-three/xr'
 
+import { useIsDarkValue, useToggleIsDark } from '~/hooks/use-is-dark'
 import { useNavigate } from '~/router'
+
+const NavbarThemeIcon = ({ isDark }: { isDark: boolean }) => isDark
+  ? <SunIcon height={16} width={16} />
+  : <MoonIcon height={16} width={16} />
 
 export const Navbar = () => {
   const store = useXRStore()
   const navigate = useNavigate()
+  const isDark = useIsDarkValue()
+  const toggleIsDark = useToggleIsDark()
 
   return (
     <IfInSessionMode deny={['immersive-ar', 'immersive-vr']}>
@@ -24,7 +31,7 @@ export const Navbar = () => {
           pointerEvents="listener"
         >
           <Container flexDirection="column" gap={8} lg={{ flexDirection: 'row' }}>
-            <Input maxWidth={256} placeholder="Send message..." />
+            <Input marginX="auto" maxWidth={288} placeholder="Send message..." />
             <Container gap={8} justifyContent="center">
               <Button
                 data-test-id="enter-vr"
@@ -48,6 +55,14 @@ export const Navbar = () => {
                 variant="secondary"
               >
                 <SettingsIcon height={16} width={16} />
+              </Button>
+              <Button
+                data-test-id="toggle-color-scheme"
+                onClick={() => toggleIsDark()}
+                size="icon"
+                variant="secondary"
+              >
+                <NavbarThemeIcon isDark={isDark} />
               </Button>
               <Button
                 data-test-id="github"

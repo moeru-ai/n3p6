@@ -1,14 +1,17 @@
 import { Canvas } from '@react-three/fiber'
 import { setPreferredColorScheme } from '@react-three/uikit'
 import { noEvents } from '@react-three/xr'
+import { useEffect } from 'react'
 import { Outlet, useLocation } from 'react-router'
 
-// eslint-disable-next-line @masknet/no-top-level
-setPreferredColorScheme('system')
+import { useIsDarkValue } from '~/hooks/use-is-dark'
 
 const AppLayout = () => {
   const { pathname } = useLocation()
   const events = pathname.includes('settings') ? undefined : noEvents
+  const isDark = useIsDarkValue()
+
+  useEffect(() => setPreferredColorScheme(isDark ? 'dark' : 'light'), [isDark])
 
   return (
     <Canvas

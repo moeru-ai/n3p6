@@ -1,12 +1,23 @@
 import { Grid, Stars } from '@react-three/drei'
 import { RigidBody } from '@react-three/rapier'
-import { isDarkMode } from '@react-three/uikit'
 import { colors } from '@react-three/uikit-default'
 import { IfInSessionMode } from '@react-three/xr'
+import { useEffect, useState } from 'react'
+
+import { useIsDarkValue } from '~/hooks/use-is-dark'
 
 export const Environment = () => {
-  // const intensity = isDarkMode.value ? 0.5 : 1
-  const intensity = 1
+  const isDark = useIsDarkValue()
+  const intensity = isDark ? 1 : 1.5
+
+  const [bg, setBg] = useState(colors.background.value)
+  const [fg, setFg] = useState(colors.foreground.value)
+
+  // fix: listen signal update
+  useEffect(() => {
+    setBg(colors.background.value)
+    setFg(colors.foreground.value)
+  }, [isDark])
 
   return (
     <>
@@ -22,7 +33,7 @@ export const Environment = () => {
       </RigidBody>
       <IfInSessionMode deny="immersive-ar">
         <Grid
-          cellColor={colors.foreground.value}
+          cellColor={fg}
           cellSize={1}
           cellThickness={1}
           fadeDistance={50}
@@ -31,8 +42,8 @@ export const Environment = () => {
           position={[0, 0, 0]}
           sectionSize={0}
         />
-        <color args={[colors.background.value]} attach="background" />
-        {isDarkMode.value && <Stars count={99} depth={99} fade />}
+        <color args={[bg]} attach="background" />
+        {isDark && <Stars count={99} depth={99} fade />}
       </IfInSessionMode>
     </>
   )
