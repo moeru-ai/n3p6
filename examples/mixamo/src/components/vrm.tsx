@@ -1,8 +1,7 @@
-import { createMixamoAnimationClip, useVRM } from '@n3p6/react-three-vrm'
+import { loadMixamoAnimation, useVRM } from '@n3p6/react-three-vrm'
 import { useFrame } from '@react-three/fiber'
 import { useCallback, useEffect, useRef } from 'react'
 import { AnimationMixer } from 'three'
-import { FBXLoader } from 'three/examples/jsm/loaders/FBXLoader.js'
 
 const vrmUrl = 'https://dist.ayaka.moe/vrm-models/kwaa/Hikari_SummerDress.vrm'
 
@@ -29,9 +28,7 @@ export const Vrm = () => {
 
     vrm.humanoid.resetNormalizedPose()
 
-    const loader = new FBXLoader()
-    const fbx = await loader.loadAsync(url)
-    const clip = createMixamoAnimationClip(fbx, vrm)
+    const clip = await loadMixamoAnimation(url, vrm)
 
     mixer.current = new AnimationMixer(vrm.scene)
     mixer.current.clipAction(clip).play()

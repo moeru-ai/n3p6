@@ -3,7 +3,7 @@ import type { Group, KeyframeTrack, Object3DEventMap } from 'three'
 
 import { AnimationClip, Quaternion, QuaternionKeyframeTrack, Vector3, VectorKeyframeTrack } from 'three'
 
-import { mixamoVRMRigMap } from './mixamo-rig-map'
+import { mixamoVRMRigMap } from './_mixamo-rig-map'
 
 /**
  * Example: {@link https://pixiv.github.io/three-vrm/packages/three-vrm/examples/humanoidAnimation/index.html}
