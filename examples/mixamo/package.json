@@ -1,10 +1,9 @@
 {
-  "name": "@n3p6/app",
+  "name": "@n3p6/example-mixamo",
   "type": "module",
   "version": "0.0.2",
   "private": true,
   "scripts": {
-    "assetpack": "assetpack -c assetpack.config.ts",
     "build": "tsc -b && vite build",
     "dev": "vite",
     "preview": "vite preview"
@@ -12,22 +11,13 @@
   "dependencies": {
     "@generouted/react-router": "catalog:",
     "@n3p6/react-three-vrm": "workspace:",
-    "@n3p6/use-illuminance": "workspace:",
     "@pixiv/three-vrm": "catalog:",
     "@pixiv/three-vrm-animation": "catalog:",
     "@react-three/drei": "catalog:",
     "@react-three/fiber": "catalog:",
-    "@react-three/handle": "catalog:",
-    "@react-three/rapier": "catalog:",
-    "@react-three/uikit": "catalog:",
-    "@react-three/uikit-default": "catalog:",
-    "@react-three/uikit-lucide": "catalog:",
-    "@react-three/xr": "catalog:",
-    "@ricky0123/vad-react": "^0.0.28",
     "foxact": "catalog:",
     "react": "catalog:",
     "react-dom": "catalog:",
-    "react-router": "catalog:",
     "three": "catalog:",
     "three-stdlib": "catalog:"
   },

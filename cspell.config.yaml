@@ -11,6 +11,7 @@ words:
   - gltf
   - importantimport
   - koota
+  - lucide
   - masknet
   - mixamo
   - mixamorig
@@ -21,7 +22,9 @@ words:
   - pixiv
   - pkgroll
   - sonarjs
+  - stdlib
   - thumbstick
   - tsup
+  - uikit
 ignoreWords: []
 import: []
