@@ -1,7 +1,7 @@
 import type { PropsWithChildren } from 'react'
 
-import { Stats } from '@react-three/drei'
-import { OrbitHandles } from '@react-three/handle'
+import { OrbitControls, Stats } from '@react-three/drei'
+// import { OrbitHandles } from '@react-three/handle'
 import { Physics } from '@react-three/rapier'
 import { createXRStore, PointerEvents, XR } from '@react-three/xr'
 
@@ -24,7 +24,8 @@ export const Stage = ({ children }: PropsWithChildren) => {
     <>
       {import.meta.env.DEV && <Stats />}
       <PointerEvents />
-      <OrbitHandles />
+      {/* <OrbitHandles /> */}
+      <OrbitControls />
       <XR store={store}>
         <Vad />
         <Physics

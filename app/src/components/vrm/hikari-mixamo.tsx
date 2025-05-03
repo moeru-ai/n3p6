@@ -1,10 +1,8 @@
 import { useMixamoAnimation, useVRM, useVRMAutoBlink, useVRMAutoLookAtDefaultCamera } from '@n3p6/react-three-vrm'
-// import { useAnimations } from '@react-three/drei'
+import { useAnimations } from '@react-three/drei'
 import { useFrame } from '@react-three/fiber'
 import { CapsuleCollider, RigidBody } from '@react-three/rapier'
-import { useSingleton } from 'foxact/use-singleton'
 import { useEffect } from 'react'
-import { AnimationMixer } from 'three'
 
 import fbxUrl from '~/assets/motions/mixamo/Standing Idle.fbx?url'
 
@@ -20,37 +18,20 @@ useMixamoAnimation.preload(fbxUrl)
 export const HikariMixamo = () => {
   const vrm = useVRM(vrmUrl)
   const animation = useMixamoAnimation(fbxUrl, vrm)
+  const { actions, mixer } = useAnimations(
+    [animation],
+    vrm.scene,
+  )
 
   useVRMAutoBlink(vrm, 5000)
   useVRMAutoLookAtDefaultCamera(vrm)
 
-  const mixer = useSingleton(() => new AnimationMixer(vrm.scene))
-
   useEffect(() => {
-    const action = mixer.current.clipAction(animation)
-
-    action.reset().fadeIn(0.5).play()
-
-    return () => {
-      action.fadeOut(0.5).stop()
-    }
-  }, [animation, mixer])
-
-  // const { actions, mixer } = useAnimations(
-  //   [animation],
-  //   vrm.scene,
-  // )
-
-  // useEffect(() => {
-  //   actions.vrmAnimation!.reset().fadeIn(0.5).play()
-
-  //   return () => {
-  //     actions.vrmAnimation!.fadeOut(0.5).stop()
-  //   }
-  // }, [actions])
+    actions.vrmAnimation!.reset().play()
+  }, [actions])
 
   useFrame((_, delta) => {
-    mixer.current.update(delta)
+    mixer.update(delta)
     vrm.update(delta)
   })
 

@@ -13,9 +13,11 @@ export const Environment = () => {
   const [bg, setBg] = useState(colors.background.value)
   const [fg, setFg] = useState(colors.foreground.value)
 
-  // fix: listen signal update
+  // FIXME: listen signal update
   useEffect(() => {
+    // eslint-disable-next-line react-hooks-extra/no-direct-set-state-in-use-effect
     setBg(colors.background.value)
+    // eslint-disable-next-line react-hooks-extra/no-direct-set-state-in-use-effect
     setFg(colors.foreground.value)
   }, [isDark])
 

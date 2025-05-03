@@ -15,6 +15,7 @@ export default antfu({
   .append(ii())
   .append({
     rules: {
+      'sonarjs/fixme-tag': 'warn',
       'sonarjs/todo-tag': 'warn',
     },
   })
