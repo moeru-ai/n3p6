@@ -1,40 +1,56 @@
-import { useMixamoAnimation, useVRM } from '@n3p6/react-three-vrm'
+import { createMixamoAnimationClip, useVRM } from '@n3p6/react-three-vrm'
 import { useFrame } from '@react-three/fiber'
-import { useEffect, useRef } from 'react'
+import { useCallback, useEffect, useRef } from 'react'
 import { AnimationMixer } from 'three'
-
-import fbxUrl from '../assets/motions/mixamo/Standing Idle.fbx?url'
-
-// import fbxUrl from '~/assets/motions/mixamo/Standing Idle.fbx?url'
+import { FBXLoader } from 'three/examples/jsm/loaders/FBXLoader.js'
 
 const vrmUrl = 'https://dist.ayaka.moe/vrm-models/kwaa/Hikari_SummerDress.vrm'
 
 // eslint-disable-next-line @masknet/no-top-level
 useVRM.preload(vrmUrl)
 
-export const VRM = () => {
+export const Vrm = () => {
   const vrm = useVRM(vrmUrl)
-  const animation = useMixamoAnimation(fbxUrl, vrm)
-
   const mixer = useRef<AnimationMixer>(null)
 
+  const onDragover = useCallback((event: DragEvent) => {
+    event.preventDefault()
+  }, [])
+  const onDrop = useCallback(async (event: DragEvent) => {
+    event.preventDefault()
+
+    const files = event.dataTransfer?.files
+    if (!files)
+      return
+
+    const file = files[0]
+    const blob = new Blob([file], { type: 'application/octet-stream' })
+    const url = URL.createObjectURL(blob)
+
+    vrm.humanoid.resetNormalizedPose()
+
+    const loader = new FBXLoader()
+    const fbx = await loader.loadAsync(url)
+    const clip = createMixamoAnimationClip(fbx, vrm)
+
+    mixer.current = new AnimationMixer(vrm.scene)
+    mixer.current.clipAction(clip).play()
+  }, [vrm, mixer])
+
   useEffect(() => {
-    const mixerTmp = new AnimationMixer(vrm.scene)
-    mixer.current = mixerTmp
-
-    const action = mixer.current.clipAction(animation)
-
-    action.reset().fadeIn(0.5).play()
+    window.addEventListener('dragover', onDragover)
+    // eslint-disable-next-line ts/no-misused-promises
+    window.addEventListener('drop', onDrop)
 
     return () => {
-      action.fadeOut(0.5).stop()
+      window.removeEventListener('dragover', onDragover)
+      // eslint-disable-next-line ts/no-misused-promises
+      window.removeEventListener('drop', onDrop)
     }
-  }, [animation, mixer, vrm.scene])
+  }, [onDragover, onDrop])
 
   useFrame((_, delta) => {
-    if (mixer.current)
-      mixer.current.update(delta)
-
+    mixer.current?.update(delta)
     vrm.update(delta)
   })
 

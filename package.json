@@ -3,7 +3,7 @@
   "type": "module",
   "version": "0.0.2",
   "private": true,
-  "packageManager": "pnpm@10.0.0",
+  "packageManager": "pnpm@10.10.0",
   "repository": "github:moeru-ai/n3p6",
   "scripts": {
     "build": "pnpm -r build",
@@ -12,21 +12,21 @@
     "lint": "eslint --cache ."
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^4.1.1",
+    "@antfu/eslint-config": "^4.12.0",
     "@assetpack/core": "^1.4.0",
-    "@eslint-react/eslint-plugin": "^1.26.0",
-    "@importantimport/eslint-config": "^1.0.0-beta.0",
-    "@importantimport/tsconfig": "^1.0.0-beta.0",
-    "@vitejs/plugin-react": "^4.3.4",
+    "@eslint-react/eslint-plugin": "^1.48.5",
+    "@importantimport/eslint-config": "^1.0.0-beta.2",
+    "@importantimport/tsconfig": "^1.0.0-beta.2",
+    "@vitejs/plugin-react": "^4.4.1",
     "babel-plugin-react-compiler": "catalog:",
-    "bumpp": "^10.0.3",
-    "eslint": "^9.20.0",
+    "bumpp": "^10.1.0",
+    "eslint": "^9.26.0",
     "eslint-plugin-react-compiler": "catalog:",
-    "eslint-plugin-react-hooks": "^5.1.0",
-    "eslint-plugin-react-refresh": "^0.4.18",
-    "tsup": "^8.3.6",
-    "typescript": "^5.7.3",
-    "vite": "^6.1.0",
+    "eslint-plugin-react-hooks": "^5.2.0",
+    "eslint-plugin-react-refresh": "^0.4.20",
+    "tsup": "^8.4.0",
+    "typescript": "^5.8.3",
+    "vite": "^6.3.4",
     "vite-tsconfig-paths": "^5.1.4"
   }
 }

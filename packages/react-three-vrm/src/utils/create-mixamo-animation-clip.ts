@@ -11,7 +11,7 @@ import { mixamoVRMRigMap } from './mixamo-rig-map'
  * Source: {@link https://github.com/pixiv/three-vrm/blob/776c2823dcf3453d689a2d56aa82b289fdf963cf/packages/three-vrm/examples/humanoidAnimation/loadMixamoAnimation.js}
  */
 export const createMixamoAnimationClip = (fbx: Group<Object3DEventMap>, vrm: VRM) => {
-  const clip = AnimationClip.findByName(fbx.animations, 'mixamo.com')
+  const clip = AnimationClip.findByName(fbx.animations, 'mixamo.com')!
   const tracks: KeyframeTrack[] = []
 
   const restRotationInverse = new Quaternion()
@@ -57,8 +57,8 @@ export const createMixamoAnimationClip = (fbx: Group<Object3DEventMap>, vrm: VRM
         tracks.push(
           new QuaternionKeyframeTrack(
             `${vrmNodeName}.${propertyName}`,
-            track.times,
-            track.values.map((v, i) => (vrm.meta?.metaVersion === '0' && i % 2 === 0 ? -v : v)),
+            Array.from(track.times),
+            Array.from(track.values.map((v, i) => (vrm.meta?.metaVersion === '0' && i % 2 === 0 ? -v : v))),
           ),
         )
       }
@@ -67,7 +67,7 @@ export const createMixamoAnimationClip = (fbx: Group<Object3DEventMap>, vrm: VRM
           (v, i) => (vrm.meta?.metaVersion === '0' && i % 3 !== 1 ? -v : v) * hipsPositionScale,
         )
         tracks.push(
-          new VectorKeyframeTrack(`${vrmNodeName}.${propertyName}`, track.times, value),
+          new VectorKeyframeTrack(`${vrmNodeName}.${propertyName}`, Array.from(track.times), Array.from(value)),
         )
       }
     }
