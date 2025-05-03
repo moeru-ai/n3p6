@@ -12,8 +12,9 @@
   },
   "bugs": "https://github.com/moeru-ai/n3p6/issues",
   "sideEffects": [
+    "./src/hooks/use-mixamo-animation.ts",
     "./src/hooks/use-vrm.ts",
-    "./src/hooks/use-vrma.ts"
+    "./src/hooks/use-vrm-animation.ts"
   ],
   "exports": "./src/index.ts",
   "publishConfig": {
@@ -31,7 +32,7 @@
     "dist"
   ],
   "scripts": {
-    "build": "tsup"
+    "build": "pkgroll"
   },
   "peerDependencies": {
     "@pixiv/three-vrm": "catalog:",

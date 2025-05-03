@@ -28,7 +28,7 @@
     "dist"
   ],
   "scripts": {
-    "build": "tsup"
+    "build": "pkgroll"
   },
   "peerDependencies": {
     "react": "catalog:"
