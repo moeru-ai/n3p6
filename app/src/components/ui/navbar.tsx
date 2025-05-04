@@ -4,8 +4,9 @@ import {
   Text,
 } from '@react-three/uikit'
 import { Button, Defaults, Input } from '@react-three/uikit-default'
-import { GithubIcon, MoonIcon, SettingsIcon, SunIcon } from '@react-three/uikit-lucide'
+import { GithubIcon, MoonIcon, SendIcon, SettingsIcon, SunIcon } from '@react-three/uikit-lucide'
 import { IfInSessionMode, useXRStore } from '@react-three/xr'
+import { useState } from 'react'
 
 import { useIsDarkValue, useToggleIsDark } from '~/hooks/use-is-dark'
 import { useNavigate } from '~/router'
@@ -19,6 +20,7 @@ export const Navbar = () => {
   const navigate = useNavigate()
   const isDark = useIsDarkValue()
   const toggleIsDark = useToggleIsDark()
+  const [value, setValue] = useState('')
 
   return (
     <IfInSessionMode deny={['immersive-ar', 'immersive-vr']}>
@@ -31,7 +33,23 @@ export const Navbar = () => {
           pointerEvents="listener"
         >
           <Container flexDirection="column" gap={8} lg={{ flexDirection: 'row' }}>
-            <Input marginX="auto" maxWidth={288} placeholder="Send message..." />
+            <Container gap={8} justifyContent="center">
+              <Input
+                marginX="auto"
+                maxWidth={284}
+                onValueChange={value => setValue(value)}
+                placeholder="Write a message..."
+                value={value}
+              />
+              <Button
+                data-test-id="send-message"
+                onClick={() => setValue('')}
+                size="icon"
+                variant="secondary"
+              >
+                <SendIcon height={16} width={16} />
+              </Button>
+            </Container>
             <Container gap={8} justifyContent="center">
               <Button
                 data-test-id="enter-vr"
