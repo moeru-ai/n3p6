@@ -13,6 +13,7 @@ const DebugInput = () => {
         <Root>
           <Defaults>
             <Container flexDirection="column" gap={4}>
+              <Text>{value}</Text>
               <Input
                 data-test-id="debug-input"
                 onValueChange={value => setValue(value)}
