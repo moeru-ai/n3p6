@@ -10,30 +10,30 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@generouted/react-router": "catalog:",
+    "@generouted/react-router": "catalog:react",
     "@n3p6/react-three-vrm": "workspace:",
     "@n3p6/use-illuminance": "workspace:",
-    "@pixiv/three-vrm": "catalog:",
-    "@pixiv/three-vrm-animation": "catalog:",
-    "@react-three/drei": "catalog:",
-    "@react-three/fiber": "catalog:",
-    "@react-three/handle": "catalog:",
-    "@react-three/rapier": "catalog:",
-    "@react-three/uikit": "catalog:",
-    "@react-three/uikit-default": "catalog:",
-    "@react-three/uikit-lucide": "catalog:",
-    "@react-three/xr": "catalog:",
+    "@pixiv/three-vrm": "catalog:three",
+    "@pixiv/three-vrm-animation": "catalog:three",
+    "@react-three/drei": "catalog:three",
+    "@react-three/fiber": "catalog:three",
+    "@react-three/handle": "catalog:three",
+    "@react-three/rapier": "catalog:three",
+    "@react-three/uikit": "catalog:three",
+    "@react-three/uikit-default": "catalog:three",
+    "@react-three/uikit-lucide": "catalog:three",
+    "@react-three/xr": "catalog:three",
     "@ricky0123/vad-react": "^0.0.30",
     "foxact": "catalog:",
-    "react": "catalog:",
-    "react-dom": "catalog:",
-    "react-router": "catalog:",
-    "three": "catalog:",
-    "three-stdlib": "catalog:"
+    "react": "catalog:react",
+    "react-dom": "catalog:react",
+    "react-router": "catalog:react",
+    "three": "catalog:three",
+    "three-stdlib": "catalog:three"
   },
   "devDependencies": {
-    "@types/react": "catalog:",
-    "@types/react-dom": "catalog:",
-    "@types/three": "catalog:"
+    "@types/react": "catalog:react",
+    "@types/react-dom": "catalog:react",
+    "@types/three": "catalog:three"
   }
 }

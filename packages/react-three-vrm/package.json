@@ -35,16 +35,16 @@
     "build": "pkgroll"
   },
   "peerDependencies": {
-    "@pixiv/three-vrm": "catalog:",
-    "@pixiv/three-vrm-animation": "catalog:",
-    "@react-three/drei": "catalog:",
-    "@react-three/fiber": "catalog:",
-    "react": "catalog:",
-    "three": "catalog:"
+    "@pixiv/three-vrm": "catalog:three",
+    "@pixiv/three-vrm-animation": "catalog:three",
+    "@react-three/drei": "catalog:three",
+    "@react-three/fiber": "catalog:three",
+    "react": "catalog:react",
+    "three": "catalog:three"
   },
   "devDependencies": {
-    "@types/react": "catalog:",
-    "@types/three": "catalog:",
+    "@types/react": "catalog:react",
+    "@types/three": "catalog:three",
     "foxact": "catalog:"
   }
 }

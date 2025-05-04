@@ -9,21 +9,20 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@generouted/react-router": "catalog:",
     "@n3p6/react-three-vrm": "workspace:",
-    "@pixiv/three-vrm": "catalog:",
-    "@pixiv/three-vrm-animation": "catalog:",
-    "@react-three/drei": "catalog:",
-    "@react-three/fiber": "catalog:",
+    "@pixiv/three-vrm": "catalog:three",
+    "@pixiv/three-vrm-animation": "catalog:three",
+    "@react-three/drei": "catalog:three",
+    "@react-three/fiber": "catalog:three",
     "foxact": "catalog:",
-    "react": "catalog:",
-    "react-dom": "catalog:",
-    "three": "catalog:",
-    "three-stdlib": "catalog:"
+    "react": "catalog:react",
+    "react-dom": "catalog:react",
+    "three": "catalog:three",
+    "three-stdlib": "catalog:three"
   },
   "devDependencies": {
-    "@types/react": "catalog:",
-    "@types/react-dom": "catalog:",
-    "@types/three": "catalog:"
+    "@types/react": "catalog:react",
+    "@types/react-dom": "catalog:react",
+    "@types/three": "catalog:three"
   }
 }
