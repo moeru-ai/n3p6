@@ -10,6 +10,7 @@ words:
   - foxact
   - generouted
   - gltf
+  - hikari
   - importantimport
   - koota
   - lucide
@@ -27,5 +28,7 @@ words:
   - thumbstick
   - tsup
   - uikit
+  - vrma
+  - yuka
 ignoreWords: []
 import: []

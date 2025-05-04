@@ -29,11 +29,13 @@
     "react-dom": "catalog:react",
     "react-router": "catalog:react",
     "three": "catalog:three",
-    "three-stdlib": "catalog:three"
+    "three-stdlib": "catalog:three",
+    "yuka": "catalog:yuka"
   },
   "devDependencies": {
     "@types/react": "catalog:react",
     "@types/react-dom": "catalog:react",
-    "@types/three": "catalog:three"
+    "@types/three": "catalog:three",
+    "@types/yuka": "catalog:yuka"
   }
 }

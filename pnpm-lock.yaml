@@ -74,6 +74,13 @@ catalogs:
     three-stdlib:
       specifier: ^2.36.0
       version: 2.36.0
+  yuka:
+    '@types/yuka':
+      specifier: ^0.7.4
+      version: 0.7.4
+    yuka:
+      specifier: ^0.7.8
+      version: 0.7.8
 
 importers:
 
@@ -190,6 +197,9 @@ importers:
       three-stdlib:
         specifier: catalog:three
         version: 2.36.0(three@0.176.0)
+      yuka:
+        specifier: catalog:yuka
+        version: 0.7.8
     devDependencies:
       '@types/react':
         specifier: catalog:react
@@ -200,6 +210,9 @@ importers:
       '@types/three':
         specifier: catalog:three
         version: 0.176.0
+      '@types/yuka':
+        specifier: catalog:yuka
+        version: 0.7.4
 
   examples/mixamo:
     dependencies:
@@ -1894,6 +1907,9 @@ packages:
 
   '@types/webxr@0.5.21':
     resolution: {integrity: sha512-geZIAtLzjGmgY2JUi6VxXdCrTb99A7yP49lxLr2Nm/uIK0PkkxcEi4OGhoGDO4pxCf3JwGz2GiJL2Ej4K2bKaA==}
+
+  '@types/yuka@0.7.4':
+    resolution: {integrity: sha512-nyfp47Re8wtzG0DdBPQ6PepXOU0CiMpPVWZ21y1mRImbnz53ADdHUbDY2GRNbIdsl7qlV3XWS+gVpj3zoIIPXA==}
 
   '@typescript-eslint/eslint-plugin@8.31.1':
     resolution: {integrity: sha512-oUlH4h1ABavI4F0Xnl8/fOtML/eu8nI2A1nYd+f+55XI0BLu+RIqKoCiZKNo6DtqZBEQm5aNKA20G3Z5w3R6GQ==}
@@ -5337,6 +5353,9 @@ packages:
   yoga-layout@3.2.1:
     resolution: {integrity: sha512-0LPOt3AxKqMdFBZA3HBAt/t/8vIKq7VaQYbuA8WxCgung+p9TVyKRYdpvCb80HcdTN2NkbIKbhNwKUfm3tQywQ==}
 
+  yuka@0.7.8:
+    resolution: {integrity: sha512-G/pFcMZh2Azz7Yy500NSV1jQ0Ru7h9hTNyEW+HjRXcdzjJIyp/3mCGspnx7VJVP06zxORqK6mkl5TywLqVUnVg==}
+
   zod-to-json-schema@3.24.5:
     resolution: {integrity: sha512-/AuWwMP+YqiPbsJx5D6TfgRTc4kTLjsh5SOcd4bLsfUg2RcEXrFMJl1DGgdHy2aCfsIA/cr/1JM0xcB2GZji8g==}
     peerDependencies:
@@ -7172,6 +7191,8 @@ snapshots:
   '@types/unist@3.0.3': {}
 
   '@types/webxr@0.5.21': {}
+
+  '@types/yuka@0.7.4': {}
 
   '@typescript-eslint/eslint-plugin@8.31.1(@typescript-eslint/parser@8.31.1(eslint@9.26.0(jiti@2.4.2))(typescript@5.8.3))(eslint@9.26.0(jiti@2.4.2))(typescript@5.8.3)':
     dependencies:
@@ -11242,6 +11263,8 @@ snapshots:
   yocto-queue@1.1.1: {}
 
   yoga-layout@3.2.1: {}
+
+  yuka@0.7.8: {}
 
   zod-to-json-schema@3.24.5(zod@3.24.3):
     dependencies:
