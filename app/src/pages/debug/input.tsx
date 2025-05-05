@@ -1,16 +1,16 @@
 import { Container, Root, Text } from '@react-three/uikit'
 import { Button, Defaults, Input } from '@react-three/uikit-default'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 
 import { Stage } from '~/components/stage'
 
 const DebugInput = () => {
   const [value, setValue] = useState<string>('')
 
-  useEffect(() => {
-    // eslint-disable-next-line no-console
-    console.log(value)
-  }, [value])
+  const handleSubmit = () => {
+    speechSynthesis.speak(new SpeechSynthesisUtterance(value))
+    setValue('')
+  }
 
   return (
     <Stage>
@@ -28,7 +28,7 @@ const DebugInput = () => {
               />
               <Button
                 data-test-id="debug-button"
-                onClick={() => setValue('')}
+                onClick={handleSubmit}
                 variant="secondary"
               >
                 <Text>Submit</Text>
