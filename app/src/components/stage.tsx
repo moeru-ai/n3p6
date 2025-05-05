@@ -2,7 +2,6 @@ import type { PropsWithChildren } from 'react'
 
 import { OrbitControls, Stats } from '@react-three/drei'
 // import { OrbitHandles } from '@react-three/handle'
-import { Physics } from '@react-three/rapier'
 import { createXRStore, PointerEvents, XR } from '@react-three/xr'
 
 import { Vad } from '~/components/ai/vad'
@@ -28,14 +27,9 @@ export const Stage = ({ children }: PropsWithChildren) => {
       <OrbitControls />
       <XR store={store}>
         <Vad />
-        <Physics
-          debug={import.meta.env.DEV}
-          gravity={[0, -9.81, 0]}
-        >
-          <Player />
-          {children}
-          <Environment />
-        </Physics>
+        <Player />
+        {children}
+        <Environment />
         <Navbar />
       </XR>
     </>

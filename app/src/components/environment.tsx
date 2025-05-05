@@ -1,5 +1,4 @@
 import { Grid, Stars } from '@react-three/drei'
-import { RigidBody } from '@react-three/rapier'
 import { colors } from '@react-three/uikit-default'
 import { IfInSessionMode } from '@react-three/xr'
 import { useEffect, useState } from 'react'
@@ -24,15 +23,13 @@ export const Environment = () => {
   return (
     <>
       <ambientLight intensity={intensity} />
-      <RigidBody includeInvisible type="fixed">
-        <mesh
-          position={[0, 0, 0]}
-          scale={[50, 0.1, 50]}
-          visible={false}
-        >
-          <boxGeometry />
-        </mesh>
-      </RigidBody>
+      <mesh
+        position={[0, 0, 0]}
+        scale={[50, 0.1, 50]}
+        visible={false}
+      >
+        <boxGeometry />
+      </mesh>
       <IfInSessionMode deny="immersive-ar">
         <Grid
           cellColor={fg}

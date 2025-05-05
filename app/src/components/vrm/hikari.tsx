@@ -1,7 +1,6 @@
 import { useVRM, useVRMAnimation } from '@n3p6/react-three-vrm'
 import { useAnimations } from '@react-three/drei'
 import { useFrame } from '@react-three/fiber'
-import { CapsuleCollider, RigidBody } from '@react-three/rapier'
 import { useEffect } from 'react'
 
 import vrmaUrl from '~/assets/motions/waiting.vrma?url'
@@ -36,14 +35,11 @@ export const Hikari = () => {
   })
 
   return (
-    <RigidBody colliders={false}>
-      <CapsuleCollider args={[0.5, 0.25]} position={[0, 0.8, 0]} />
-      <primitive
-        object={vrm.scene}
-        position={[0, 0, 0]}
-        rotation={[0, Math.PI, 0]}
-        scale={1.05}
-      />
-    </RigidBody>
+    <primitive
+      object={vrm.scene}
+      position={[0, 0, 0]}
+      rotation={[0, Math.PI, 0]}
+      scale={1.05}
+    />
   )
 }
