@@ -9,6 +9,6 @@ export const Player = () => {
   useXRControllerLocomotion(originRef)
 
   return (
-    <XROrigin position={[0, 0, 1]} ref={originRef} />
+    <XROrigin ref={originRef} />
   )
 }

@@ -1,6 +1,5 @@
-import type { ThreeElement } from '@react-three/fiber'
-import type { Ref } from 'react'
-import type { Group, Quaternion, Vector3 } from 'three'
+import type { RefObject } from 'react'
+import type { Group, Object3DEventMap, Quaternion, Vector3 } from 'three'
 import type { GameEntity } from 'yuka'
 
 import { useEffect, useMemo, useRef } from 'react'
@@ -13,9 +12,9 @@ export interface UseYukaOptions {
 
 export const useYuka = <T extends typeof GameEntity>(Entity: T, options: UseYukaOptions = {
   position: [0, 0, 0],
-}): [Ref<ThreeElement<typeof Group>>, InstanceType<T>] => {
+}): [RefObject<Group<Object3DEventMap> | null>, InstanceType<T>] => {
   const entityManager = useEntityManager()
-  const ref = useRef<ThreeElement<typeof Group>>(null)
+  const ref = useRef<Group>(null)
   const entity = useMemo(() => new Entity() as InstanceType<T>, [Entity])
 
   useEffect(() => {

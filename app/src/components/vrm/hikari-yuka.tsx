@@ -2,7 +2,8 @@ import { useVRM } from '@n3p6/react-three-vrm'
 import { useEntityManager, useYuka } from '@n3p6/react-three-yuka'
 import { useFrame } from '@react-three/fiber'
 import { useEffect } from 'react'
-import { ArriveBehavior, GameEntity, Vehicle } from 'yuka'
+import { Vector3 } from 'three'
+import { ArriveBehavior, GameEntity, Vehicle, Vector3 as YukaVector3 } from 'yuka'
 
 const vrmUrl = import.meta.env.DEV
   ? '/models/Hikari_SummerDress.vrm'
@@ -15,8 +16,10 @@ export const HikariYuka = () => {
   const vrm = useVRM(vrmUrl)
   const entityManager = useEntityManager()
 
-  const [vehicleRef, vehicleEntity] = useYuka(Vehicle, { position: [0, 0, 0] })
-  const [playerRef, playerEntity] = useYuka(GameEntity, { position: [5, 0, 5] })
+  const [vehicleRef, vehicleEntity] = useYuka(Vehicle, {
+    position: [0, 0, 0],
+  })
+  const [playerRef, playerEntity] = useYuka(GameEntity)
 
   useEffect(() => {
     const arriveBehavior = new ArriveBehavior(playerEntity.position, 1.5, 0.1)
@@ -25,28 +28,28 @@ export const HikariYuka = () => {
     return () => {
       vehicleEntity.steering.remove(arriveBehavior)
     }
-  }, [playerEntity, vehicleEntity])
+  }, [vehicleEntity, playerEntity])
 
-  useFrame((_, delta) => {
+  useFrame((state, delta) => {
     // vehicle.update(delta)
     entityManager.update(delta)
     vrm.update(delta)
+
+    const position = state.camera.getWorldPosition(new Vector3())
+    playerEntity.position.copy(new YukaVector3(position.x, 0, position.z))
   })
 
   return (
     <>
-      <primitive
-        object={vrm.scene}
-        ref={vehicleRef}
-        // position={[0, 0, 0]}
-        rotation={[0, Math.PI, 0]}
-        scale={1.05}
-      />
-      <mesh ref={playerRef}>
-        <boxGeometry args={[1, 1, 1]} />
-        <meshPhysicalMaterial color="yellow" opacity={0.5} transparent />
-        <pointLight distance={4} intensity={2} position={[0, 0, 0]} />
-      </mesh>
+      <group ref={vehicleRef}>
+        <primitive
+          object={vrm.scene}
+          position={[0, 0, 0]}
+          rotation={[0, Math.PI, 0]}
+          scale={1.05}
+        />
+      </group>
+      <group ref={playerRef}></group>
     </>
   )
 }
