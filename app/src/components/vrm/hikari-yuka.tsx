@@ -44,7 +44,7 @@ export const HikariYuka = () => {
       />
       <mesh ref={playerRef}>
         <boxGeometry args={[1, 1, 1]} />
-        <meshStandardMaterial color="yellow" />
+        <meshPhysicalMaterial color="yellow" opacity={0.5} transparent />
         <pointLight distance={4} intensity={2} position={[0, 0, 0]} />
       </mesh>
     </>
