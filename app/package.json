@@ -12,6 +12,7 @@
   "dependencies": {
     "@generouted/react-router": "catalog:react",
     "@n3p6/react-three-vrm": "workspace:",
+    "@n3p6/react-three-yuka": "workspace:",
     "@n3p6/use-illuminance": "workspace:",
     "@pixiv/three-vrm": "catalog:three",
     "@pixiv/three-vrm-animation": "catalog:three",

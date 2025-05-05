@@ -143,6 +143,9 @@ importers:
       '@n3p6/react-three-vrm':
         specifier: 'workspace:'
         version: link:../packages/react-three-vrm
+      '@n3p6/react-three-yuka':
+        specifier: 'workspace:'
+        version: link:../packages/react-three-yuka
       '@n3p6/use-illuminance':
         specifier: 'workspace:'
         version: link:../packages/use-illuminance
@@ -286,6 +289,37 @@ importers:
       '@types/three':
         specifier: catalog:three
         version: 0.176.0
+      foxact:
+        specifier: 'catalog:'
+        version: 0.2.45(react@19.1.0)
+
+  packages/react-three-yuka:
+    dependencies:
+      '@react-three/drei':
+        specifier: catalog:three
+        version: 10.0.7(@react-three/fiber@9.1.2(@types/react@19.1.2)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(three@0.176.0))(@types/react@19.1.2)(@types/three@0.176.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(three@0.176.0)
+      '@react-three/fiber':
+        specifier: catalog:three
+        version: 9.1.2(@types/react@19.1.2)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(three@0.176.0)
+      react:
+        specifier: catalog:react
+        version: 19.1.0
+      three:
+        specifier: catalog:three
+        version: 0.176.0
+      yuka:
+        specifier: catalog:yuka
+        version: 0.7.8
+    devDependencies:
+      '@types/react':
+        specifier: catalog:react
+        version: 19.1.2
+      '@types/three':
+        specifier: catalog:three
+        version: 0.176.0
+      '@types/yuka':
+        specifier: catalog:yuka
+        version: 0.7.4
       foxact:
         specifier: 'catalog:'
         version: 0.2.45(react@19.1.0)

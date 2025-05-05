@@ -9,6 +9,7 @@ export type Path =
   | `/debug/input`
   | `/debug/ragdoll`
   | `/debug/text`
+  | `/debug/yuka`
   | `/settings`
 
 export type Params = {
