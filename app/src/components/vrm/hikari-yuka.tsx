@@ -20,11 +20,11 @@ export const HikariYuka = () => {
   const [playerRef, playerEntity] = useYuka(GameEntity, { position: [5, 0, 5] })
 
   useEffect(() => {
-    const arriveBehavior = new ArriveBehavior((playerEntity as GameEntity).position, 1.5, 0.1)
-    ;(vehicleEntity as Vehicle).steering.add(arriveBehavior)
+    const arriveBehavior = new ArriveBehavior(playerEntity.position, 1.5, 0.1)
+    vehicleEntity.steering.add(arriveBehavior)
 
     return () => {
-      (vehicleEntity as Vehicle).steering.remove(arriveBehavior)
+      vehicleEntity.steering.remove(arriveBehavior)
     }
   }, [playerEntity, vehicleEntity])
 
