@@ -7,7 +7,7 @@ const Index = () => (
   <Stage>
     <Defaults>
       <Root>
-        <Container gap={8} paddingBottom={128}>
+        <Container gap={8} paddingBottom={64}>
           <Text textAlign="center">404</Text>
           <Separator orientation="vertical" />
           <Text fontSize={12} textAlign="center">This page could not be found.</Text>

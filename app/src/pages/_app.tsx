@@ -15,7 +15,7 @@ const AppLayout = () => {
 
   return (
     <Canvas
-      camera={{ position: [0, 1.75, 1.75] }}
+      camera={{ position: [0, 1.75, 3.5] }}
       events={events}
       gl={{ localClippingEnabled: true }}
       style={{ flexGrow: 1, width: '100%' }}
