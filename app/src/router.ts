@@ -8,6 +8,7 @@ export type Path =
   | `/debug/illuminance`
   | `/debug/input`
   | `/debug/mixamo`
+  | `/debug/mixamo-vrma`
   | `/debug/text`
   | `/debug/yuka`
   | `/settings`
