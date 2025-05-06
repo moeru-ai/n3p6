@@ -16,12 +16,17 @@ const extensions = (extendLoader?: UseVRMExtendLoader) =>
       extendLoader(loader)
   }
 
-const useVRMAnimation = (path: string, vrm: VRM, extendLoader?: UseVRMExtendLoader): AnimationClip => {
+const useVRMAnimation = (path: string, vrm: VRM, name?: string, extendLoader?: UseVRMExtendLoader): AnimationClip => {
   const gltf = useLoader(GLTFLoader, path, extensions(extendLoader))
 
   const [vrmAnimation] = (gltf.userData as { vrmAnimations: VRMAnimation[] }).vrmAnimations
 
-  return createVRMAnimationClip(vrmAnimation, vrm)
+  const clip = createVRMAnimationClip(vrmAnimation, vrm)
+
+  if (name != null)
+    clip.name = name
+
+  return clip
 }
 
 // eslint-disable-next-line @masknet/no-top-level

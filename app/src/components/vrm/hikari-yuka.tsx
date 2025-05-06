@@ -1,9 +1,14 @@
 import { useVRM } from '@n3p6/react-three-vrm'
 import { useEntityManager, useYuka } from '@n3p6/react-three-yuka'
+// import { useAnimations } from '@react-three/drei'
 import { useFrame } from '@react-three/fiber'
 import { useEffect } from 'react'
 import { Vector3 } from 'three'
-import { ArriveBehavior, GameEntity, Vehicle, Vector3 as YukaVector3 } from 'yuka'
+import { GameEntity, Vector3 as YukaVector3 } from 'yuka'
+
+import { useAnimations } from '~/hooks/use-animations'
+import { useMixamoAnimations } from '~/hooks/use-mixamo-animations'
+import { Galatea } from '~/utils/yuka/entities/galatea'
 
 const vrmUrl = import.meta.env.DEV
   ? '/models/Hikari_SummerDress.vrm'
@@ -14,21 +19,16 @@ useVRM.preload(vrmUrl)
 
 export const HikariYuka = () => {
   const vrm = useVRM(vrmUrl)
-  const entityManager = useEntityManager()
+  const clips = useMixamoAnimations(vrm)
+  const { actions } = useAnimations(clips, vrm.scene)
 
-  const [vehicleRef, vehicleEntity] = useYuka(Vehicle, {
-    position: [0, 0, 0],
-  })
+  const entityManager = useEntityManager()
+  const [vehicleRef, vehicleEntity] = useYuka(Galatea, { position: [0, 0, 0] })
   const [playerRef, playerEntity] = useYuka(GameEntity)
 
-  useEffect(() => {
-    const arriveBehavior = new ArriveBehavior(playerEntity.position, 1.5, 0.1)
-    vehicleEntity.steering.add(arriveBehavior)
-
-    return () => {
-      vehicleEntity.steering.remove(arriveBehavior)
-    }
-  }, [vehicleEntity, playerEntity])
+  useEffect(() => vehicleEntity.setVRM(vrm), [vehicleEntity, vrm])
+  useEffect(() => vehicleEntity.setActions(actions), [vehicleEntity, actions])
+  useEffect(() => vehicleEntity.setCurrentTarget(playerEntity), [vehicleEntity, playerEntity])
 
   useFrame((state, delta) => {
     // vehicle.update(delta)

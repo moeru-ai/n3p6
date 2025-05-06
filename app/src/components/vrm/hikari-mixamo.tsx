@@ -16,11 +16,8 @@ useMixamoAnimation.preload(fbxUrl)
 
 export const HikariMixamo = () => {
   const vrm = useVRM(vrmUrl)
-  const animation = useMixamoAnimation(fbxUrl, vrm)
-  const { actions, mixer } = useAnimations(
-    [animation],
-    vrm.scene,
-  )
+  const idle = useMixamoAnimation(fbxUrl, vrm, 'idle')
+  const { actions } = useAnimations([idle], vrm.scene)
 
   useVRMAutoBlink(vrm, 5000)
   useVRMAutoLookAtDefaultCamera(vrm)
@@ -29,10 +26,7 @@ export const HikariMixamo = () => {
     actions.vrmAnimation!.reset().play()
   }, [actions])
 
-  useFrame((_, delta) => {
-    mixer.update(delta)
-    vrm.update(delta)
-  })
+  useFrame((_, delta) => vrm.update(delta))
 
   return (
     <primitive

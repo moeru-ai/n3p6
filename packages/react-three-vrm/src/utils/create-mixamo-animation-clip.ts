@@ -10,7 +10,7 @@ import { mixamoVRMRigMap } from './_mixamo-rig-map'
  *
  * Source: {@link https://github.com/pixiv/three-vrm/blob/776c2823dcf3453d689a2d56aa82b289fdf963cf/packages/three-vrm/examples/humanoidAnimation/loadMixamoAnimation.js}
  */
-export const createMixamoAnimationClip = (fbx: Group<Object3DEventMap>, vrm: VRM) => {
+export const createMixamoAnimationClip = (fbx: Group<Object3DEventMap>, vrm: VRM, name?: string) => {
   const clip = AnimationClip.findByName(fbx.animations, 'mixamo.com')!
   const tracks: KeyframeTrack[] = []
 
@@ -73,5 +73,5 @@ export const createMixamoAnimationClip = (fbx: Group<Object3DEventMap>, vrm: VRM
     }
   })
 
-  return new AnimationClip('vrmAnimation', clip.duration, tracks)
+  return new AnimationClip(name ?? 'vrmAnimation', clip.duration, tracks)
 }

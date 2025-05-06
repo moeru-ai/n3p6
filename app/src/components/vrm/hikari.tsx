@@ -3,7 +3,9 @@ import { useAnimations } from '@react-three/drei'
 import { useFrame } from '@react-three/fiber'
 import { useEffect } from 'react'
 
-import vrmaUrl from '~/assets/motions/waiting.vrma?url'
+import appearingUrl from '~/assets/motions/appearing.vrma?url'
+import likedUrl from '~/assets/motions/liked.vrma?url'
+import waitingUrl from '~/assets/motions/waiting.vrma?url'
 
 const vrmUrl = import.meta.env.DEV
   ? '/models/Hikari_SummerDress.vrm'
@@ -14,25 +16,36 @@ useVRM.preload(vrmUrl)
 
 export const Hikari = () => {
   const vrm = useVRM(vrmUrl)
-  const animation = useVRMAnimation(vrmaUrl, vrm)
+  const appearing = useVRMAnimation(appearingUrl, vrm, 'appearing')
+  const waiting = useVRMAnimation(waitingUrl, vrm, 'waiting')
+  const liked = useVRMAnimation(likedUrl, vrm, 'liked')
 
-  const { actions, mixer } = useAnimations(
-    [animation],
-    vrm.scene,
-  )
+  const { actions, names } = useAnimations([appearing, waiting, liked], vrm.scene)
 
   useEffect(() => {
-    actions.Clip!.reset().fadeIn(0.5).play()
+    let index: 0 | 1 | 2 = 0
+
+    // eslint-disable-next-line @masknet/no-timer
+    const loop = setInterval(() => {
+      Object.values(actions)[index]?.stop()
+      console.warn('Stopped:', names[index])
+
+      if (index === 2)
+        index = 0
+      else
+        index++
+
+      Object.values(actions)[index]?.reset().play()
+      console.warn('Playing:', names[index])
+    }, 5000)
 
     return () => {
-      actions.Clip!.fadeOut(0.5).stop()
+      // eslint-disable-next-line @masknet/no-timer
+      clearInterval(loop)
     }
-  }, [actions])
+  }, [actions, names])
 
-  useFrame((_, delta) => {
-    mixer.update(delta)
-    vrm.update(delta)
-  })
+  useFrame((_, delta) => vrm.update(delta))
 
   return (
     <primitive

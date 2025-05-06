@@ -4,10 +4,10 @@ import { useFBX } from '@react-three/drei'
 
 import { createMixamoAnimationClip } from '../utils/create-mixamo-animation-clip'
 
-const useMixamoAnimation = (path: string, vrm: VRM) => {
+const useMixamoAnimation = (path: string, vrm: VRM, name?: string) => {
   const fbx = useFBX(path)
 
-  return createMixamoAnimationClip(fbx, vrm)
+  return createMixamoAnimationClip(fbx, vrm, name)
 }
 
 // eslint-disable-next-line @masknet/no-top-level
