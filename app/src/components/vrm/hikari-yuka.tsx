@@ -1,13 +1,12 @@
 import { useVRM } from '@n3p6/react-three-vrm'
 import { useEntityManager, useYuka } from '@n3p6/react-three-yuka'
-// import { useAnimations } from '@react-three/drei'
+import { useAnimations } from '@react-three/drei'
 import { useFrame } from '@react-three/fiber'
 import { useEffect } from 'react'
 import { Vector3 } from 'three'
 import { GameEntity, Vector3 as YukaVector3 } from 'yuka'
 
-import { useAnimations } from '~/hooks/use-animations'
-import { useMixamoAnimations } from '~/hooks/use-mixamo-animations'
+import { useAnimationCollection } from '~/hooks/use-animation-collection'
 import { Galatea } from '~/utils/yuka/entities/galatea'
 
 const vrmUrl = import.meta.env.DEV
@@ -19,7 +18,7 @@ useVRM.preload(vrmUrl)
 
 export const HikariYuka = () => {
   const vrm = useVRM(vrmUrl)
-  const clips = useMixamoAnimations(vrm)
+  const clips = useAnimationCollection(vrm)
   const { actions } = useAnimations(clips, vrm.scene)
 
   const entityManager = useEntityManager()
@@ -31,7 +30,7 @@ export const HikariYuka = () => {
   useEffect(() => vehicleEntity.setCurrentTarget(playerEntity), [vehicleEntity, playerEntity])
 
   useFrame((state, delta) => {
-    // vehicle.update(delta)
+    // vehicleEntity.update(delta)
     entityManager.update(delta)
     vrm.update(delta)
 

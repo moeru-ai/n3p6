@@ -1,10 +1,14 @@
+import { EntityManagerProvider } from '@n3p6/react-three-yuka'
+
 import { Stage } from '~/components/stage'
-import { Hikari } from '~/components/vrm/hikari'
+import { HikariYuka } from '~/components/vrm/hikari-yuka'
 
 const Index = () => (
-  <Stage>
-    <Hikari />
-  </Stage>
+  <EntityManagerProvider>
+    <Stage>
+      <HikariYuka />
+    </Stage>
+  </EntityManagerProvider>
 )
 
 export default Index

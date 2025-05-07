@@ -3,7 +3,7 @@ import { useAnimations } from '@react-three/drei'
 import { useFrame } from '@react-three/fiber'
 import { useEffect } from 'react'
 
-import walkUrl from '~/assets/motions/converted/walk.vrma?url'
+import walkUrl from '~/assets/motions/walk.vrma?url'
 
 const vrmUrl = import.meta.env.DEV
   ? '/models/Hikari_SummerDress.vrm'
