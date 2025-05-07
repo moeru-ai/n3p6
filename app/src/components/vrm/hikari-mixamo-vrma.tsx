@@ -3,7 +3,6 @@ import { useAnimations } from '@react-three/drei'
 import { useFrame } from '@react-three/fiber'
 import { useEffect } from 'react'
 
-import idleUrl from '~/assets/motions/converted/idle.vrma?url'
 import walkUrl from '~/assets/motions/converted/walk.vrma?url'
 
 const vrmUrl = import.meta.env.DEV
@@ -15,33 +14,17 @@ useVRM.preload(vrmUrl)
 
 export const HikariMixamoVrma = () => {
   const vrm = useVRM(vrmUrl)
-  const idle = useVRMAnimation(idleUrl, vrm, 'idle')
   const walk = useVRMAnimation(walkUrl, vrm, 'walk')
 
-  const { actions, names } = useAnimations([idle, walk], vrm.scene)
+  const { actions } = useAnimations([walk], vrm.scene)
 
   useEffect(() => {
-    let index: 0 | 1 = 0
-
-    // eslint-disable-next-line @masknet/no-timer
-    const loop = setInterval(() => {
-      Object.values(actions)[index]?.stop()
-      console.warn('Stopped:', names[index])
-
-      if (index === 1)
-        index = 0
-      else
-        index = 1
-
-      Object.values(actions)[index]?.reset().play()
-      console.warn('Playing:', names[index])
-    }, 5000)
+    actions.walk?.reset().play()
 
     return () => {
-      // eslint-disable-next-line @masknet/no-timer
-      clearInterval(loop)
+      actions.walk?.stop()
     }
-  }, [actions, names])
+  }, [actions])
 
   useFrame((_, delta) => vrm.update(delta))
 
