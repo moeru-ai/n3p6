@@ -25,7 +25,6 @@ export const HikariYuka = () => {
   const [vehicleRef, vehicleEntity] = useGameEntity(Galatea, { position: [0, 0, 0] })
   const [playerRef, playerEntity] = useGameEntity(GameEntity)
 
-  useEffect(() => vehicleEntity.setVRM(vrm), [vehicleEntity, vrm])
   useEffect(() => vehicleEntity.setActions(actions), [vehicleEntity, actions])
   useEffect(() => vehicleEntity.setCurrentTarget(playerEntity), [vehicleEntity, playerEntity])
 

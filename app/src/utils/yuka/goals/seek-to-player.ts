@@ -19,8 +19,7 @@ export class SeekToPlayerGoal extends Goal<Galatea> {
       this.status = Goal.STATUS.FAILED
     }
 
-    this.owner!.vrm?.humanoid.resetNormalizedPose()
-    this.owner!.actions.walk?.reset().fadeIn(0.5).play()
+    this.owner!.actions.walk?.fadeIn(0.5).play()
   }
 
   execute() {
@@ -43,7 +42,6 @@ export class SeekToPlayerGoal extends Goal<Galatea> {
     arriveBehavior.active = false
     this.owner!.velocity.set(0, 0, 0)
 
-    this.owner!.vrm?.humanoid.resetNormalizedPose()
     this.owner!.actions.walk?.fadeOut(0.5).stop()
   }
 }

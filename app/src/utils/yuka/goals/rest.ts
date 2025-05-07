@@ -25,7 +25,6 @@ export class RestGoal extends Goal<Galatea> {
   }
 
   activate() {
-    this.owner!.vrm?.humanoid.resetNormalizedPose()
     this.owner!.actions.idle?.reset().fadeIn(0.5).play()
   }
 
@@ -43,7 +42,6 @@ export class RestGoal extends Goal<Galatea> {
     this.owner!.currentTime = 0
     this.owner!.fatigueLevel = 0
 
-    this.owner!.vrm?.humanoid.resetNormalizedPose()
     this.owner!.actions.idle?.fadeOut(0.5).stop()
   }
 }

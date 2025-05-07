@@ -1,4 +1,3 @@
-import { VRM } from '@pixiv/three-vrm'
 import type { AnimationAction } from 'three'
 import type { GameEntity } from 'yuka'
 
@@ -20,7 +19,6 @@ export class Galatea extends Vehicle {
   public restDuration = 5 // duration of a rest phase in seconds
 
   private MAX_FATIGUE = 3 // the girl needs to rest if this amount of fatigue is reached
-  public vrm: VRM | null = null
 
   constructor() {
     super()
@@ -47,10 +45,6 @@ export class Galatea extends Vehicle {
 
   public setCurrentTarget(target: GameEntity) {
     this.currentTarget = target
-  }
-
-  public setVRM(vrm: VRM) {
-    this.vrm = vrm
   }
 
   tired() {
