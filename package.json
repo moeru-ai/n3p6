@@ -9,7 +9,8 @@
     "build": "pnpm -r build",
     "bump": "bumpp",
     "dev": "pnpm -rF @n3p6/app dev",
-    "lint": "eslint --cache ."
+    "lint": "eslint --cache .",
+    "mixamo2vrma": "tsx scripts/mixamo2vrma.ts"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^4.12.0",
@@ -23,7 +24,9 @@
     "eslint-plugin-react-compiler": "catalog:react",
     "eslint-plugin-react-hooks": "^5.2.0",
     "eslint-plugin-react-refresh": "^0.4.20",
+    "gltf-pipeline": "^4.1.0",
     "pkgroll": "^2.12.2",
+    "tsx": "^4.19.4",
     "typescript": "^5.8.3",
     "vite": "^6.3.4",
     "vite-tsconfig-paths": "^5.1.4"

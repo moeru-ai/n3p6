@@ -31,6 +31,7 @@ words:
   - tsup
   - uikit
   - vrma
+  - vrmc
   - yuka
 ignoreWords: []
 import: []

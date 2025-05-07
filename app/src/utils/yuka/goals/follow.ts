@@ -12,16 +12,11 @@ export class FollowGoal extends CompositeGoal<Galatea> {
   activate() {
     this.clearSubgoals()
 
-    // const owner = this.owner
-
-    // owner.ui.currentGoal.textContent = GATHER
-
     // this.addSubgoal(new FindNextCollectibleGoal(owner))
     // this.addSubgoal(new SeekToCollectibleGoal(owner))
     // this.addSubgoal(new PickUpCollectibleGoal(owner))
     this.addSubgoal(new SeekToPlayerGoal(this.owner!))
 
-    this.owner!.vrm?.humanoid.resetNormalizedPose()
     this.owner!.actions.idle?.fadeOut(0.5).stop()
   }
 
