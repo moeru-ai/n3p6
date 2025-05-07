@@ -1,5 +1,5 @@
 import { useVRM } from '@n3p6/react-three-vrm'
-import { useEntityManager, useYuka } from '@n3p6/react-three-yuka'
+import { useEntityManager, useGameEntity } from '@n3p6/react-three-yuka'
 import { useAnimations } from '@react-three/drei'
 import { useFrame } from '@react-three/fiber'
 import { useEffect } from 'react'
@@ -22,8 +22,8 @@ export const HikariYuka = () => {
   const { actions } = useAnimations(clips, vrm.scene)
 
   const entityManager = useEntityManager()
-  const [vehicleRef, vehicleEntity] = useYuka(Galatea, { position: [0, 0, 0] })
-  const [playerRef, playerEntity] = useYuka(GameEntity)
+  const [vehicleRef, vehicleEntity] = useGameEntity(Galatea, { position: [0, 0, 0] })
+  const [playerRef, playerEntity] = useGameEntity(GameEntity)
 
   useEffect(() => vehicleEntity.setVRM(vrm), [vehicleEntity, vrm])
   useEffect(() => vehicleEntity.setActions(actions), [vehicleEntity, actions])

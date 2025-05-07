@@ -6,11 +6,11 @@ import { useEffect, useMemo, useRef } from 'react'
 
 import { useEntityManager } from '../context/entity-manager'
 
-export interface UseYukaOptions {
+export interface UseGameEntityOptions {
   position: [number, number, number]
 }
 
-export const useYuka = <T extends typeof GameEntity>(Entity: T, options: UseYukaOptions = {
+export const useGameEntity = <T extends typeof GameEntity>(Entity: T, options: UseGameEntityOptions = {
   position: [0, 0, 0],
 }): [RefObject<Group<Object3DEventMap> | null>, InstanceType<T>] => {
   const entityManager = useEntityManager()
