@@ -1,7 +1,7 @@
 import type { VRM } from '@pixiv/three-vrm'
 
 import { VRMLoaderPlugin } from '@pixiv/three-vrm'
-import { useLoader } from '@react-three/fiber'
+import { useFrame, useLoader } from '@react-three/fiber'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
 
 import { processVRM } from '../utils/process-vrm'
@@ -23,6 +23,8 @@ const useVRM = (
   const gltf = useLoader(GLTFLoader, path, extensions(extendLoader))
 
   const { vrm } = gltf.userData as { vrm: VRM }
+
+  useFrame((_, delta) => vrm.update(delta))
 
   return processVRM(vrm)
 }

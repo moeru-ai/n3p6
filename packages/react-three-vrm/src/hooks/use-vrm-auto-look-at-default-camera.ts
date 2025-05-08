@@ -1,24 +1,19 @@
 import type { VRM } from '@pixiv/three-vrm'
 
-import { useFrame } from '@react-three/fiber'
-import { useSingleton } from 'foxact/use-singleton'
-import { Object3D } from 'three'
+import { useThree } from '@react-three/fiber'
+import { useEffect } from 'react'
 
 export const useVRMAutoLookAtDefaultCamera = (vrm: VRM) => {
-  const target = useSingleton(() => new Object3D())
+  const { camera } = useThree()
 
-  if (vrm.lookAt)
-    // eslint-disable-next-line react-compiler/react-compiler
-    vrm.lookAt.target = target.current
-
-  useFrame(({ camera }, delta) => {
-    target.current.position.set(
-      camera.position.x,
-      camera.position.y,
-      camera.position.z,
-    )
-
+  useEffect(() => {
     if (vrm.lookAt)
-      vrm.lookAt.update(delta)
-  })
+      // eslint-disable-next-line react-compiler/react-compiler
+      vrm.lookAt.target = camera
+
+    return () => {
+      if (vrm.lookAt)
+        vrm.lookAt.target = null
+    }
+  }, [vrm, camera])
 }

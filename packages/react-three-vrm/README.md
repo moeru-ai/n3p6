@@ -32,20 +32,11 @@ import animationUrl from './assets/motions/waiting.vrma'
 export const AvatarSampleA = () => {
   const vrm = useVRM(vrmUrl)
   const animation = useVRMAnimation(animationUrl, vrm)
-
-  const { actions, mixer } = useAnimations(
-    [animation],
-    vrm.scene,
-  )
+  const { actions } = useAnimations([animation], vrm.scene,)
 
   useEffect(() => {
     actions.Clip!.play()
   }, [actions])
-
-  useFrame((_, delta) => {
-    mixer.update(delta)
-    vrm.update(delta)
-  })
 
   return (
     <primitive

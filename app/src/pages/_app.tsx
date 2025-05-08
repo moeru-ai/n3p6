@@ -15,16 +15,16 @@ const AppLayout = () => {
   useEffect(() => setPreferredColorScheme(isDark ? 'dark' : 'light'), [isDark])
 
   return (
-    <EntityManagerProvider>
-      <Canvas
-        camera={{ position: [0, 1.75, 3.5] }}
-        events={events}
-        gl={{ localClippingEnabled: true }}
-        style={{ flexGrow: 1, width: '100%' }}
-      >
+    <Canvas
+      camera={{ position: [0, 1.75, 3.5] }}
+      events={events}
+      gl={{ localClippingEnabled: true }}
+      style={{ flexGrow: 1, width: '100%' }}
+    >
+      <EntityManagerProvider>
         <Outlet />
-      </Canvas>
-    </EntityManagerProvider>
+      </EntityManagerProvider>
+    </Canvas>
   )
 }
 

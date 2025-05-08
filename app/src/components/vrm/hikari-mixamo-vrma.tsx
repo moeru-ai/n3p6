@@ -1,6 +1,5 @@
-import { useVRM, useVRMAnimation } from '@n3p6/react-three-vrm'
+import { useVRM, useVRMAnimation, useVRMAutoBlink, useVRMAutoLookAtDefaultCamera } from '@n3p6/react-three-vrm'
 import { useAnimations } from '@react-three/drei'
-import { useFrame } from '@react-three/fiber'
 import { useEffect } from 'react'
 
 import walkUrl from '~/assets/motions/walk.vrma?url'
@@ -18,6 +17,9 @@ export const HikariMixamoVrma = () => {
 
   const { actions } = useAnimations([walk], vrm.scene)
 
+  useVRMAutoBlink(vrm, 5000)
+  useVRMAutoLookAtDefaultCamera(vrm)
+
   useEffect(() => {
     actions.walk?.reset().play()
 
@@ -25,8 +27,6 @@ export const HikariMixamoVrma = () => {
       actions.walk?.stop()
     }
   }, [actions])
-
-  useFrame((_, delta) => vrm.update(delta))
 
   return (
     <primitive

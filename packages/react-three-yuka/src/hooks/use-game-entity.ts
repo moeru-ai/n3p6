@@ -2,6 +2,7 @@ import type { RefObject } from 'react'
 import type { Group, Object3DEventMap, Quaternion, Vector3 } from 'three'
 import type { GameEntity } from 'yuka'
 
+import { useFrame } from '@react-three/fiber'
 import { useEffect, useMemo, useRef } from 'react'
 
 import { useEntityManager } from '../context/entity-manager'
@@ -29,6 +30,8 @@ export const useGameEntity = <T extends typeof GameEntity>(Entity: T, options: U
       entityManager.remove(entity)
     }
   }, [entity, entityManager, options])
+
+  useFrame((_, delta) => entity.update(delta))
 
   return [ref, entity]
 }

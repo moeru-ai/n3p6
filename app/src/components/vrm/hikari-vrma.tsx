@@ -1,6 +1,5 @@
 import { useVRM, useVRMAnimation } from '@n3p6/react-three-vrm'
 import { useAnimations } from '@react-three/drei'
-import { useFrame } from '@react-three/fiber'
 import { useEffect } from 'react'
 
 import appearingUrl from '~/assets/motions/vroid-hub/appearing.vrma?url'
@@ -44,8 +43,6 @@ export const HikariVrma = () => {
       clearInterval(loop)
     }
   }, [actions, names])
-
-  useFrame((_, delta) => vrm.update(delta))
 
   return (
     <primitive

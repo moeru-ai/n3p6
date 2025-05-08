@@ -46,10 +46,7 @@ export const Vrm = () => {
     }
   }, [onDragover, onDrop])
 
-  useFrame((_, delta) => {
-    mixer.current?.update(delta)
-    vrm.update(delta)
-  })
+  useFrame((_, delta) => mixer.current?.update(delta))
 
   return (
     <primitive
