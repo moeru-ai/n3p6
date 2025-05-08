@@ -1,5 +1,5 @@
 import { useVRM, useVRMAutoBlink, useVRMAutoLookAtDefaultCamera } from '@n3p6/react-three-vrm'
-import { useEntityManager, useGameEntity } from '@n3p6/react-three-yuka'
+import { useEntityManager, useGameEntity, useObstacles } from '@n3p6/react-three-yuka'
 import { useAnimations } from '@react-three/drei'
 import { useFrame } from '@react-three/fiber'
 import { useEffect } from 'react'
@@ -21,15 +21,15 @@ export const HikariYuka = () => {
   const clips = useAnimationCollection(vrm)
   const { actions } = useAnimations(clips, vrm.scene)
 
+  useVRMAutoBlink(vrm, 5000)
+  useVRMAutoLookAtDefaultCamera(vrm)
+
   const entityManager = useEntityManager()
   const [vehicleRef, vehicleEntity] = useGameEntity(Galatea, { position: [0, 0, 0] })
   const [playerRef, playerEntity] = useGameEntity(GameEntity)
 
   useEffect(() => vehicleEntity.setActions(actions), [vehicleEntity, actions])
   useEffect(() => vehicleEntity.setCurrentTarget(playerEntity), [vehicleEntity, playerEntity])
-
-  useVRMAutoBlink(vrm, 5000)
-  useVRMAutoLookAtDefaultCamera(vrm)
 
   useFrame(({ camera }, delta) => {
     // vehicleEntity.update(delta)
@@ -38,6 +38,16 @@ export const HikariYuka = () => {
     const position = camera.getWorldPosition(new Vector3())
     playerEntity.position.copy(new YukaVector3(position.x, 0, position.z))
   })
+
+  const obstacles = useObstacles()
+
+  useEffect(() => {
+    vehicleEntity.setObstacles(obstacles)
+
+    return () => {
+      vehicleEntity.setObstacles([])
+    }
+  }, [vehicleEntity, obstacles])
 
   return (
     <>

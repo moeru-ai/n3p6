@@ -1,11 +1,17 @@
-import { EntityManagerProvider } from '@n3p6/react-three-yuka'
+import { EntityManagerProvider, ObstaclesProvider } from '@n3p6/react-three-yuka'
 import { Canvas } from '@react-three/fiber'
 import { setPreferredColorScheme } from '@react-three/uikit'
 import { noEvents } from '@react-three/xr'
+import { ComposeContextProvider } from 'foxact/compose-context-provider'
 import { useEffect } from 'react'
 import { Outlet, useLocation } from 'react-router'
 
 import { useIsDarkValue } from '~/hooks/use-is-dark'
+
+const contexts = [
+  <EntityManagerProvider key="entity-manager" />,
+  <ObstaclesProvider key="obstacles" />,
+]
 
 const AppLayout = () => {
   const { pathname } = useLocation()
@@ -21,9 +27,9 @@ const AppLayout = () => {
       gl={{ localClippingEnabled: true }}
       style={{ flexGrow: 1, width: '100%' }}
     >
-      <EntityManagerProvider>
+      <ComposeContextProvider contexts={contexts}>
         <Outlet />
-      </EntityManagerProvider>
+      </ComposeContextProvider>
     </Canvas>
   )
 }

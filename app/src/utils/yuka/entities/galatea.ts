@@ -1,7 +1,7 @@
 import type { AnimationAction } from 'three'
 import type { GameEntity } from 'yuka'
 
-import { ArriveBehavior, Think, Vehicle } from 'yuka'
+import { ArriveBehavior, ObstacleAvoidanceBehavior, Think, Vehicle } from 'yuka'
 
 import { FollowEvaluator } from '~/utils/yuka/evaluators/follow'
 import { RestEvaluator } from '~/utils/yuka/evaluators/rest'
@@ -35,6 +35,9 @@ export class Galatea extends Vehicle {
     const arriveBehavior = new ArriveBehavior()
     arriveBehavior.deceleration = 1.5
     this.steering.add(arriveBehavior)
+
+    const obstacleAvoidanceBehavior = new ObstacleAvoidanceBehavior()
+    this.steering.add(obstacleAvoidanceBehavior)
   }
 
   public setActions(actions: Record<string, AnimationAction | null>) {
@@ -45,6 +48,10 @@ export class Galatea extends Vehicle {
 
   public setCurrentTarget(target: GameEntity) {
     this.currentTarget = target
+  }
+
+  public setObstacles(obstacles: GameEntity[]) {
+    (this.steering.behaviors.at(1) as ObstacleAvoidanceBehavior).obstacles = obstacles
   }
 
   tired() {

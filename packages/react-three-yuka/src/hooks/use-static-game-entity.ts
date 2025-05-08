@@ -1,0 +1,38 @@
+import type { RefObject } from 'react'
+import type { Group, Object3DEventMap } from 'three'
+import type { GameEntity } from 'yuka'
+
+import { useFrame } from '@react-three/fiber'
+import { useEffect, useMemo, useRef } from 'react'
+import { Quaternion as YukaQuaternion, Vector3 as YukaVector3 } from 'yuka'
+
+import { useEntityManager } from '../context/entity-manager'
+
+export const useStaticGameEntity = <T extends typeof GameEntity>(Entity: T): [RefObject<Group<Object3DEventMap> | null>, InstanceType<T>] => {
+  const entityManager = useEntityManager()
+  const ref = useRef<Group>(null)
+  const entity = useMemo(() => new Entity() as InstanceType<T>, [Entity])
+
+  useEffect(() => {
+    entity.setRenderComponent(ref, (entity) => {
+      if (!ref.current)
+        return
+
+      const { position, quaternion } = ref.current
+      entity.position.copy(new YukaVector3(position.x, position.y, position.z))
+      entity.rotation.copy(new YukaQuaternion(quaternion.x, quaternion.y, quaternion.z, quaternion.w))
+    })
+  }, [entity, ref])
+
+  useEffect(() => {
+    entityManager.add(entity)
+
+    return () => {
+      entityManager.remove(entity)
+    }
+  }, [entity, entityManager])
+
+  useFrame((_, delta) => entity.update(delta))
+
+  return [ref, entity]
+}
