@@ -1,10 +1,5 @@
-import { Stage } from '~/components/stage'
 import { HikariVrma } from '~/components/vrm/hikari-vrma'
 
-const DebugVrma = () => (
-  <Stage>
-    <HikariVrma />
-  </Stage>
-)
+const DebugVrma = () => (<HikariVrma />)
 
 export default DebugVrma
