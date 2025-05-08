@@ -5,7 +5,6 @@ import { noEvents } from '@react-three/xr'
 import { useEffect } from 'react'
 import { Outlet, useLocation } from 'react-router'
 
-import { Stage } from '~/components/stage'
 import { useIsDarkValue } from '~/hooks/use-is-dark'
 
 const AppLayout = () => {
@@ -23,9 +22,7 @@ const AppLayout = () => {
         gl={{ localClippingEnabled: true }}
         style={{ flexGrow: 1, width: '100%' }}
       >
-        <Stage>
-          <Outlet />
-        </Stage>
+        <Outlet />
       </Canvas>
     </EntityManagerProvider>
   )
