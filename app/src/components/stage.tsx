@@ -4,7 +4,6 @@ import { OrbitControls, Stats } from '@react-three/drei'
 // import { OrbitHandles } from '@react-three/handle'
 import { createXRStore, PointerEvents, XR } from '@react-three/xr'
 
-import { Vad } from '~/components/ai/vad'
 import { Environment } from '~/components/environment'
 import { Navbar } from '~/components/ui/navbar'
 import { Player } from '~/components/xr/player'
@@ -26,7 +25,6 @@ export const Stage = ({ children }: PropsWithChildren) => {
       {/* <OrbitHandles /> */}
       <OrbitControls />
       <XR store={store}>
-        <Vad />
         <Player />
         {children}
         <Environment />

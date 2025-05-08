@@ -23,7 +23,6 @@
     "@react-three/uikit-default": "catalog:three",
     "@react-three/uikit-lucide": "catalog:three",
     "@react-three/xr": "catalog:three",
-    "@ricky0123/vad-react": "^0.0.30",
     "foxact": "catalog:",
     "react": "catalog:react",
     "react-dom": "catalog:react",
