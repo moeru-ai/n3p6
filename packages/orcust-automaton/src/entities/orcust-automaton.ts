@@ -3,12 +3,12 @@ import type { GameEntity } from 'yuka'
 
 import { ArriveBehavior, ObstacleAvoidanceBehavior, Think, Vehicle } from 'yuka'
 
-import { FollowEvaluator } from '~/utils/yuka/evaluators/follow'
-import { RestEvaluator } from '~/utils/yuka/evaluators/rest'
+import { FollowEvaluator } from '../evaluators/follow'
+import { RestEvaluator } from '../evaluators/rest'
 
-export class Galatea extends Vehicle {
+export class OrcustAutomaton extends Vehicle {
   public actions: Record<string, AnimationAction | null> = {}
-  public brain: Think<Galatea>
+  public brain: Think<OrcustAutomaton>
   // this.pickUpDuration = 6 //  duration of a pick phase in seconds
   // this.crossFadeDuration = 0.5 // duration of a crossfade in seconds
   public currentTarget: GameEntity | null = null // player entity

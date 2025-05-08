@@ -1,20 +1,17 @@
 import { CompositeGoal } from 'yuka'
 
-import type { Galatea } from '../entities/galatea'
+import type { OrcustAutomaton } from '../entities/orcust-automaton'
 
 import { SeekToPlayerGoal } from './seek-to-player'
 
-export class FollowGoal extends CompositeGoal<Galatea> {
-  constructor(owner: Galatea) {
+export class FollowGoal extends CompositeGoal<OrcustAutomaton> {
+  constructor(owner: OrcustAutomaton) {
     super(owner)
   }
 
   activate() {
     this.clearSubgoals()
 
-    // this.addSubgoal(new FindNextCollectibleGoal(owner))
-    // this.addSubgoal(new SeekToCollectibleGoal(owner))
-    // this.addSubgoal(new PickUpCollectibleGoal(owner))
     this.addSubgoal(new SeekToPlayerGoal(this.owner!))
 
     this.owner!.actions.idle?.fadeOut(0.5).stop()

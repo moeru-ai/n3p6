@@ -1,14 +1,15 @@
 {
-  "name": "@n3p6/react-three-vrm",
+  "name": "@n3p6/orcust-automaton",
   "type": "module",
   "version": "0.0.2",
+  "private": true,
   "author": "Moeru AI",
   "license": "MIT",
   "homepage": "https://github.com/moeru-ai/n3p6",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/moeru-ai/n3p6.git",
-    "directory": "packages/react-three-vrm"
+    "directory": "packages/orcust-automaton"
   },
   "bugs": "https://github.com/moeru-ai/n3p6/issues",
   "sideEffects": [
@@ -34,16 +35,19 @@
   "scripts": {
     "build": "pkgroll"
   },
+  "dependencies": {
+    "@n3p6/react-three-yuka": "workspace:"
+  },
   "peerDependencies": {
-    "@pixiv/three-vrm": "catalog:three",
-    "@pixiv/three-vrm-animation": "catalog:three",
     "@react-three/drei": "catalog:three",
     "@react-three/fiber": "catalog:three",
     "react": "catalog:react",
-    "three": "catalog:three"
+    "three": "catalog:three",
+    "yuka": "catalog:yuka"
   },
   "devDependencies": {
     "@types/react": "catalog:react",
-    "@types/three": "catalog:three"
+    "@types/three": "catalog:three",
+    "@types/yuka": "catalog:yuka"
   }
 }

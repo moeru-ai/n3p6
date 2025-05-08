@@ -2,10 +2,10 @@ import type { ArriveBehavior } from 'yuka'
 
 import { Goal } from 'yuka'
 
-import type { Galatea } from '../entities/galatea'
+import type { OrcustAutomaton } from '../entities/orcust-automaton'
 
-export class SeekToPlayerGoal extends Goal<Galatea> {
-  constructor(owner: Galatea) {
+export class SeekToPlayerGoal extends Goal<OrcustAutomaton> {
+  constructor(owner: OrcustAutomaton) {
     super(owner)
   }
 

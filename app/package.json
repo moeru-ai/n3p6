@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@generouted/react-router": "catalog:react",
+    "@n3p6/orcust-automaton": "workspace:",
     "@n3p6/react-three-vrm": "workspace:",
     "@n3p6/react-three-yuka": "workspace:",
     "@n3p6/use-illuminance": "workspace:",

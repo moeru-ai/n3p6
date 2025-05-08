@@ -5,9 +5,9 @@ import { useFrame } from '@react-three/fiber'
 import { useEffect } from 'react'
 import { Vector3 } from 'three'
 import { GameEntity, Vector3 as YukaVector3 } from 'yuka'
+import { OrcustAutomaton } from '@n3p6/orcust-automaton'
 
 import { useAnimationCollection } from '~/hooks/use-animation-collection'
-import { Galatea } from '~/utils/yuka/entities/galatea'
 
 const vrmUrl = import.meta.env.DEV
   ? '/models/Hikari_SummerDress.vrm'
@@ -25,7 +25,7 @@ export const HikariYuka = () => {
   useVRMAutoLookAtDefaultCamera(vrm)
 
   const entityManager = useEntityManager()
-  const [vehicleRef, vehicleEntity] = useGameEntity(Galatea, { position: [0, 0, 0] })
+  const [vehicleRef, vehicleEntity] = useGameEntity(OrcustAutomaton, { position: [0, 0, 0] })
   const [playerRef, playerEntity] = useGameEntity(GameEntity)
 
   useEffect(() => vehicleEntity.setActions(actions), [vehicleEntity, actions])

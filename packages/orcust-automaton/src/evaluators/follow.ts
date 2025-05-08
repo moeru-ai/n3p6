@@ -1,15 +1,15 @@
 import { GoalEvaluator } from 'yuka'
 
-import type { Galatea } from '../entities/galatea'
+import type { OrcustAutomaton } from '../entities/orcust-automaton'
 
 import { FollowGoal } from '../goals/follow'
 
-export class FollowEvaluator extends GoalEvaluator<Galatea> {
+export class FollowEvaluator extends GoalEvaluator<OrcustAutomaton> {
   calculateDesirability() {
     return 0.5
   }
 
-  setGoal(owner: Galatea) {
+  setGoal(owner: OrcustAutomaton) {
     const currentSubgoal = owner.brain.currentSubgoal()
 
     if ((currentSubgoal instanceof FollowGoal) === false) {
