@@ -7,7 +7,9 @@ export type Path =
   | `/`
   | `/debug/illuminance`
   | `/debug/input`
+  | `/debug/meshes`
   | `/debug/mixamo-vrma`
+  | `/debug/planes`
   | `/debug/text`
   | `/debug/vrma`
   | `/settings`
