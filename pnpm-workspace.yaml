@@ -1,7 +1,6 @@
 packages:
   - app
   - docs
-  - examples/*
   - packages/*
 
 catalog:
