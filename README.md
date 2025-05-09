@@ -19,6 +19,8 @@ we named it after the satellite of the same name, [Neptune VI](https://en.wikipe
 
 ## Development
 
+> View the defined routes at [app/src/router.ts](https://github.com/moeru-ai/n3p6/blob/main/app/src/router.ts).
+
 ```bash
 git clone https://github.com/moeru-ai/n3p6.git
 cd n3p6

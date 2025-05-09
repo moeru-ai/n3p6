@@ -1,12 +1,11 @@
 import type { OrcustAutomaton } from '@n3p6/orcust-automaton'
+import type { NavMesh } from 'yuka'
 
 import { toYukaNavMesh } from '@n3p6/react-three-yuka/recast-navigation'
 import { XRMeshModel, XRPlaneModel } from '@pmndrs/xr'
 import { useXRMeshes, useXRPlanes, XRSpace } from '@react-three/xr'
 import { threeToSoloNavMesh } from '@recast-navigation/three'
-import { useEffect, useMemo, useRef } from 'react'
-import { MeshPhysicalMaterial } from 'three'
-import { NavMesh } from 'yuka'
+import { startTransition, useEffect, useMemo, useState } from 'react'
 import { BufferGeometry, Color, Float32BufferAttribute, Mesh, MeshBasicMaterial } from 'three'
 
 export interface NavMeshProps {
@@ -23,7 +22,7 @@ const createConvexRegionHelper = (navMesh: NavMesh) => {
   const color = new Color()
   for (const region of regions) {
     // eslint-disable-next-line sonarjs/pseudo-random
-    color.setHex(Math.random() * 0xFFFFFF)
+    color.setHex(Math.random() * 0xFFFFF)
     let edge = region.edge
     const edges = []
     do {
@@ -53,71 +52,59 @@ const createConvexRegionHelper = (navMesh: NavMesh) => {
 export const XRNavMesh = ({ entity }: NavMeshProps) => {
   // https://pmndrs.github.io/xr/docs/tutorials/object-detection#detected-meshes
   const meshes = useXRMeshes()
-    .filter(mesh => mesh.semanticLabel == null || !['global mesh', 'other'].includes(mesh.semanticLabel))
-
   const planes = useXRPlanes('floor')
+  const filteredMeshes = useMemo(() => meshes.filter(mesh => mesh.semanticLabel == null || !['global mesh', 'other'].includes(mesh.semanticLabel)), [meshes])
+  const meshesModels = useMemo(() => filteredMeshes.map(mesh => new XRMeshModel(mesh)), [filteredMeshes])
+  const planesModels = useMemo(() => planes.map(plane => new XRPlaneModel(plane)), [planes])
 
-  const material = useMemo(() => new MeshPhysicalMaterial({
-    color: 'yellow',
-    opacity: 0.5,
-    transparent: true,
-  }), [])
+  const [navMesh, setNavMesh] = useState<NavMesh>()
 
-  const meshesModels = useMemo(() => meshes.map(mesh => {
-    const model =  new XRMeshModel(mesh)
-    model.material = material
-    model.material.needsUpdate = true
-    return model
-  }), [meshes])
-  const planesModels = useMemo(() => planes.map(plane => {
-    const model = new XRPlaneModel(plane)
-    model.material = material
-    model.material.needsUpdate = true
-    return model
-  }), [planes])
-
-  const navMeshRef = useRef<NavMesh>(null)
-
-  const navMeshObject = useMemo(() => navMeshRef.current && createConvexRegionHelper(navMeshRef.current), [navMeshRef.current])
+  const navMeshObject = useMemo(() => navMesh && createConvexRegionHelper(navMesh), [navMesh])
 
   useEffect(() => {
-    console.warn('NavMesh Update')
+    console.warn('NavMesh Update', meshesModels, planesModels)
 
-    if (meshes.length === 0 || planes.length === 0)
+    if (meshesModels.length === 0 || planesModels.length === 0)
       return
 
-    const result = threeToSoloNavMesh([...meshesModels, ...planesModels], {
-      ch: 0.05,
-      cs: 0.05,
-      walkableHeight: 0,
-      walkableSlopeAngle: 5,
-    })
+    // eslint-disable-next-line @masknet/no-timer
+    const timeout = setTimeout(() => {
+      const { navMesh: detourNavMesh } = threeToSoloNavMesh([...meshesModels, ...planesModels], {
+        ch: 0.05,
+        cs: 0.05,
+        walkableHeight: 0,
+        walkableSlopeAngle: 5,
+      })
 
-    // @ts-expect-error wrong type
-    if (result.error != null)
-      // @ts-expect-error wrong type
-      console.error(result.error)
-
-    const yukaNavMesh = toYukaNavMesh(result.navMesh!)
-
-    entity.setNavMesh(yukaNavMesh)
-    navMeshRef.current = yukaNavMesh
+      startTransition(() => {
+        const navMesh = toYukaNavMesh(detourNavMesh!)
+        entity.setNavMesh(navMesh)
+        setNavMesh(navMesh)
+      })
+    }, 1000)
 
     return () => {
-      result.navMesh?.destroy()
-      entity.setNavMesh()
-      navMeshRef.current = null
+      // eslint-disable-next-line @masknet/no-timer
+      clearTimeout(timeout)
+
+      startTransition(() => {
+        // result.navMesh?.destroy()
+        entity.setNavMesh()
+        setNavMesh(undefined)
+      })
     }
-  }, [meshes, planes, entity])
+  }, [meshesModels, planesModels, entity])
 
   return (
     <>
       {meshesModels.map((mesh, i) => (
+        // eslint-disable-next-line react/no-array-index-key
         <XRSpace key={i} space={meshes[i].meshSpace}>
           <primitive object={mesh} />
         </XRSpace>
       ))}
       {planesModels.map((plane, i) => (
+        // eslint-disable-next-line react/no-array-index-key
         <XRSpace key={i} space={planes[i].planeSpace}>
           <primitive object={plane} />
         </XRSpace>
