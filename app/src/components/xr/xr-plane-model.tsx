@@ -1,19 +1,19 @@
 import { useStaticGameEntity } from '@n3p6/react-three-yuka'
-import { useXRMeshGeometry, XRSpace } from '@react-three/xr'
+import { useXRPlaneGeometry, XRSpace } from '@react-three/xr'
 import { useEffect, useMemo } from 'react'
 import { MeshPhysicalMaterial } from 'three'
 import { GameEntity } from 'yuka'
 
-import { useEditMesh } from '~/context/mesh'
+import { useEditMesh } from '../../context/mesh'
 
-export interface XRMeshModelProps {
-  mesh: XRMesh
+export interface XRPlaneModelProps {
+  plane: XRPlane
 }
 
-export const XRMeshModel = ({ mesh }: XRMeshModelProps) => {
+export const XRPlaneModel = ({ plane }: XRPlaneModelProps) => {
   // const { addObstacle, removeObstacle } = useSetObstacles()
   const { addMesh, removeMesh } = useEditMesh()
-  const geometry = useXRMeshGeometry(mesh)
+  const geometry = useXRPlaneGeometry(plane)
   const [meshRef, meshEntity] = useStaticGameEntity(GameEntity)
 
   const material = useMemo(() => new MeshPhysicalMaterial({
@@ -35,16 +35,10 @@ export const XRMeshModel = ({ mesh }: XRMeshModelProps) => {
       if (meshRef.current)
         removeMesh(meshRef.current)
     }
-
-    // addObstacle(meshEntity)
-
-    // return () => {
-    //   removeObstacle(meshEntity)
-    // }
   }, [geometry, meshRef, meshEntity, addMesh, removeMesh])
 
   return (
-    <XRSpace space={mesh.meshSpace}>
+    <XRSpace space={plane.planeSpace}>
       <mesh geometry={geometry} material={material} ref={meshRef} />
     </XRSpace>
   )

@@ -1,9 +1,9 @@
 import { Stage } from '~/components/stage'
-import { HikariYuka } from '~/components/vrm/hikari-yuka'
+import { Galatea } from '~/components/vrm/galatea'
 
 const Index = () => (
   <Stage>
-    <HikariYuka />
+    <Galatea />
   </Stage>
 )
 

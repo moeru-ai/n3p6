@@ -1,14 +1,15 @@
-import { useXRPlanes, XRSpace, XRPlaneModel } from '@react-three/xr'
+import { useXRPlanes, XRPlaneModel, XRSpace } from '@react-three/xr'
 import { useEffect } from 'react'
 
-import { HikariYuka } from '~/components/vrm/hikari-yuka'
+import { Galatea } from '~/components/vrm/galatea'
 
 const DebugPlanes = () => {
   // https://pmndrs.github.io/xr/docs/tutorials/object-detection#detected-planes
-  const walls = useXRPlanes('wall')
+  const walls = useXRPlanes()
 
   useEffect(() => {
     console.warn('Walls count:', walls.length)
+    console.warn(walls.map(wall => wall.semanticLabel))
   }, [walls])
 
   return (
@@ -21,7 +22,7 @@ const DebugPlanes = () => {
           </XRPlaneModel>
         </XRSpace>
       ))}
-      <HikariYuka />
+      <Galatea />
     </>
   )
 }

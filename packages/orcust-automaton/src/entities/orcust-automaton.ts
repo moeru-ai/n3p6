@@ -1,5 +1,5 @@
 import type { AnimationAction } from 'three'
-import type { GameEntity } from 'yuka'
+import type { GameEntity, NavMesh } from 'yuka'
 
 import { ArriveBehavior, ObstacleAvoidanceBehavior, Smoother, Think, Vehicle } from 'yuka'
 
@@ -15,6 +15,8 @@ export class OrcustAutomaton extends Vehicle {
   public currentTime = 0 // tracks the current time of an action
   public deltaTime: number = 0 // the current time delta value
   public fatigueLevel = 0 // current level of fatigue
+
+  public navMesh?: NavMesh
 
   public restDuration = 5 // duration of a rest phase in seconds
 
@@ -35,6 +37,7 @@ export class OrcustAutomaton extends Vehicle {
 
     // steering
     const obstacleAvoidanceBehavior = new ObstacleAvoidanceBehavior()
+    obstacleAvoidanceBehavior.active = false
     // obstacleAvoidanceBehavior.weight = 10
     // obstacleAvoidanceBehavior.brakingWeight = 1
     this.steering.add(obstacleAvoidanceBehavior)
@@ -52,6 +55,10 @@ export class OrcustAutomaton extends Vehicle {
 
   public setCurrentTarget(target: GameEntity) {
     this.currentTarget = target
+  }
+
+  public setNavMesh(navMesh?: NavMesh) {
+    this.navMesh = navMesh
   }
 
   public setObstacles(obstacles: GameEntity[]) {
