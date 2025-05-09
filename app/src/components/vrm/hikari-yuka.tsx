@@ -1,3 +1,4 @@
+import { useOrcustAutomaton } from '@n3p6/orcust-automaton'
 import { useVRM, useVRMAutoBlink, useVRMAutoLookAtDefaultCamera } from '@n3p6/react-three-vrm'
 import { useEntityManager, useGameEntity, useObstacles } from '@n3p6/react-three-yuka'
 import { useAnimations } from '@react-three/drei'
@@ -5,7 +6,6 @@ import { useFrame } from '@react-three/fiber'
 import { useEffect } from 'react'
 import { Vector3 } from 'three'
 import { GameEntity, Vector3 as YukaVector3 } from 'yuka'
-import { OrcustAutomaton } from '@n3p6/orcust-automaton'
 
 import { useAnimationCollection } from '~/hooks/use-animation-collection'
 
@@ -25,7 +25,7 @@ export const HikariYuka = () => {
   useVRMAutoLookAtDefaultCamera(vrm)
 
   const entityManager = useEntityManager()
-  const [vehicleRef, vehicleEntity] = useGameEntity(OrcustAutomaton, { position: [0, 0, 0] })
+  const [vehicleRef, vehicleEntity] = useOrcustAutomaton()
   const [playerRef, playerEntity] = useGameEntity(GameEntity)
 
   useEffect(() => vehicleEntity.setActions(actions), [vehicleEntity, actions])

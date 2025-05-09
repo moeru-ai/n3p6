@@ -1,7 +1,7 @@
 import type { AnimationAction } from 'three'
 import type { GameEntity } from 'yuka'
 
-import { ArriveBehavior, ObstacleAvoidanceBehavior, Think, Vehicle } from 'yuka'
+import { ArriveBehavior, ObstacleAvoidanceBehavior, Smoother, Think, Vehicle } from 'yuka'
 
 import { FollowEvaluator } from '../evaluators/follow'
 import { RestEvaluator } from '../evaluators/rest'
@@ -26,18 +26,22 @@ export class OrcustAutomaton extends Vehicle {
     this.maxTurnRate = Math.PI * 0.5
     this.maxSpeed = 1.5
 
+    this.smoother = new Smoother(20)
+
     // goal-driven agent design
     this.brain = new Think(this)
     this.brain.addEvaluator(new FollowEvaluator())
     this.brain.addEvaluator(new RestEvaluator())
 
     // steering
+    const obstacleAvoidanceBehavior = new ObstacleAvoidanceBehavior()
+    // obstacleAvoidanceBehavior.weight = 10
+    // obstacleAvoidanceBehavior.brakingWeight = 1
+    this.steering.add(obstacleAvoidanceBehavior)
+
     const arriveBehavior = new ArriveBehavior()
     arriveBehavior.deceleration = 1.5
     this.steering.add(arriveBehavior)
-
-    const obstacleAvoidanceBehavior = new ObstacleAvoidanceBehavior()
-    this.steering.add(obstacleAvoidanceBehavior)
   }
 
   public setActions(actions: Record<string, AnimationAction | null>) {
@@ -51,7 +55,7 @@ export class OrcustAutomaton extends Vehicle {
   }
 
   public setObstacles(obstacles: GameEntity[]) {
-    (this.steering.behaviors.at(1) as ObstacleAvoidanceBehavior).obstacles = obstacles
+    (this.steering.behaviors.at(0) as ObstacleAvoidanceBehavior).obstacles = obstacles
   }
 
   tired() {

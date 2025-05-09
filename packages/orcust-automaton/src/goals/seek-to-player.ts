@@ -11,7 +11,7 @@ export class SeekToPlayerGoal extends Goal<OrcustAutomaton> {
 
   activate() {
     if (this.owner!.currentTarget !== null) {
-      const arriveBehavior = this.owner!.steering.behaviors.at(0) as ArriveBehavior
+      const arriveBehavior = this.owner!.steering.behaviors.at(1) as ArriveBehavior
       arriveBehavior.target = this.owner!.currentTarget.position
       arriveBehavior.active = true
     }
@@ -38,7 +38,7 @@ export class SeekToPlayerGoal extends Goal<OrcustAutomaton> {
   }
 
   terminate() {
-    const arriveBehavior = this.owner!.steering.behaviors.at(0) as ArriveBehavior
+    const arriveBehavior = this.owner!.steering.behaviors.at(1) as ArriveBehavior
     arriveBehavior.active = false
     this.owner!.velocity.set(0, 0, 0)
 

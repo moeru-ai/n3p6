@@ -7,7 +7,7 @@ import { XRMeshModel } from '~/components/xr/xr-mesh-model'
 const DebugMeshes = () => {
   // https://pmndrs.github.io/xr/docs/tutorials/object-detection#detected-meshes
   const meshes = useXRMeshes()
-    .filter((mesh) => !mesh.semanticLabel || !['global mesh', 'other'].includes(mesh.semanticLabel))
+    .filter(mesh => mesh.semanticLabel == null || !['global mesh', 'other'].includes(mesh.semanticLabel))
 
   useEffect(() => {
     console.warn('Meshes count:', meshes.length)

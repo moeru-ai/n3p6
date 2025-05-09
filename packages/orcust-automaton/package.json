@@ -35,15 +35,15 @@
   "scripts": {
     "build": "pkgroll"
   },
-  "dependencies": {
-    "@n3p6/react-three-yuka": "workspace:"
-  },
   "peerDependencies": {
     "@react-three/drei": "catalog:three",
     "@react-three/fiber": "catalog:three",
     "react": "catalog:react",
     "three": "catalog:three",
     "yuka": "catalog:yuka"
+  },
+  "dependencies": {
+    "@n3p6/react-three-yuka": "workspace:"
   },
   "devDependencies": {
     "@types/react": "catalog:react",

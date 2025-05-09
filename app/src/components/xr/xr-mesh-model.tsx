@@ -1,4 +1,4 @@
-import { useStaticGameEntity, useSetObstacles } from '@n3p6/react-three-yuka'
+import { useSetObstacles, useStaticGameEntity } from '@n3p6/react-three-yuka'
 import { useXRMeshGeometry, XRSpace } from '@react-three/xr'
 import { useEffect } from 'react'
 import { GameEntity } from 'yuka'
@@ -17,15 +17,13 @@ export const XRMeshModel = ({ mesh }: XRMeshModelProps) => {
 
     // eslint-disable-next-line react-compiler/react-compiler
     meshEntity.boundingRadius = geometry.boundingSphere!.radius
-  }, [meshEntity, geometry])
 
-  useEffect(() => {
     addObstacle(meshEntity)
 
     return () => {
       removeObstacle(meshEntity)
     }
-  }, [meshEntity])
+  })
 
   return (
     <XRSpace space={mesh.meshSpace}>

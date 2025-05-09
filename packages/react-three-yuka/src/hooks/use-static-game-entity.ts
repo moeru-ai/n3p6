@@ -1,5 +1,5 @@
 import type { RefObject } from 'react'
-import type { Group, Object3DEventMap } from 'three'
+import type { Mesh } from 'three'
 import type { GameEntity } from 'yuka'
 
 import { useFrame } from '@react-three/fiber'
@@ -8,9 +8,9 @@ import { Quaternion as YukaQuaternion, Vector3 as YukaVector3 } from 'yuka'
 
 import { useEntityManager } from '../context/entity-manager'
 
-export const useStaticGameEntity = <T extends typeof GameEntity>(Entity: T): [RefObject<Group<Object3DEventMap> | null>, InstanceType<T>] => {
+export const useStaticGameEntity = <T extends typeof GameEntity>(Entity: T): [RefObject<Mesh | null>, InstanceType<T>] => {
   const entityManager = useEntityManager()
-  const ref = useRef<Group>(null)
+  const ref = useRef<Mesh>(null)
   const entity = useMemo(() => new Entity() as InstanceType<T>, [Entity])
 
   useEffect(() => {

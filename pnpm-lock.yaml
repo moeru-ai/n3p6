@@ -72,6 +72,12 @@ catalogs:
       specifier: ^2.36.0
       version: 2.36.0
   yuka:
+    '@recast-navigation/core':
+      specifier: ^0.39.0
+      version: 0.39.0
+    '@recast-navigation/three':
+      specifier: ^0.39.0
+      version: 0.39.0
     '@types/yuka':
       specifier: ^0.7.4
       version: 0.7.4
@@ -179,6 +185,12 @@ importers:
       '@react-three/xr':
         specifier: catalog:three
         version: 6.6.16(@react-three/fiber@9.1.2(@types/react@19.1.2)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(three@0.176.0))(@types/react@19.1.2)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(three@0.176.0)
+      '@recast-navigation/core':
+        specifier: catalog:yuka
+        version: 0.39.0
+      '@recast-navigation/three':
+        specifier: catalog:yuka
+        version: 0.39.0(@types/three@0.176.0)(three@0.176.0)
       foxact:
         specifier: 'catalog:'
         version: 0.2.45(react@19.1.0)
@@ -191,6 +203,12 @@ importers:
       react-router:
         specifier: catalog:react
         version: 7.5.3(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+      suspend-react:
+        specifier: ^0.1.3
+        version: 0.1.3(react@19.1.0)
+      swr:
+        specifier: ^2.3.3
+        version: 2.3.3(react@19.1.0)
       three:
         specifier: catalog:three
         version: 0.176.0
@@ -277,12 +295,12 @@ importers:
 
   packages/react-three-yuka:
     dependencies:
-      '@react-three/drei':
-        specifier: catalog:three
-        version: 10.0.7(@react-three/fiber@9.1.2(@types/react@19.1.2)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(three@0.176.0))(@types/react@19.1.2)(@types/three@0.176.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(three@0.176.0)
       '@react-three/fiber':
         specifier: catalog:three
         version: 9.1.2(@types/react@19.1.2)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(three@0.176.0)
+      '@recast-navigation/core':
+        specifier: catalog:yuka
+        version: 0.39.0
       react:
         specifier: catalog:react
         version: 19.1.0
@@ -1126,6 +1144,21 @@ packages:
       react: '>=18'
       react-dom: '>=18'
       three: '*'
+
+  '@recast-navigation/core@0.39.0':
+    resolution: {integrity: sha512-l48GHrimIUR+9ugAsjIecdUh5ohHULrFYUn5EqClafV5HJB/cPFBbN4n9HV2jDamCjGRGEhtSpId7NpkhoF0qQ==}
+
+  '@recast-navigation/generators@0.39.0':
+    resolution: {integrity: sha512-ymiacmEWK4SGY/FUlr6/n9/FgvA9NikPR57JyCGbteScEG10UYByrPGXJQU/UXuzUhUbmtKlPJAk2KP+MLgxJA==}
+
+  '@recast-navigation/three@0.39.0':
+    resolution: {integrity: sha512-zk2EnZSoMY1P2uYexGFnfoOG92kUD94B1R+7pz4MMOjcryqCKzGhTSalThyY8SbNi9r4MrKe7Xd50W4vS/1k8A==}
+    peerDependencies:
+      '@types/three': 0.x.x
+      three: 0.x.x
+
+  '@recast-navigation/wasm@0.39.0':
+    resolution: {integrity: sha512-1P/8pqXtwJSVseLBtO0AOdqQe1XnhPFTVvG9FMORFVFunYqkKXxULgni8x3fsutkQisyY+X7YQoIMLvZR4lKFA==}
 
   '@rollup/plugin-alias@5.1.1':
     resolution: {integrity: sha512-PR9zDb+rOzkRb2VD+EuKB7UC41vU5DIwZ5qqCpk0KJudcWAyi8rvYOhS7+L5aZCspw1stTViLgN5v6FF1p5cgQ==}
@@ -3941,6 +3974,11 @@ packages:
     peerDependencies:
       react: '>=17.0'
 
+  swr@2.3.3:
+    resolution: {integrity: sha512-dshNvs3ExOqtZ6kJBaAsabhPdHyeY4P2cKwRCniDVifBMoG/SVI7tfLWqPXriVspf2Rg4tPzXJTnwaihIeFw2A==}
+    peerDependencies:
+      react: ^16.11.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
+
   synckit@0.6.2:
     resolution: {integrity: sha512-Vhf+bUa//YSTYKseDiiEuQmhGCoIF3CVBhunm3r/DQnYiGT4JssmnKQc44BIyOZRK2pKjXXAgbhfmbeoC9CJpA==}
     engines: {node: '>=12.20'}
@@ -5352,6 +5390,24 @@ snapshots:
     transitivePeerDependencies:
       - '@types/react'
       - immer
+
+  '@recast-navigation/core@0.39.0':
+    dependencies:
+      '@recast-navigation/wasm': 0.39.0
+
+  '@recast-navigation/generators@0.39.0':
+    dependencies:
+      '@recast-navigation/core': 0.39.0
+      '@recast-navigation/wasm': 0.39.0
+
+  '@recast-navigation/three@0.39.0(@types/three@0.176.0)(three@0.176.0)':
+    dependencies:
+      '@recast-navigation/core': 0.39.0
+      '@recast-navigation/generators': 0.39.0
+      '@types/three': 0.176.0
+      three: 0.176.0
+
+  '@recast-navigation/wasm@0.39.0': {}
 
   '@rollup/plugin-alias@5.1.1(rollup@4.40.1)':
     optionalDependencies:
@@ -8622,6 +8678,12 @@ snapshots:
   suspend-react@0.1.3(react@19.1.0):
     dependencies:
       react: 19.1.0
+
+  swr@2.3.3(react@19.1.0):
+    dependencies:
+      dequal: 2.0.3
+      react: 19.1.0
+      use-sync-external-store: 1.4.0(react@19.1.0)
 
   synckit@0.6.2:
     dependencies:

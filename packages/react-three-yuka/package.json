@@ -13,12 +13,19 @@
   },
   "bugs": "https://github.com/moeru-ai/n3p6/issues",
   "sideEffects": false,
-  "exports": "./src/index.ts",
+  "exports": {
+    ".": "./src/index.ts",
+    "./recast-navigation": "./src/recast-navigation/index.ts"
+  },
   "publishConfig": {
     "exports": {
       ".": {
         "types": "./dist/index.d.ts",
         "default": "./dist/index.js"
+      },
+      "./recast-navigation": {
+        "types": "./dist/recast-navigation/index.d.ts",
+        "default": "./dist/recast-navigation/index.js"
       },
       "./package.json": "./package.json"
     },
@@ -32,11 +39,16 @@
     "build": "pkgroll"
   },
   "peerDependencies": {
-    "@react-three/drei": "catalog:three",
     "@react-three/fiber": "catalog:three",
+    "@recast-navigation/core": "catalog:yuka",
     "react": "catalog:react",
     "three": "catalog:three",
     "yuka": "catalog:yuka"
+  },
+  "peerDependenciesMeta": {
+    "@recast-navigation/core": {
+      "optional": true
+    }
   },
   "devDependencies": {
     "@types/react": "catalog:react",

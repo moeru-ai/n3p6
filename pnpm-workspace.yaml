@@ -33,5 +33,7 @@ catalogs:
     three-stdlib: ^2.36.0
 
   yuka:
+    '@recast-navigation/core': &recast-navigation ^0.39.0
+    '@recast-navigation/three': *recast-navigation
     '@types/yuka': ^0.7.4
     yuka: ^0.7.8
