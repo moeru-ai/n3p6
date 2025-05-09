@@ -1,7 +1,7 @@
 {
   "name": "@n3p6/app",
   "type": "module",
-  "version": "0.0.2",
+  "version": "0.1.0-beta.1",
   "private": true,
   "scripts": {
     "assetpack": "assetpack -c assetpack.config.ts",
