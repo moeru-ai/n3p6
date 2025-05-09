@@ -31,10 +31,10 @@
     "build": "pkgroll"
   },
   "peerDependencies": {
+    "@types/react": "catalog:react",
     "react": "catalog:react"
   },
-  "devDependencies": {
-    "@types/react": "catalog:react",
+  "dependencies": {
     "foxact": "catalog:"
   }
 }

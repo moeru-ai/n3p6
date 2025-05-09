@@ -38,16 +38,14 @@
   "peerDependencies": {
     "@react-three/drei": "catalog:three",
     "@react-three/fiber": "catalog:three",
+    "@types/react": "catalog:react",
+    "@types/three": "catalog:three",
+    "@types/yuka": "catalog:yuka",
     "react": "catalog:react",
     "three": "catalog:three",
     "yuka": "catalog:yuka"
   },
   "dependencies": {
     "@n3p6/react-three-yuka": "workspace:"
-  },
-  "devDependencies": {
-    "@types/react": "catalog:react",
-    "@types/three": "catalog:three",
-    "@types/yuka": "catalog:yuka"
   }
 }

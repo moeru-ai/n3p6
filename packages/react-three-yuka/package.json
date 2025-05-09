@@ -41,6 +41,9 @@
   "peerDependencies": {
     "@react-three/fiber": "catalog:three",
     "@recast-navigation/core": "catalog:yuka",
+    "@types/react": "catalog:react",
+    "@types/three": "catalog:three",
+    "@types/yuka": "catalog:yuka",
     "react": "catalog:react",
     "three": "catalog:three",
     "yuka": "catalog:yuka"
@@ -50,10 +53,7 @@
       "optional": true
     }
   },
-  "devDependencies": {
-    "@types/react": "catalog:react",
-    "@types/three": "catalog:three",
-    "@types/yuka": "catalog:yuka",
+  "dependencies": {
     "foxact": "catalog:"
   }
 }
