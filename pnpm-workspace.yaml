@@ -20,9 +20,10 @@ catalogs:
   three:
     '@pixiv/three-vrm': ^3.4.0
     '@pixiv/three-vrm-animation': ^3.4.0
+    '@pmndrs/xr': &xr ^6.6.16
     '@react-three/drei': ^10.0.7
     '@react-three/fiber': ^9.1.2
-    '@react-three/handle': &xr ^6.6.16
+    '@react-three/handle': *xr
     # '@react-three/rapier': ^2.1.0
     '@react-three/uikit': &uikit ^0.8.16
     '@react-three/uikit-default': *uikit

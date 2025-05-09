@@ -1,12 +1,13 @@
 import type { OrcustAutomaton } from '@n3p6/orcust-automaton'
-import type { NavMesh } from 'yuka'
 
 import { toYukaNavMesh } from '@n3p6/react-three-yuka/recast-navigation'
+import { XRMeshModel, XRPlaneModel } from '@pmndrs/xr'
+import { useXRMeshes, useXRPlanes, XRSpace } from '@react-three/xr'
 import { threeToSoloNavMesh } from '@recast-navigation/three'
-import { useEffect, useState } from 'react'
+import { useEffect, useMemo, useRef } from 'react'
+import { MeshPhysicalMaterial } from 'three'
+import { NavMesh } from 'yuka'
 import { BufferGeometry, Color, Float32BufferAttribute, Mesh, MeshBasicMaterial } from 'three'
-
-import { useMesh } from '~/context/mesh'
 
 export interface NavMeshProps {
   entity: OrcustAutomaton
@@ -50,15 +51,42 @@ const createConvexRegionHelper = (navMesh: NavMesh) => {
 }
 
 export const XRNavMesh = ({ entity }: NavMeshProps) => {
-  const meshes = useMesh()
+  // https://pmndrs.github.io/xr/docs/tutorials/object-detection#detected-meshes
+  const meshes = useXRMeshes()
+    .filter(mesh => mesh.semanticLabel == null || !['global mesh', 'other'].includes(mesh.semanticLabel))
 
-  const [mesh, setMesh] = useState<Mesh>()
+  const planes = useXRPlanes('floor')
+
+  const material = useMemo(() => new MeshPhysicalMaterial({
+    color: 'yellow',
+    opacity: 0.5,
+    transparent: true,
+  }), [])
+
+  const meshesModels = useMemo(() => meshes.map(mesh => {
+    const model =  new XRMeshModel(mesh)
+    model.material = material
+    model.material.needsUpdate = true
+    return model
+  }), [meshes])
+  const planesModels = useMemo(() => planes.map(plane => {
+    const model = new XRPlaneModel(plane)
+    model.material = material
+    model.material.needsUpdate = true
+    return model
+  }), [planes])
+
+  const navMeshRef = useRef<NavMesh>(null)
+
+  const navMeshObject = useMemo(() => navMeshRef.current && createConvexRegionHelper(navMeshRef.current), [navMeshRef.current])
 
   useEffect(() => {
-    if (meshes.length === 0)
+    console.warn('NavMesh Update')
+
+    if (meshes.length === 0 || planes.length === 0)
       return
 
-    const result = threeToSoloNavMesh(meshes, {
+    const result = threeToSoloNavMesh([...meshesModels, ...planesModels], {
       ch: 0.05,
       cs: 0.05,
       walkableHeight: 0,
@@ -73,18 +101,28 @@ export const XRNavMesh = ({ entity }: NavMeshProps) => {
     const yukaNavMesh = toYukaNavMesh(result.navMesh!)
 
     entity.setNavMesh(yukaNavMesh)
-
-    setMesh(createConvexRegionHelper(yukaNavMesh))
+    navMeshRef.current = yukaNavMesh
 
     return () => {
       result.navMesh?.destroy()
       entity.setNavMesh()
-      setMesh(undefined)
+      navMeshRef.current = null
     }
-  }, [meshes.length, entity])
+  }, [meshes, planes, entity])
 
-  // return createConvexRegionHelper(navMesh)
-  return mesh
-    ? <primitive object={mesh} />
-    : null
+  return (
+    <>
+      {meshesModels.map((mesh, i) => (
+        <XRSpace key={i} space={meshes[i].meshSpace}>
+          <primitive object={mesh} />
+        </XRSpace>
+      ))}
+      {planesModels.map((plane, i) => (
+        <XRSpace key={i} space={planes[i].planeSpace}>
+          <primitive object={plane} />
+        </XRSpace>
+      ))}
+      {navMeshObject && <primitive object={navMeshObject} />}
+    </>
+  )
 }

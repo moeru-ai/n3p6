@@ -41,6 +41,9 @@ catalogs:
     '@pixiv/three-vrm-animation':
       specifier: ^3.4.0
       version: 3.4.0
+    '@pmndrs/xr':
+      specifier: ^6.6.16
+      version: 6.6.16
     '@react-three/drei':
       specifier: ^10.0.7
       version: 10.0.7
@@ -164,6 +167,9 @@ importers:
       '@pixiv/three-vrm-animation':
         specifier: catalog:three
         version: 3.4.0(three@0.176.0)
+      '@pmndrs/xr':
+        specifier: catalog:three
+        version: 6.6.16(@types/react@19.1.2)(react@19.1.0)(three@0.176.0)
       '@react-three/drei':
         specifier: catalog:three
         version: 10.0.7(@react-three/fiber@9.1.2(@types/react@19.1.2)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(three@0.176.0))(@types/react@19.1.2)(@types/three@0.176.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(three@0.176.0)
@@ -203,9 +209,6 @@ importers:
       react-router:
         specifier: catalog:react
         version: 7.5.3(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
-      suspend-react:
-        specifier: ^0.1.3
-        version: 0.1.3(react@19.1.0)
       swr:
         specifier: ^2.3.3
         version: 2.3.3(react@19.1.0)
@@ -218,6 +221,9 @@ importers:
       yuka:
         specifier: catalog:yuka
         version: 0.7.8
+      zustand:
+        specifier: ^5.0.4
+        version: 5.0.4(@types/react@19.1.2)(react@19.1.0)(use-sync-external-store@1.4.0(react@19.1.0))
     devDependencies:
       '@types/react':
         specifier: catalog:react
@@ -4373,8 +4379,8 @@ packages:
       react:
         optional: true
 
-  zustand@5.0.3:
-    resolution: {integrity: sha512-14fwWQtU3pH4dE0dOpdMiWjddcH+QzKIgk1cl8epwSE7yag43k/AD/m4L6+K7DytAOr9gGBe3/EXj9g7cdostg==}
+  zustand@5.0.4:
+    resolution: {integrity: sha512-39VFTN5InDtMd28ZhjLyuTnlytDr9HfwO512Ai4I8ZABCoyAj4F1+sr7sD1jP/+p7k77Iko0Pb5NhgBFDCX0kQ==}
     engines: {node: '>=12.20.0'}
     peerDependencies:
       '@types/react': '>=18.0.0'
@@ -5290,7 +5296,7 @@ snapshots:
       tunnel-rat: 0.1.2(@types/react@19.1.2)(react@19.1.0)
       use-sync-external-store: 1.4.0(react@19.1.0)
       utility-types: 3.11.0
-      zustand: 5.0.3(@types/react@19.1.2)(react@19.1.0)(use-sync-external-store@1.4.0(react@19.1.0))
+      zustand: 5.0.4(@types/react@19.1.2)(react@19.1.0)(use-sync-external-store@1.4.0(react@19.1.0))
     optionalDependencies:
       react-dom: 19.1.0(react@19.1.0)
     transitivePeerDependencies:
@@ -5313,7 +5319,7 @@ snapshots:
       suspend-react: 0.1.3(react@19.1.0)
       three: 0.176.0
       use-sync-external-store: 1.4.0(react@19.1.0)
-      zustand: 5.0.3(@types/react@19.1.2)(react@19.1.0)(use-sync-external-store@1.4.0(react@19.1.0))
+      zustand: 5.0.4(@types/react@19.1.2)(react@19.1.0)(use-sync-external-store@1.4.0(react@19.1.0))
     optionalDependencies:
       react-dom: 19.1.0(react@19.1.0)
     transitivePeerDependencies:
@@ -9135,7 +9141,7 @@ snapshots:
       '@types/react': 19.1.2
       react: 19.1.0
 
-  zustand@5.0.3(@types/react@19.1.2)(react@19.1.0)(use-sync-external-store@1.4.0(react@19.1.0)):
+  zustand@5.0.4(@types/react@19.1.2)(react@19.1.0)(use-sync-external-store@1.4.0(react@19.1.0)):
     optionalDependencies:
       '@types/react': 19.1.2
       react: 19.1.0

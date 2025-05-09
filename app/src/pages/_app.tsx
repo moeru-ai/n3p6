@@ -6,13 +6,11 @@ import { ComposeContextProvider } from 'foxact/compose-context-provider'
 import { useEffect } from 'react'
 import { Outlet, useLocation } from 'react-router'
 
-import { MeshProvider } from '~/context/mesh'
 import { useIsDarkValue } from '~/hooks/use-is-dark'
 
 const contexts = [
   <EntityManagerProvider key="entity-manager" />,
   <ObstaclesProvider key="obstacles" />,
-  <MeshProvider key="mesh" />,
 ]
 
 const AppLayout = () => {
