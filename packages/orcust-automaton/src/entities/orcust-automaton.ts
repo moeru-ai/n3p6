@@ -1,8 +1,9 @@
 import type { AnimationAction } from 'three'
 import type { GameEntity, NavMesh } from 'yuka'
 
-import { ArriveBehavior, ObstacleAvoidanceBehavior, Smoother, Think, Vehicle } from 'yuka'
+import { ObstacleAvoidanceBehavior, Smoother, Think, Vehicle } from 'yuka'
 
+import { NavMeshArriveBehavior } from '../behaviors/nav-mesh-arrive'
 import { FollowEvaluator } from '../evaluators/follow'
 import { RestEvaluator } from '../evaluators/rest'
 
@@ -42,7 +43,8 @@ export class OrcustAutomaton extends Vehicle {
     // obstacleAvoidanceBehavior.brakingWeight = 1
     this.steering.add(obstacleAvoidanceBehavior)
 
-    const arriveBehavior = new ArriveBehavior()
+    // const arriveBehavior = new ArriveBehavior()
+    const arriveBehavior = new NavMeshArriveBehavior()
     arriveBehavior.deceleration = 1.5
     this.steering.add(arriveBehavior)
   }
@@ -58,7 +60,7 @@ export class OrcustAutomaton extends Vehicle {
   }
 
   public setNavMesh(navMesh?: NavMesh) {
-    this.navMesh = navMesh
+    (this.steering.behaviors.at(1) as NavMeshArriveBehavior).navMesh = navMesh
   }
 
   public setObstacles(obstacles: GameEntity[]) {
