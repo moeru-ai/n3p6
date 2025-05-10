@@ -80,6 +80,7 @@ export const XRNavMesh = ({ entity }: NavMeshProps) => {
         const navMesh = toYukaNavMesh(detourNavMesh!)
         entity.setNavMesh(navMesh)
         setNavMesh(navMesh)
+        entity.position.set(0, 0, 0)
       })
     }, 10)
 
