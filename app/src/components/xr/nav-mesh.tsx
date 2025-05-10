@@ -52,7 +52,7 @@ const createConvexRegionHelper = (navMesh: NavMesh) => {
 export const XRNavMesh = ({ entity }: NavMeshProps) => {
   // https://pmndrs.github.io/xr/docs/tutorials/object-detection#detected-meshes
   const meshes = useXRMeshes()
-  const planes = useXRPlanes('floor')
+  const planes = useXRPlanes()
   const filteredMeshes = useMemo(() => meshes.filter(mesh => mesh.semanticLabel == null || !['global mesh', 'other'].includes(mesh.semanticLabel)), [meshes])
   const meshesModels = useMemo(() => filteredMeshes.map(mesh => new XRMeshModel(mesh)), [filteredMeshes])
   const planesModels = useMemo(() => planes.map(plane => new XRPlaneModel(plane)), [planes])
@@ -81,7 +81,7 @@ export const XRNavMesh = ({ entity }: NavMeshProps) => {
         entity.setNavMesh(navMesh)
         setNavMesh(navMesh)
       })
-    }, 1000)
+    }, 10)
 
     return () => {
       // eslint-disable-next-line @masknet/no-timer
