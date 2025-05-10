@@ -1,9 +1,10 @@
 import { EntityManagerProvider, ObstaclesProvider } from '@n3p6/react-three-yuka'
+import { Loader } from '@react-three/drei'
 import { Canvas } from '@react-three/fiber'
 import { setPreferredColorScheme } from '@react-three/uikit'
 import { noEvents } from '@react-three/xr'
 import { ComposeContextProvider } from 'foxact/compose-context-provider'
-import { useEffect } from 'react'
+import { Suspense, useEffect } from 'react'
 import { Outlet, useLocation } from 'react-router'
 
 import { useIsDarkValue } from '~/hooks/use-is-dark'
@@ -21,16 +22,21 @@ const AppLayout = () => {
   useEffect(() => setPreferredColorScheme(isDark ? 'dark' : 'light'), [isDark])
 
   return (
-    <Canvas
-      camera={{ position: [0, 1.75, 3.5] }}
-      events={events}
-      gl={{ localClippingEnabled: true }}
-      style={{ flexGrow: 1, width: '100%' }}
-    >
-      <ComposeContextProvider contexts={contexts}>
-        <Outlet />
-      </ComposeContextProvider>
-    </Canvas>
+    <>
+      <Loader />
+      <Canvas
+        camera={{ position: [0, 1.75, 3.5] }}
+        events={events}
+        gl={{ localClippingEnabled: true }}
+        style={{ flexGrow: 1, width: '100%' }}
+      >
+        <ComposeContextProvider contexts={contexts}>
+          <Suspense fallback={null}>
+            <Outlet />
+          </Suspense>
+        </ComposeContextProvider>
+      </Canvas>
+    </>
   )
 }
 
