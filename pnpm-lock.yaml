@@ -53,6 +53,9 @@ catalogs:
     '@react-three/handle':
       specifier: ^6.6.16
       version: 6.6.16
+    '@react-three/rapier':
+      specifier: ^2.1.0
+      version: 2.1.0
     '@react-three/uikit':
       specifier: ^0.8.16
       version: 0.8.16
@@ -179,6 +182,9 @@ importers:
       '@react-three/handle':
         specifier: catalog:three
         version: 6.6.16(@react-three/fiber@9.1.2(@types/react@19.1.2)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(three@0.176.0))(@types/react@19.1.2)(react@19.1.0)(three@0.176.0)
+      '@react-three/rapier':
+        specifier: catalog:three
+        version: 2.1.0(@react-three/fiber@9.1.2(@types/react@19.1.2)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(three@0.176.0))(react@19.1.0)(three@0.176.0)
       '@react-three/uikit':
         specifier: catalog:three
         version: 0.8.16(@react-three/fiber@9.1.2(@types/react@19.1.2)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(three@0.176.0))(@types/react@19.1.2)(react@19.1.0)(three@0.176.0)
@@ -251,6 +257,9 @@ importers:
       '@react-three/fiber':
         specifier: catalog:three
         version: 9.1.2(@types/react@19.1.2)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(three@0.176.0)
+      '@react-three/rapier':
+        specifier: catalog:three
+        version: 2.1.0(@react-three/fiber@9.1.2(@types/react@19.1.2)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(three@0.176.0))(react@19.1.0)(three@0.176.0)
       '@types/react':
         specifier: catalog:react
         version: 19.1.2
@@ -559,6 +568,9 @@ packages:
 
   '@dimforge/rapier3d-compat@0.12.0':
     resolution: {integrity: sha512-uekIGetywIgopfD97oDL5PfeezkFpNhwlzlaEYNOA0N6ghdsOvh/HYjSMek5Q2O1PYvRSDFcqFVJl4r4ZBwOow==}
+
+  '@dimforge/rapier3d-compat@0.15.0':
+    resolution: {integrity: sha512-TRH9rmF6RJqvKt0xis6VkToJHz4Pf54IfYhKGWn7zkpTWPwVyQ4p9kjwrdm6jOfGn72MBrIbttzvDB/ZOqE7sg==}
 
   '@emnapi/core@1.4.3':
     resolution: {integrity: sha512-4m62DuCE07lw01soJwPiBGC0nAww0Q+RY70VZ+n49yDIO13yyinhbWCeNnaob0lakDtWQzSdtNWzJeOJt2ma+g==}
@@ -1125,6 +1137,13 @@ packages:
       '@react-three/fiber': '>=8'
       react: '>=18'
       three: '*'
+
+  '@react-three/rapier@2.1.0':
+    resolution: {integrity: sha512-o1VzgCEILnc4noF4t5WNPYCy6dh0bTcd0Fa/xZa5/LBDnjYMb2mlWX6f+wMck5ucdz2BsVV+tpYWTGvb72QRIA==}
+    peerDependencies:
+      '@react-three/fiber': ^9.0.4
+      react: ^19
+      three: '>=0.159.0'
 
   '@react-three/uikit-default@0.8.16':
     resolution: {integrity: sha512-Sl043zoipG7OKIvrZxsFEPTo8erblU4kximMqzVks9cJPV53RXRtBV6Z8NYyCs/C83G854yh9QEFYSEhHzJDIg==}
@@ -4688,6 +4707,8 @@ snapshots:
 
   '@dimforge/rapier3d-compat@0.12.0': {}
 
+  '@dimforge/rapier3d-compat@0.15.0': {}
+
   '@emnapi/core@1.4.3':
     dependencies:
       '@emnapi/wasi-threads': 1.0.2
@@ -5333,6 +5354,15 @@ snapshots:
     transitivePeerDependencies:
       - '@types/react'
       - immer
+
+  '@react-three/rapier@2.1.0(@react-three/fiber@9.1.2(@types/react@19.1.2)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(three@0.176.0))(react@19.1.0)(three@0.176.0)':
+    dependencies:
+      '@dimforge/rapier3d-compat': 0.15.0
+      '@react-three/fiber': 9.1.2(@types/react@19.1.2)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(three@0.176.0)
+      react: 19.1.0
+      suspend-react: 0.1.3(react@19.1.0)
+      three: 0.176.0
+      three-stdlib: 2.36.0(three@0.176.0)
 
   '@react-three/uikit-default@0.8.16(@react-three/fiber@9.1.2(@types/react@19.1.2)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(three@0.176.0))(@types/react@19.1.2)(react@19.1.0)(three@0.176.0)':
     dependencies:

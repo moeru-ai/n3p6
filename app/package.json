@@ -21,6 +21,7 @@
     "@react-three/drei": "catalog:three",
     "@react-three/fiber": "catalog:three",
     "@react-three/handle": "catalog:three",
+    "@react-three/rapier": "catalog:three",
     "@react-three/uikit": "catalog:three",
     "@react-three/uikit-default": "catalog:three",
     "@react-three/uikit-lucide": "catalog:three",

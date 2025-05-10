@@ -1,6 +1,7 @@
 import { EntityManagerProvider, ObstaclesProvider } from '@n3p6/react-three-yuka'
 import { Loader } from '@react-three/drei'
 import { Canvas } from '@react-three/fiber'
+import { Physics } from '@react-three/rapier'
 import { setPreferredColorScheme } from '@react-three/uikit'
 import { noEvents } from '@react-three/xr'
 import { ComposeContextProvider } from 'foxact/compose-context-provider'
@@ -32,7 +33,12 @@ const AppLayout = () => {
       >
         <ComposeContextProvider contexts={contexts}>
           <Suspense fallback={null}>
-            <Outlet />
+            <Physics
+              debug={import.meta.env.DEV}
+              gravity={[0, -9.81, 0]}
+            >
+              <Outlet />
+            </Physics>
           </Suspense>
         </ComposeContextProvider>
       </Canvas>
