@@ -32,7 +32,20 @@ export const Environment = () => {
         >
           <boxGeometry />
         </mesh>
+        <mesh position={[0, 5 / 2, -50 / 2]} visible={false}>
+          <boxGeometry args={[50, 5, 0.1]} />
+        </mesh>
+        <mesh position={[0, 5 / 2, 50 / 2]} visible={false}>
+          <boxGeometry args={[50, 5, 0.1]} />
+        </mesh>
+        <mesh position={[-50 / 2, 5 / 2, 0]} visible={false}>
+          <boxGeometry args={[0.1, 5, 50]} />
+        </mesh>
+        <mesh position={[50 / 2, 5 / 2, 0]} visible={false}>
+          <boxGeometry args={[0.1, 5, 50]} />
+        </mesh>
       </RigidBody>
+
       <IfInSessionMode deny="immersive-ar">
         <Grid
           cellColor={fg}
