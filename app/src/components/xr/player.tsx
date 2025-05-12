@@ -12,13 +12,12 @@ export const Player = () => {
     if (!userRigidBodyRef.current)
       return
 
+    userRigidBodyRef.current.setLinvel({ x: velocity.x, y: 0, z: velocity.z }, true)
     userRigidBodyRef.current.setRotation(
       quat(userRigidBodyRef.current.rotation())
         .multiply(quat().setFromEuler(euler().set(0, rotationVelocityY, 0, 'YXZ'))),
       true,
     )
-
-    userRigidBodyRef.current.setLinvel({ x: velocity.x, y: 0, z: velocity.z }, true)
   })
 
   return (
@@ -26,13 +25,13 @@ export const Player = () => {
       canSleep={false}
       colliders={false}
       enabledRotations={[false, false, false]}
-      includeInvisible
-      mass={1}
+      // includeInvisible
+      // mass={1}
       position={[0, 2, 0]}
       ref={userRigidBodyRef}
       type="dynamic"
     >
-      <CapsuleCollider args={[0.75, 0.5]} />
+      <CapsuleCollider args={[0.5, 0.35]} />
       <XROrigin position={[0, -1.25, 0]} />
     </RigidBody>
   )

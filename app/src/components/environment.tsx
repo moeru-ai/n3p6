@@ -25,12 +25,8 @@ export const Environment = () => {
     <>
       <ambientLight intensity={intensity} />
       <RigidBody includeInvisible type="fixed">
-        <mesh
-          position={[0, 0, 0]}
-          scale={[50, 0.1, 50]}
-          visible={false}
-        >
-          <boxGeometry />
+        <mesh position={[0, 0, 0]} visible={false}>
+          <boxGeometry args={[50, 0.1, 50]} />
         </mesh>
         <mesh position={[0, 5 / 2, -50 / 2]} visible={false}>
           <boxGeometry args={[50, 5, 0.1]} />
