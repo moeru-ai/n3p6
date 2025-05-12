@@ -36,11 +36,18 @@ export class OrcustAutomatonFSM extends Vehicle {
     this.stateMachine = new StateMachine(this)
     this.stateMachine.add('idle', new IdleState())
     this.stateMachine.add('walk', new WalkState())
+
+    this.stateMachine.changeTo('idle')
+    let isWalk = false
+    // eslint-disable-next-line @masknet/no-timer, @masknet/prefer-timer-id
+    setInterval(() => {
+      this.stateMachine.changeTo(isWalk ? 'idle' : 'walk')
+      isWalk = !isWalk
+    }, 5000)
   }
 
   public setActions(actions: Record<string, AnimationAction | null>) {
     this.actions = actions
-    this.stateMachine.changeTo('idle')
   }
 
   public setCurrentTarget(target: GameEntity) {

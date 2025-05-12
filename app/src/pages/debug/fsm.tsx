@@ -25,6 +25,10 @@ const DebugFSM = () => {
     playerEntity.position.copy(yukaVec.current.set(x, 0, z))
   })
 
+  useEffect(() => {
+    console.warn('State changed:', galateaEntity.stateMachine.currentState)
+  }, [galateaEntity.stateMachine.currentState])
+
   return (
     <>
       <group ref={galateaRef}>
