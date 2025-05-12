@@ -2,16 +2,12 @@ import { useEntityManager, useGameEntity, useObstacles } from '@n3p6/react-three
 import { useFrame } from '@react-three/fiber'
 import { useSingleton } from 'foxact/use-singleton'
 import { useEffect } from 'react'
-import { useLocation } from 'react-router'
 import { Vector3 } from 'three'
 import { GameEntity, Vector3 as YukaVector3 } from 'yuka'
 
-import { XRNavMesh } from '~/components/xr/nav-mesh'
 import { useGalatea } from '~/hooks/use-galatea'
 
 export const Galatea = () => {
-  const { pathname } = useLocation()
-
   const { galateaEntity, galateaRef, galateaVRM } = useGalatea()
 
   const entityManager = useEntityManager()
@@ -50,7 +46,6 @@ export const Galatea = () => {
         />
       </group>
       <group ref={playerRef}></group>
-      {pathname === '/debug/meshes' && <XRNavMesh entity={galateaEntity} />}
     </>
   )
 }
