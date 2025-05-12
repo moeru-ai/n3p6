@@ -23,13 +23,12 @@ export class SeekToPlayerGoal extends Goal<OrcustAutomaton> {
   }
 
   execute() {
-    if (!(this.active()))
+    if (!this.active())
       return
-    // const owner = this.owner
 
     const squaredDistance = this.owner!.position.squaredDistanceTo(this.owner!.currentTarget!.position)
 
-    if (squaredDistance < 0.25) {
+    if (squaredDistance < 0.5) {
       this.status = Goal.STATUS.COMPLETED
     }
 

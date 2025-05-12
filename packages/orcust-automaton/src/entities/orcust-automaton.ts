@@ -5,7 +5,6 @@ import { ObstacleAvoidanceBehavior, Smoother, Think, Vehicle } from 'yuka'
 
 import { NavMeshArriveBehavior } from '../behaviors/nav-mesh-arrive'
 import { FollowEvaluator } from '../evaluators/follow'
-import { RestEvaluator } from '../evaluators/rest'
 
 export class OrcustAutomaton extends Vehicle {
   public actions: Record<string, AnimationAction | null> = {}
@@ -15,13 +14,8 @@ export class OrcustAutomaton extends Vehicle {
   public currentTarget: GameEntity | null = null // player entity
   public currentTime = 0 // tracks the current time of an action
   public deltaTime: number = 0 // the current time delta value
-  public fatigueLevel = 0 // current level of fatigue
 
   public navMesh?: NavMesh
-
-  public restDuration = 5 // duration of a rest phase in seconds
-
-  private MAX_FATIGUE = 3 // the girl needs to rest if this amount of fatigue is reached
 
   constructor() {
     super()
@@ -34,7 +28,6 @@ export class OrcustAutomaton extends Vehicle {
     // goal-driven agent design
     this.brain = new Think(this)
     this.brain.addEvaluator(new FollowEvaluator())
-    this.brain.addEvaluator(new RestEvaluator())
 
     // steering
     const obstacleAvoidanceBehavior = new ObstacleAvoidanceBehavior()
@@ -65,10 +58,6 @@ export class OrcustAutomaton extends Vehicle {
 
   public setObstacles(obstacles: GameEntity[]) {
     (this.steering.behaviors.at(0) as ObstacleAvoidanceBehavior).obstacles = obstacles
-  }
-
-  tired() {
-    return (this.fatigueLevel >= this.MAX_FATIGUE)
   }
 
   update(delta: number) {
