@@ -40,8 +40,7 @@ export class OrcustAutomatonFSM extends Vehicle {
 
   public setActions(actions: Record<string, AnimationAction | null>) {
     this.actions = actions
-
-    this.actions.idle!.enabled = true
+    this.stateMachine.changeTo('idle')
   }
 
   public setCurrentTarget(target: GameEntity) {

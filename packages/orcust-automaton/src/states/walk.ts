@@ -3,6 +3,8 @@ import { State } from 'yuka'
 import type { OrcustAutomatonFSM } from '../entities/orcust-automaton-fsm'
 
 export class WalkState extends State<OrcustAutomatonFSM> {
+  private timeout?: number
+
   enter(owner: OrcustAutomatonFSM) {
     owner
       .actions
@@ -13,7 +15,8 @@ export class WalkState extends State<OrcustAutomatonFSM> {
   }
 
   execute(owner: OrcustAutomatonFSM) {
-    // eslint-disable-next-line @masknet/no-timer, @masknet/prefer-timer-id
-    setTimeout(() => owner.stateMachine.changeTo('idle'), 5000)
+    if (this.timeout == null)
+      // eslint-disable-next-line @masknet/no-timer
+      this.timeout = setTimeout(() => owner.stateMachine.changeTo('walk'), 5000)
   }
 }
