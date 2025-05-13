@@ -1,8 +1,7 @@
 import { useVRM } from '@n3p6/react-three-vrm'
-import { useAnimations } from '@react-three/drei'
 import { useEffect, useState } from 'react'
 
-import { useAnimationCollection } from '~/hooks/use-animation-collection'
+import { useAnimations } from '~/hooks/use-animation-collection'
 
 const toggleState = (state: 'idle' | 'walk') =>
   state === 'idle' ? 'walk' : 'idle'
@@ -13,8 +12,7 @@ const vrmUrl = import.meta.env.DEV
 
 const DebugAnimations = () => {
   const vrm = useVRM(vrmUrl)
-  const clips = useAnimationCollection(vrm)
-  const { actions } = useAnimations(clips, vrm.scene)
+  const { actions } = useAnimations(vrm)
 
   const [state, setState] = useState<'idle' | 'walk'>('walk')
 

@@ -1,7 +1,7 @@
 import type { VRM } from '@pixiv/three-vrm'
-import type { AnimationClip } from 'three'
 
 import { useVRMAnimation } from '@n3p6/react-three-vrm'
+import { useAnimations as useAnimationsImpl } from '@react-three/drei'
 
 import idleUrl from '~/assets/motions/idle.vrma?url'
 import walkUrl from '~/assets/motions/walk.vrma?url'
@@ -11,7 +11,7 @@ import walkUrl from '~/assets/motions/walk.vrma?url'
 // import leftTurnUrl from '~/assets/motions/mixamo/Left Turn.fbx?url'
 // import rightTurnUrl from '~/assets/motions/mixamo/Right Turn.fbx?url'
 
-export const useAnimationCollection = (vrm: VRM): AnimationClip[] => {
+export const useAnimations = (vrm: VRM) => {
   // const startWalk = useMixamoAnimation(startWalkUrl, vrm, 'startWalk')
   // const stopWalk = useMixamoAnimation(stopWalkUrl, vrm, 'stopWalk')
   const idle = useVRMAnimation(idleUrl, vrm, 'idle')
@@ -19,5 +19,5 @@ export const useAnimationCollection = (vrm: VRM): AnimationClip[] => {
   // const leftTurn = useMixamoAnimation(leftTurnUrl, vrm, 'leftTurn')
   // const rightTurn = useMixamoAnimation(rightTurnUrl, vrm, 'rightTurn')
 
-  return [idle, walk]
+  return useAnimationsImpl([idle, walk], vrm.scene)
 }

@@ -1,4 +1,3 @@
-import type { AnimationAction } from 'three'
 import type { GameEntity } from 'yuka'
 
 import { StateMachine, Vehicle } from 'yuka'
@@ -7,8 +6,6 @@ import { IdleState } from '../states/idle'
 import { WalkState } from '../states/walk'
 
 export class OrcustAutomatonFSM extends Vehicle {
-  public actions: Record<string, AnimationAction | null> = {}
-  public crossFadeDuration = 0.5 // duration of a crossfade in seconds
   public currentTarget: GameEntity | null = null // player entity
   public currentTime = 0 // tracks the current time of an action
   public stateMachine: StateMachine<OrcustAutomatonFSM>
@@ -44,10 +41,6 @@ export class OrcustAutomatonFSM extends Vehicle {
       this.stateMachine.changeTo(isWalk ? 'idle' : 'walk')
       isWalk = !isWalk
     }, 5000)
-  }
-
-  public setActions(actions: Record<string, AnimationAction | null>) {
-    this.actions = actions
   }
 
   public setCurrentTarget(target: GameEntity) {
