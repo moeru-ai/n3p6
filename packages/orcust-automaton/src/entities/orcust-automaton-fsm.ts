@@ -1,6 +1,6 @@
 import type { GameEntity } from 'yuka'
 
-import { StateMachine, Vehicle } from 'yuka'
+import { ArriveBehavior, StateMachine, Vehicle } from 'yuka'
 
 import { IdleState } from '../states/idle'
 import { WalkState } from '../states/walk'
@@ -25,9 +25,10 @@ export class OrcustAutomatonFSM extends Vehicle {
     // obstacleAvoidanceBehavior.brakingWeight = 1
     // this.steering.add(obstacleAvoidanceBehavior)
 
-    // const arriveBehavior = new ArriveBehavior()
+    const arriveBehavior = new ArriveBehavior()
+    arriveBehavior.active = false
     // arriveBehavior.deceleration = 1.5
-    // this.steering.add(arriveBehavior)
+    this.steering.add(arriveBehavior)
 
     // state-driven agent design
     this.stateMachine = new StateMachine(this)
