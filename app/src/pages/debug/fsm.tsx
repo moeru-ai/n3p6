@@ -29,19 +29,18 @@ const DebugFSM = () => {
   })
 
   useEffect(() => {
-    // console.warn('State changed:', galateaEntity.stateMachine.currentState, galateaEntity.stateMachine.previousState)
     const isWalk = galateaEntity.stateMachine.currentState instanceof WalkState
 
     if (galateaEntity.stateMachine.previousState == null) {
       actions[isWalk ? 'walk' : 'idle']!
         .reset()
-        .fadeIn(1)
+        .fadeIn(0.5)
         .play()
     }
     else {
       actions[isWalk ? 'walk' : 'idle']!
         .reset()
-        .crossFadeFrom(actions[isWalk ? 'idle' : 'walk']!, 1)
+        .crossFadeFrom(actions[isWalk ? 'idle' : 'walk']!, 0.5)
         .play()
     }
   }, [actions, galateaEntity.stateMachine.currentState, galateaEntity.stateMachine.previousState])
