@@ -1,8 +1,7 @@
-import { WalkState } from '@n3p6/orcust-automaton'
 import { useEntityManager, useGameEntity } from '@n3p6/react-three-yuka'
 import { useFrame } from '@react-three/fiber'
 import { useSingleton } from 'foxact/use-singleton'
-import { useEffect } from 'react'
+import { useEffect, useRef } from 'react'
 import { Vector3 } from 'three'
 import { GameEntity, Vector3 as YukaVector3 } from 'yuka'
 
@@ -12,6 +11,8 @@ import { useGalateaFSM } from '~/hooks/use-galatea-fsm'
 const DebugFSM = () => {
   const { galateaEntity, galateaRef, galateaVRM } = useGalateaFSM()
   const { actions } = useAnimations(galateaVRM)
+
+  const initialized = useRef<true>(null)
 
   const entityManager = useEntityManager()
   const [playerRef, playerEntity] = useGameEntity(GameEntity)
@@ -32,13 +33,17 @@ const DebugFSM = () => {
   })
 
   useEffect(() => {
-    const isWalk = galateaEntity.stateMachine.currentState instanceof WalkState
+    const isWalk = galateaEntity.steering.behaviors[0].active
 
-    if (galateaEntity.stateMachine.previousState == null) {
+    console.warn('State changed, isWalk:', isWalk)
+
+    if (initialized.current == null) {
       actions[isWalk ? 'walk' : 'idle']!
         .reset()
         .fadeIn(0.5)
         .play()
+
+      initialized.current = true
     }
     else {
       actions[isWalk ? 'walk' : 'idle']!
@@ -46,7 +51,7 @@ const DebugFSM = () => {
         .crossFadeFrom(actions[isWalk ? 'idle' : 'walk']!, 0.5)
         .play()
     }
-  }, [actions, galateaEntity.stateMachine.currentState, galateaEntity.stateMachine.previousState])
+  }, [actions, initialized, galateaEntity.steering.behaviors])
 
   return (
     <>

@@ -3,14 +3,13 @@ import { State } from 'yuka'
 import type { OrcustAutomatonFSM } from '../entities/orcust-automaton-fsm'
 
 export class IdleState extends State<OrcustAutomatonFSM> {
-  enter(_owner: OrcustAutomatonFSM) {
-    // if (owner.actions.idle && owner.actions.walk) {
-    //   owner
-    //     .actions
-    //     .idle
-    //     .reset()
-    //     .crossFadeFrom(owner.actions.walk, owner.crossFadeDuration)
-    //     .play()
-    // }
+  execute(owner: OrcustAutomatonFSM) {
+    if (!owner.currentTarget)
+      return
+
+    const squaredDistance = owner.position.squaredDistanceTo(owner.currentTarget.position)
+
+    if (squaredDistance > 2)
+      owner.stateMachine.changeTo('walk')
   }
 }

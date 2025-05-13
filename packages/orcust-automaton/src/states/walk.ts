@@ -14,6 +14,16 @@ export class WalkState extends State<OrcustAutomatonFSM> {
     arriveBehavior.active = true
   }
 
+  execute(owner: OrcustAutomatonFSM) {
+    if (!owner.currentTarget)
+      return
+
+    const squaredDistance = owner.position.squaredDistanceTo(owner.currentTarget.position)
+
+    if (squaredDistance < 1)
+      owner.stateMachine.changeTo('idle')
+  }
+
   exit(owner: OrcustAutomatonFSM) {
     const arriveBehavior = owner.steering.behaviors.at(0) as ArriveBehavior
     arriveBehavior.active = false
