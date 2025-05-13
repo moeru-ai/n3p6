@@ -2,10 +2,10 @@ import type { ArriveBehavior } from 'yuka'
 
 import { State } from 'yuka'
 
-import type { OrcustAutomatonFSM } from '../entities/orcust-automaton-fsm'
+import type { OrcustAutomaton } from '../entities/orcust-automaton'
 
-export class WalkState extends State<OrcustAutomatonFSM> {
-  enter(owner: OrcustAutomatonFSM) {
+export class WalkState extends State<OrcustAutomaton> {
+  enter(owner: OrcustAutomaton) {
     if (owner.currentTarget == null)
       return
 
@@ -14,7 +14,7 @@ export class WalkState extends State<OrcustAutomatonFSM> {
     owner.toggleArriveBehavior(true)
   }
 
-  execute(owner: OrcustAutomatonFSM) {
+  execute(owner: OrcustAutomaton) {
     if (!owner.currentTarget)
       return
 
@@ -24,7 +24,7 @@ export class WalkState extends State<OrcustAutomatonFSM> {
       owner.stateMachine.changeTo('idle')
   }
 
-  exit(owner: OrcustAutomatonFSM) {
+  exit(owner: OrcustAutomaton) {
     owner.toggleArriveBehavior(false)
     owner.velocity.set(0, 0, 0)
   }

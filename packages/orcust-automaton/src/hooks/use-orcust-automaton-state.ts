@@ -1,11 +1,10 @@
 import { useSyncExternalStore } from 'react'
 
-import type { OrcustAutomatonFSM } from '../entities/orcust-automaton-fsm'
+import type { OrcustAutomaton } from '../entities/orcust-automaton'
 
-export const useOrcustAutomatonState = (orcustAutomaton: OrcustAutomatonFSM) => {
+export const useOrcustAutomatonState = (orcustAutomaton: OrcustAutomaton) => {
   const subscribe = (onStoreChange: () => void) => {
     orcustAutomaton.subscribe(onStoreChange)
-
     return () => orcustAutomaton.unsubscribe()
   }
 

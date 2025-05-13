@@ -1,5 +1,4 @@
 export { OrcustAutomaton } from './entities/orcust-automaton'
-export { OrcustAutomatonFSM } from './entities/orcust-automaton-fsm'
 export * from './hooks/use-orcust-automaton'
 export * from './hooks/use-orcust-automaton-state'
 export * from './states/idle'

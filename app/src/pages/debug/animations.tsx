@@ -1,7 +1,7 @@
 import { useVRM } from '@n3p6/react-three-vrm'
 import { useEffect, useState } from 'react'
 
-import { useAnimations } from '~/hooks/use-animation-collection'
+import { useAnimations } from '~/hooks/use-animations'
 
 const toggleState = (state: 'idle' | 'walk') =>
   state === 'idle' ? 'walk' : 'idle'

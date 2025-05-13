@@ -1,14 +1,19 @@
-import { useEntityManager, useGameEntity, useObstacles } from '@n3p6/react-three-yuka'
+import { useOrcustAutomatonState } from '@n3p6/orcust-automaton'
+import { useEntityManager, useGameEntity } from '@n3p6/react-three-yuka'
 import { useFrame } from '@react-three/fiber'
 import { useSingleton } from 'foxact/use-singleton'
-import { useEffect } from 'react'
+import { useEffect, useRef } from 'react'
 import { Vector3 } from 'three'
 import { GameEntity, Vector3 as YukaVector3 } from 'yuka'
 
 import { useGalatea } from '~/hooks/use-galatea'
+import { useAnimations } from '~/hooks/use-animations'
 
 export const Galatea = () => {
   const { galateaEntity, galateaRef, galateaVRM } = useGalatea()
+  const { actions } = useAnimations(galateaVRM)
+
+  const initialized = useRef<true>(null)
 
   const entityManager = useEntityManager()
   const [playerRef, playerEntity] = useGameEntity(GameEntity)
@@ -23,17 +28,41 @@ export const Galatea = () => {
 
     const { x, z } = camera.getWorldPosition(vec.current)
     playerEntity.position.copy(yukaVec.current.set(x, 0, z))
+
+    // eslint-disable-next-line react-compiler/react-compiler
+    actions.walk!.timeScale = Math.min(0.75, galateaEntity.getSpeed() / galateaEntity.maxSpeed)
   })
 
-  const obstacles = useObstacles()
+  const isWalk = useOrcustAutomatonState(galateaEntity)
 
   useEffect(() => {
-    galateaEntity.setObstacles(obstacles)
+    console.warn('State changed, isWalk:', isWalk)
 
-    return () => {
-      galateaEntity.setObstacles([])
+    if (initialized.current == null) {
+      actions[isWalk ? 'walk' : 'idle']!
+        .reset()
+        .fadeIn(0.5)
+        .play()
+
+      initialized.current = true
     }
-  }, [galateaEntity, obstacles])
+    else {
+      actions[isWalk ? 'walk' : 'idle']!
+        .reset()
+        .crossFadeFrom(actions[isWalk ? 'idle' : 'walk']!, 0.5)
+        .play()
+    }
+  }, [actions, initialized, isWalk])
+
+  // const obstacles = useObstacles()
+
+  // useEffect(() => {
+  //   galateaEntity.setObstacles(obstacles)
+
+  //   return () => {
+  //     galateaEntity.setObstacles([])
+  //   }
+  // }, [galateaEntity, obstacles])
 
   return (
     <>

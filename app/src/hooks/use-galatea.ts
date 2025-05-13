@@ -1,8 +1,6 @@
-import { useOrcustAutomaton } from '@n3p6/orcust-automaton'
+import { OrcustAutomaton } from '@n3p6/orcust-automaton'
 import { useVRM, useVRMAutoBlink, useVRMAutoLookAtDefaultCamera } from '@n3p6/react-three-vrm'
-import { useEffect } from 'react'
-
-import { useAnimations } from '~/hooks/use-animation-collection'
+import { useGameEntity } from '@n3p6/react-three-yuka'
 
 const vrmUrl = import.meta.env.DEV
   ? '/models/Hikari_SummerDress.vrm'
@@ -13,14 +11,11 @@ useVRM.preload(vrmUrl)
 
 export const useGalatea = () => {
   const galateaVRM = useVRM(vrmUrl)
-  const { actions } = useAnimations(galateaVRM)
 
   useVRMAutoBlink(galateaVRM, 5000)
   useVRMAutoLookAtDefaultCamera(galateaVRM)
 
-  const [galateaRef, galateaEntity] = useOrcustAutomaton()
-
-  useEffect(() => galateaEntity.setActions(actions))
+  const [galateaRef, galateaEntity] = useGameEntity(OrcustAutomaton)
 
   return {
     galateaEntity,

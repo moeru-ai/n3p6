@@ -1,9 +1,9 @@
 import { State } from 'yuka'
 
-import type { OrcustAutomatonFSM } from '../entities/orcust-automaton-fsm'
+import type { OrcustAutomaton } from '../entities/orcust-automaton'
 
-export class IdleState extends State<OrcustAutomatonFSM> {
-  execute(owner: OrcustAutomatonFSM) {
+export class IdleState extends State<OrcustAutomaton> {
+  execute(owner: OrcustAutomaton) {
     if (!owner.currentTarget)
       return
 
