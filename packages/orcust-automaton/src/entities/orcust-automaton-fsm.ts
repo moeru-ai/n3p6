@@ -10,6 +10,8 @@ export class OrcustAutomatonFSM extends Vehicle {
   public currentTime = 0 // tracks the current time of an action
   public stateMachine: StateMachine<OrcustAutomatonFSM>
 
+  private onStoreChange?: () => void
+
   constructor() {
     super()
 
@@ -42,7 +44,21 @@ export class OrcustAutomatonFSM extends Vehicle {
     this.stateMachine.changeTo('walk')
   }
 
-  update(delta: number) {
+  public subscribe(onStoreChange: () => void) {
+    this.onStoreChange = onStoreChange
+  }
+
+  public toggleArriveBehavior(active: boolean) {
+    const arriveBehavior = this.steering.behaviors.at(0) as ArriveBehavior
+    arriveBehavior.active = active
+    this.onStoreChange?.()
+  }
+
+  public unsubscribe() {
+    this.onStoreChange = undefined
+  }
+
+  public update(delta: number) {
     super.update(delta)
 
     this.stateMachine.update()

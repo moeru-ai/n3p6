@@ -11,7 +11,7 @@ export class WalkState extends State<OrcustAutomatonFSM> {
 
     const arriveBehavior = owner.steering.behaviors.at(0) as ArriveBehavior
     arriveBehavior.target = owner.currentTarget.position
-    arriveBehavior.active = true
+    owner.toggleArriveBehavior(true)
   }
 
   execute(owner: OrcustAutomatonFSM) {
@@ -25,8 +25,7 @@ export class WalkState extends State<OrcustAutomatonFSM> {
   }
 
   exit(owner: OrcustAutomatonFSM) {
-    const arriveBehavior = owner.steering.behaviors.at(0) as ArriveBehavior
-    arriveBehavior.active = false
+    owner.toggleArriveBehavior(false)
     owner.velocity.set(0, 0, 0)
   }
 }

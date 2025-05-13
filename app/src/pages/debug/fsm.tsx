@@ -1,3 +1,4 @@
+import { useOrcustAutomatonState } from '@n3p6/orcust-automaton'
 import { useEntityManager, useGameEntity } from '@n3p6/react-three-yuka'
 import { useFrame } from '@react-three/fiber'
 import { useSingleton } from 'foxact/use-singleton'
@@ -32,9 +33,9 @@ const DebugFSM = () => {
     actions.walk!.timeScale = Math.min(0.75, galateaEntity.getSpeed() / galateaEntity.maxSpeed)
   })
 
-  useEffect(() => {
-    const isWalk = galateaEntity.steering.behaviors[0].active
+  const isWalk = useOrcustAutomatonState(galateaEntity)
 
+  useEffect(() => {
     console.warn('State changed, isWalk:', isWalk)
 
     if (initialized.current == null) {
@@ -51,7 +52,7 @@ const DebugFSM = () => {
         .crossFadeFrom(actions[isWalk ? 'idle' : 'walk']!, 0.5)
         .play()
     }
-  }, [actions, initialized, galateaEntity.steering.behaviors])
+  }, [actions, initialized, isWalk])
 
   return (
     <>
