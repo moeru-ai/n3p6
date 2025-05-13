@@ -6,8 +6,8 @@ import { useEffect, useRef } from 'react'
 import { Vector3 } from 'three'
 import { GameEntity, Vector3 as YukaVector3 } from 'yuka'
 
-import { useGalatea } from '~/hooks/use-galatea'
 import { useAnimations } from '~/hooks/use-animations'
+import { useGalatea } from '~/hooks/use-galatea'
 
 export const Galatea = () => {
   const { galateaEntity, galateaRef, galateaVRM } = useGalatea()

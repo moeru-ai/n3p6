@@ -1,6 +1,9 @@
 import { Container, Fullscreen, Text } from '@react-three/uikit'
-import { Button, colors, Defaults, Separator } from '@react-three/uikit-default'
+import { Button, Card, colors, Defaults, Separator } from '@react-three/uikit-default'
+import { PanelLeftIcon } from '@react-three/uikit-lucide'
 import { Outlet, useLocation, useNavigate } from 'react-router'
+
+import { ToggleColorSchemeButton } from '~/components/ui/toggle-color-scheme-button'
 
 const sidebar: {
   href: string
@@ -8,9 +11,9 @@ const sidebar: {
 }[] = [{
   href: '/settings',
   title: 'Providers',
-// }, {
-//   href: '/settings/memory',
-//   title: 'Memory',
+  // }, {
+  //   href: '/settings/memory',
+  //   title: 'Memory',
 }]
 
 const SettingsSidebar = () => {
@@ -40,31 +43,44 @@ const SettingsSidebar = () => {
 }
 
 const SettingsLayout = () => (
-  <Fullscreen backgroundColor={colors.background}>
-    <Defaults>
-      <Container
-        flexDirection="column"
-        height="100%"
-        overflow="scroll"
-        padding={32}
-        width="100%"
-      >
-        <Text fontSize={24} fontWeight={600}>Settings</Text>
-        <Text color={colors.mutedForeground}>Manage your account settings and set e-mail preferences.</Text>
-        <Separator marginY={24} />
+  <Defaults>
+    <Fullscreen
+      backgroundColor={colors.muted}
+      flexDirection="row"
+      height="100%"
+      overflow="scroll"
+      padding={12}
+      width="100%"
+    >
+      <Container flexDirection="column">
+        <Button variant="ghost">
+          <Text fontWeight={600}>N3P6 by Moeru AI</Text>
+        </Button>
         <Container
           flexDirection="column"
           gap={32}
           lg={{ flexDirection: 'row' }}
         >
           <SettingsSidebar />
-          <Container flexDirection="column">
-            <Outlet />
-          </Container>
         </Container>
       </Container>
-    </Defaults>
-  </Fullscreen>
+      <Card flexGrow={1} marginLeft="auto" maxWidth={1440}>
+        <Container gap={8} maxHeight={60} padding={8}>
+          <Button size="icon" variant="ghost">
+            <PanelLeftIcon height={16} width={16} />
+          </Button>
+          <Text fontWeight={600}>Test</Text>
+          <Container marginLeft="auto">
+            <ToggleColorSchemeButton variant="ghost" />
+          </Container>
+        </Container>
+        <Separator />
+        <Container padding={16}>
+          <Outlet />
+        </Container>
+      </Card>
+    </Fullscreen>
+  </Defaults>
 )
 
 export default SettingsLayout

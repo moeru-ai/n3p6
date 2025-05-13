@@ -4,22 +4,17 @@ import {
   Text,
 } from '@react-three/uikit'
 import { Button, Defaults, Input } from '@react-three/uikit-default'
-import { GithubIcon, MoonIcon, SendIcon, SettingsIcon, SunIcon } from '@react-three/uikit-lucide'
+import { GithubIcon, SendIcon, SettingsIcon } from '@react-three/uikit-lucide'
 import { IfInSessionMode, useXRStore } from '@react-three/xr'
 import { useState } from 'react'
 
-import { useIsDarkValue, useToggleIsDark } from '~/hooks/use-is-dark'
 import { useNavigate } from '~/router'
 
-const NavbarThemeIcon = ({ isDark }: { isDark: boolean }) => isDark
-  ? <SunIcon height={16} width={16} />
-  : <MoonIcon height={16} width={16} />
+import { ToggleColorSchemeButton } from './toggle-color-scheme-button'
 
 export const Navbar = () => {
   const store = useXRStore()
   const navigate = useNavigate()
-  const isDark = useIsDarkValue()
-  const toggleIsDark = useToggleIsDark()
   const [value, setValue] = useState('')
 
   return (
@@ -74,14 +69,7 @@ export const Navbar = () => {
               >
                 <SettingsIcon height={16} width={16} />
               </Button>
-              <Button
-                data-test-id="toggle-color-scheme"
-                onClick={() => toggleIsDark()}
-                size="icon"
-                variant="secondary"
-              >
-                <NavbarThemeIcon isDark={isDark} />
-              </Button>
+              <ToggleColorSchemeButton variant="secondary" />
               <Button
                 data-test-id="github"
                 onClick={() => window.open('https://github.com/moeru-ai/n3p6', '_blank', 'noopener')}
