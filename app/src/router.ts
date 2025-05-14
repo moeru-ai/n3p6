@@ -9,6 +9,7 @@ export type Path =
   | `/debug/illuminance`
   | `/debug/input`
   | `/debug/planes`
+  | `/debug/settings`
   | `/debug/text`
   | `/settings`
 
