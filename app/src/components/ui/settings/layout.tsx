@@ -1,7 +1,7 @@
 import type { PropsWithChildren, ReactNode } from 'react'
 
 import { Container, Fullscreen, Text } from '@react-three/uikit'
-import { Button, Card, colors, Defaults, Separator } from '@react-three/uikit-default'
+import { Button, Card, colors, Separator } from '@react-three/uikit-default'
 import { ChevronLeftIcon, GithubIcon, PanelLeftIcon } from '@react-three/uikit-lucide'
 import { useState } from 'react'
 
@@ -21,7 +21,6 @@ export const SettingsLayout = ({ children, sidebar, title }: PropsWithChildren<S
   const panelMaxWidth = sidebarDisplay === 'flex' ? 768 : 1024
 
   return (
-    <Defaults>
       <Fullscreen
         alignItems="center"
         backgroundColor={colors.muted}
@@ -92,6 +91,5 @@ export const SettingsLayout = ({ children, sidebar, title }: PropsWithChildren<S
           </Card>
         </Container>
       </Fullscreen>
-    </Defaults>
   )
 }

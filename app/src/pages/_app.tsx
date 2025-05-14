@@ -3,6 +3,7 @@ import { Loader } from '@react-three/drei'
 import { Canvas } from '@react-three/fiber'
 import { Physics } from '@react-three/rapier'
 import { setPreferredColorScheme } from '@react-three/uikit'
+import { Defaults } from '@react-three/uikit-default'
 import { noEvents } from '@react-three/xr'
 import { ComposeContextProvider } from 'foxact/compose-context-provider'
 import { Suspense, useEffect, useMemo } from 'react'
@@ -11,6 +12,7 @@ import { Outlet, useLocation } from 'react-router'
 import { useIsDarkValue } from '~/hooks/use-is-dark'
 
 const contexts = [
+  <Defaults key="uikit-default" />,
   <EntityManagerProvider key="entity-manager" />,
   <ObstaclesProvider key="obstacles" />,
 ]

@@ -1,5 +1,5 @@
 import { Container, Root, Text } from '@react-three/uikit'
-import { Button, Defaults, Input } from '@react-three/uikit-default'
+import { Button, Input } from '@react-three/uikit-default'
 import { useState } from 'react'
 
 const DebugInput = () => {
@@ -13,7 +13,6 @@ const DebugInput = () => {
   return (
     <group position={[0, 1, 0]}>
       <Root>
-        <Defaults>
           <Container flexDirection="column" gap={4}>
             <Text>{value}</Text>
             <Input
@@ -31,7 +30,6 @@ const DebugInput = () => {
               <Text>Submit</Text>
             </Button>
           </Container>
-        </Defaults>
       </Root>
     </group>
   )
