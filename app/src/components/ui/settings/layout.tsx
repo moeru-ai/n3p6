@@ -49,7 +49,7 @@ export const SettingsLayout = ({ children, panelMaterialClass, sidebar, title }:
           hover={{ backgroundColor: colors.card }}
           justifyContent="flex-start"
           onClick={() => window.open('https://github.com/moeru-ai/n3p6', '_blank', 'noopener')}
-          variant="secondary"
+          variant="ghost"
         >
           <GithubIcon height={16} width={16} />
           <Text>GitHub</Text>
