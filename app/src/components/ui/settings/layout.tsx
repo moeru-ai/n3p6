@@ -1,12 +1,20 @@
+import type { PropsWithChildren, ReactNode } from 'react'
+
 import { Container, Fullscreen, Text } from '@react-three/uikit'
 import { Button, Card, colors, Defaults, Separator } from '@react-three/uikit-default'
-import { CableIcon, ChevronLeftIcon, GithubIcon, PanelLeftIcon } from '@react-three/uikit-lucide'
+import { ChevronLeftIcon, GithubIcon, PanelLeftIcon } from '@react-three/uikit-lucide'
 import { useState } from 'react'
-import { Outlet, useNavigate } from 'react-router'
 
 import { ToggleColorSchemeButton } from '~/components/ui/toggle-color-scheme-button'
+import { useNavigate } from '~/router'
 
-const SettingsLayout = () => {
+export interface SettingsLayoutProps {
+  // content: ReactNode
+  sidebar: ReactNode
+  title?: string
+}
+
+export const SettingsLayout = ({ children, sidebar, title }: PropsWithChildren<SettingsLayoutProps>) => {
   const [sidebarDisplay, setSidebarDisplay] = useState<'flex' | 'none'>('flex')
   const navigate = useNavigate()
 
@@ -20,7 +28,7 @@ const SettingsLayout = () => {
         justifyContent="center"
       >
         <Container flexDirection="row" flexGrow={1} gap={12} height="100%" maxHeight={768} maxWidth={1024} padding={12} width="100%">
-          <Container display={sidebarDisplay} flexDirection="column" flexGrow={1} gap={8} maxWidth={256} paddingY={8}>
+          <Container display={sidebarDisplay} flexDirection="column" flexGrow={1} gap={4} maxWidth={256} paddingY={8}>
             <Button
               data-test-id="return-to-home"
               gap={8}
@@ -33,10 +41,10 @@ const SettingsLayout = () => {
               <ChevronLeftIcon height={16} width={16} />
               <Text fontWeight={600}>N3P6 by Moeru AI</Text>
             </Button>
-            <Button disabled justifyContent="flex-start" marginBottom={-16} variant="ghost">
+            <Button disabled justifyContent="flex-start" marginBottom={-8} variant="ghost">
               <Text fontSize={12} fontWeight={600}>Settings</Text>
             </Button>
-            <Button
+            {/* <Button
               gap={8}
               hover={{ backgroundColor: colors.card }}
               justifyContent="flex-start"
@@ -44,9 +52,10 @@ const SettingsLayout = () => {
             >
               <CableIcon height={16} width={16} />
               <Text>Providers</Text>
-            </Button>
+            </Button> */}
+            {sidebar}
             <Button flexGrow={1} variant="ghost"></Button>
-            <Button disabled justifyContent="flex-start" marginBottom={-16} variant="ghost">
+            <Button disabled justifyContent="flex-start" marginBottom={-8} variant="ghost">
               <Text fontSize={12} fontWeight={600}>Community</Text>
             </Button>
             <Button
@@ -61,7 +70,7 @@ const SettingsLayout = () => {
               <Text>GitHub</Text>
             </Button>
           </Container>
-          <Card flexGrow={1} marginLeft="auto" maxWidth={panelMaxWidth}>
+          <Card flexGrow={1} marginLeft="auto" maxWidth={panelMaxWidth} width="100%">
             <Container gap={8} maxHeight={60} padding={8}>
               <Button
                 data-test-id="toggle-sidebar"
@@ -71,14 +80,14 @@ const SettingsLayout = () => {
               >
                 <PanelLeftIcon height={16} width={16} />
               </Button>
-              <Text fontWeight={600}>Providers</Text>
+              <Text fontWeight={600}>{title}</Text>
               <Container marginLeft="auto">
                 <ToggleColorSchemeButton variant="ghost" />
               </Container>
             </Container>
             <Separator />
             <Container flexDirection="column" gap={8} maxHeight={708} overflow="scroll" padding={16} width="100%">
-              <Outlet />
+              {children}
             </Container>
           </Card>
         </Container>
@@ -86,5 +95,3 @@ const SettingsLayout = () => {
     </Defaults>
   )
 }
-
-export default SettingsLayout
