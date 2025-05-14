@@ -38,11 +38,11 @@ VR mode should be available on any SteamVR supported device and Quest / PICO.
 
 MR mode requires some advanced features, so we have made a list of support:
 
-- **Quest 3/3S**: Developers hold this device and therefore have access to top level support
+- **Quest 3/3S**: Developers own this device, therefore have access to top-tier support
 - **Vision Pro**: Untested, theoretically supported
 - **Pico 4 Ultra**: Untested, theoretically supported
 
-If you'd like to help test it, feel free to give us feedback in the [discussions](https://github.com/moeru-ai/n3p6/discussions).
+If you'd like to help with testing, please give us feedback in the [discussions](https://github.com/moeru-ai/n3p6/discussions).
 
 ## License
 
