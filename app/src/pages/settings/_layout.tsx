@@ -1,47 +1,10 @@
 import { Container, Fullscreen, Text } from '@react-three/uikit'
 import { Button, Card, colors, Defaults, Separator } from '@react-three/uikit-default'
-import { ChevronLeftIcon, PanelLeftIcon } from '@react-three/uikit-lucide'
+import { CableIcon, ChevronLeftIcon, GithubIcon, PanelLeftIcon } from '@react-three/uikit-lucide'
 import { useState } from 'react'
 import { Outlet, useNavigate } from 'react-router'
 
 import { ToggleColorSchemeButton } from '~/components/ui/toggle-color-scheme-button'
-
-const sidebar: {
-  href: string
-  title: string
-}[] = [{
-  href: '/settings',
-  title: 'Providers',
-  // }, {
-  //   href: '/settings/memory',
-  //   title: 'Memory',
-}]
-
-const SettingsSidebar = () => {
-  // const { pathname } = useLocation()
-  const navigate = useNavigate()
-
-  // const buttonVariant = (href: string) =>
-  //   pathname === href ? 'secondary' : 'ghost'
-
-  return (
-    <Container gap={8} lg={{ flexDirection: 'column' }}>
-      {sidebar.map(item => (
-        <Button
-          data-test-id="sidebar-link"
-          hover={{ backgroundColor: colors.card }}
-          justifyContent="flex-start"
-          key={item.href}
-          // eslint-disable-next-line ts/no-misused-promises
-          onClick={async () => navigate(item.href)}
-          variant="secondary"
-        >
-          <Text>{item.title}</Text>
-        </Button>
-      ))}
-    </Container>
-  )
-}
 
 const SettingsLayout = () => {
   const [sidebarDisplay, setSidebarDisplay] = useState<'flex' | 'none'>('flex')
@@ -70,7 +33,33 @@ const SettingsLayout = () => {
               <ChevronLeftIcon height={16} width={16} />
               <Text fontWeight={600}>N3P6 by Moeru AI</Text>
             </Button>
-            <SettingsSidebar />
+            <Button disabled justifyContent="flex-start" marginBottom={-16} variant="ghost">
+              <Text fontSize={12} fontWeight={600}>Settings</Text>
+            </Button>
+            <Button
+              gap={8}
+              hover={{ backgroundColor: colors.card }}
+              justifyContent="flex-start"
+              variant="secondary"
+            >
+              <CableIcon height={16} width={16} />
+              <Text>Providers</Text>
+            </Button>
+            <Button flexGrow={1} variant="ghost"></Button>
+            <Button disabled justifyContent="flex-start" marginBottom={-16} variant="ghost">
+              <Text fontSize={12} fontWeight={600}>Community</Text>
+            </Button>
+            <Button
+              data-test-id="github"
+              gap={8}
+              hover={{ backgroundColor: colors.card }}
+              justifyContent="flex-start"
+              onClick={() => window.open('https://github.com/moeru-ai/n3p6', '_blank', 'noopener')}
+              variant="secondary"
+            >
+              <GithubIcon height={16} width={16} />
+              <Text>GitHub</Text>
+            </Button>
           </Container>
           <Card flexGrow={1} marginLeft="auto" maxWidth={panelMaxWidth}>
             <Container gap={8} maxHeight={60} padding={8}>

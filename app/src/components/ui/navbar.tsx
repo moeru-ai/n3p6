@@ -4,7 +4,7 @@ import {
   Text,
 } from '@react-three/uikit'
 import { Button, Defaults, Input } from '@react-three/uikit-default'
-import { GithubIcon, SendIcon, SettingsIcon } from '@react-three/uikit-lucide'
+import { SendIcon, SettingsIcon } from '@react-three/uikit-lucide'
 import { IfInSessionMode, useXRStore } from '@react-three/xr'
 import { useState } from 'react'
 
@@ -70,14 +70,6 @@ export const Navbar = () => {
                 <SettingsIcon height={16} width={16} />
               </Button>
               <ToggleColorSchemeButton variant="secondary" />
-              <Button
-                data-test-id="github"
-                onClick={() => window.open('https://github.com/moeru-ai/n3p6', '_blank', 'noopener')}
-                size="icon"
-                variant="secondary"
-              >
-                <GithubIcon height={16} width={16} />
-              </Button>
             </Container>
           </Container>
         </Fullscreen>
