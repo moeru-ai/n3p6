@@ -6,6 +6,7 @@ import { useMemo, useState } from 'react'
 
 import { SettingsLayout } from './layout'
 import { SettingsNotifications } from './pages/notifications'
+import { SettingsProviders } from './pages/providers'
 
 export const Settings = () => {
   const [currentPage, setCurrentPage] = useState('providers')
@@ -43,7 +44,7 @@ export const Settings = () => {
       )}
       title={title}
     >
-      <Text>{currentPage}</Text>
+      <SettingsProviders display={currentPage === 'providers' ? 'flex' : 'none'} />
       <SettingsNotifications display={currentPage === 'notifications' ? 'flex' : 'none'} />
     </SettingsLayout>
   )
