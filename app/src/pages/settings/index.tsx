@@ -17,8 +17,8 @@ const notifications = [
   },
 ]
 
-export default () => (
-  <Card width={380}>
+const Notifications = () => (
+  <Card width="100%">
     <CardHeader>
       <CardTitle>
         <Text>Notifications</Text>
@@ -46,8 +46,11 @@ export default () => (
             alignItems="flex-start"
             flexDirection="row"
             gap={17}
+            // eslint-disable-next-line react/no-array-index-key
             key={index}
+            // eslint-disable-next-line @masknet/jsx-no-logical
             marginBottom={index === notifications.length - 1 ? 0 : 16}
+            // eslint-disable-next-line @masknet/jsx-no-logical
             paddingBottom={index === notifications.length - 1 ? 0 : 16}
           >
             <Container backgroundColor={0x0EA5E9} borderRadius={1000} height={8} transformTranslateY={4} width={8} />
@@ -71,3 +74,13 @@ export default () => (
     </CardFooter>
   </Card>
 )
+
+const SettingsIndex = () => (
+  <>
+    <Notifications />
+    {/* <Notifications />
+    <Notifications /> */}
+  </>
+)
+
+export default SettingsIndex

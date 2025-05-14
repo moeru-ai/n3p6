@@ -58,7 +58,7 @@ export const Navbar = () => {
                 onClick={() => void store.enterAR()}
                 variant="secondary"
               >
-                <Text>Enter AR</Text>
+                <Text>Enter MR</Text>
               </Button>
               <Button
                 data-test-id="settings"
