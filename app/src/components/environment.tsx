@@ -2,7 +2,7 @@ import { Grid, Stars } from '@react-three/drei'
 import { RigidBody } from '@react-three/rapier'
 import { colors } from '@react-three/uikit-default'
 import { IfInSessionMode } from '@react-three/xr'
-import { useEffect, useState } from 'react'
+import { useMemo } from 'react'
 
 import { useIsDarkValue } from '~/hooks/use-is-dark'
 
@@ -10,16 +10,11 @@ export const Environment = () => {
   const isDark = useIsDarkValue()
   const intensity = isDark ? 1 : 1.5
 
-  const [bg, setBg] = useState(colors.background.value)
-  const [fg, setFg] = useState(colors.foreground.value)
-
-  // FIXME: listen signal update
-  useEffect(() => {
-    // eslint-disable-next-line react-hooks-extra/no-direct-set-state-in-use-effect
-    setBg(colors.background.value)
-    // eslint-disable-next-line react-hooks-extra/no-direct-set-state-in-use-effect
-    setFg(colors.foreground.value)
-  }, [isDark])
+  // FIXME: useSignal
+  // eslint-disable-next-line sonarjs/no-all-duplicated-branches
+  const bg = useMemo(() => isDark ? colors.background.value : colors.background.value, [isDark])
+  // eslint-disable-next-line sonarjs/no-all-duplicated-branches
+  const fg = useMemo(() => isDark ? colors.foreground.value : colors.foreground.value, [isDark])
 
   return (
     <>
