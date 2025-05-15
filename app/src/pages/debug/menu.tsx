@@ -18,7 +18,7 @@ export const FloatingMenu = ({ children, ...props }: PropsWithChildren<JSX.Intri
   const localPosition = useMemo(() => new Vector3(), [])
 
   useFrame(() => {
-    if (!menuRef.current)
+    if (!menuRef.current || props.visible === false)
       return
 
     localPosition.set(0, 0, -1)
