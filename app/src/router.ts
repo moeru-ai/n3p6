@@ -11,6 +11,7 @@ export type Path =
   | `/debug/menu`
   | `/debug/planes`
   | `/debug/settings`
+  | `/debug/speech-recognition`
   | `/debug/tablet`
   | `/debug/text`
   | `/settings`
