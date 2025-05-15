@@ -10,6 +10,7 @@ export type Path =
   | `/debug/input`
   | `/debug/planes`
   | `/debug/settings`
+  | `/debug/tablet`
   | `/debug/text`
   | `/settings`
 
