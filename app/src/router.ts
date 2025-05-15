@@ -8,6 +8,7 @@ export type Path =
   | `/debug/animations`
   | `/debug/illuminance`
   | `/debug/input`
+  | `/debug/menu`
   | `/debug/planes`
   | `/debug/settings`
   | `/debug/tablet`
