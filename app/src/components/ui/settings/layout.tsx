@@ -1,4 +1,3 @@
-import type { ContainerProperties } from '@react-three/uikit'
 import type { PropsWithChildren, ReactNode } from 'react'
 
 import { Container, Text } from '@react-three/uikit'
@@ -14,7 +13,7 @@ export interface SettingsLayoutProps {
   title?: string
 }
 
-export const SettingsLayout = ({ children, panelMaterialClass, sidebar, title }: PropsWithChildren<Pick<ContainerProperties, 'panelMaterialClass'> & SettingsLayoutProps>) => {
+export const SettingsLayout = ({ children, sidebar, title }: PropsWithChildren<SettingsLayoutProps>) => {
   const [sidebarDisplay, setSidebarDisplay] = useState<'flex' | 'none'>('flex')
   const navigate = useNavigate()
 
@@ -55,7 +54,7 @@ export const SettingsLayout = ({ children, panelMaterialClass, sidebar, title }:
           <Text>GitHub</Text>
         </Button>
       </Container>
-      <Card flexGrow={1} marginLeft="auto" maxWidth={panelMaxWidth} panelMaterialClass={panelMaterialClass} width="100%">
+      <Card flexGrow={1} marginLeft="auto" maxWidth={panelMaxWidth} width="100%">
         <Container gap={8} maxHeight={60} padding={8}>
           <Button
             data-test-id="toggle-sidebar"

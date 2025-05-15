@@ -1,5 +1,4 @@
 /* eslint-disable @masknet/jsx-no-logical */
-import type { ContainerProperties } from '@react-three/uikit'
 
 import { Text } from '@react-three/uikit'
 import { Button, colors } from '@react-three/uikit-default'
@@ -10,13 +9,12 @@ import { SettingsLayout } from './layout'
 import { SettingsNotifications } from './pages/notifications'
 import { SettingsProviders } from './pages/providers'
 
-export const Settings = ({ panelMaterialClass }: Pick<ContainerProperties, 'panelMaterialClass'>) => {
+export const Settings = () => {
   const [currentPage, setCurrentPage] = useState('providers')
   const title = useMemo(() => currentPage.charAt(0).toUpperCase() + currentPage.slice(1), [currentPage])
 
   return (
     <SettingsLayout
-      panelMaterialClass={panelMaterialClass}
       sidebar={(
         <>
           <Button
