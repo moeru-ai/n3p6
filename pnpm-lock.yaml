@@ -77,6 +77,16 @@ catalogs:
     three-stdlib:
       specifier: ^2.36.0
       version: 2.36.0
+  xsai:
+    '@xsai/generate-text':
+      specifier: ^0.2.2
+      version: 0.2.2
+    '@xsai/shared':
+      specifier: ^0.2.2
+      version: 0.2.2
+    '@xsai/shared-chat':
+      specifier: ^0.2.2
+      version: 0.2.2
   yuka:
     '@recast-navigation/core':
       specifier: ^0.39.0
@@ -203,6 +213,15 @@ importers:
       '@recast-navigation/three':
         specifier: catalog:yuka
         version: 0.39.0(@types/three@0.176.0)(three@0.176.0)
+      '@xsai/generate-text':
+        specifier: catalog:xsai
+        version: 0.2.2
+      '@xsai/shared':
+        specifier: catalog:xsai
+        version: 0.2.2
+      '@xsai/shared-chat':
+        specifier: catalog:xsai
+        version: 0.2.2
       foxact:
         specifier: 'catalog:'
         version: 0.2.45(react@19.1.0)
@@ -1642,6 +1661,15 @@ packages:
 
   '@webgpu/types@0.1.54':
     resolution: {integrity: sha512-81oaalC8LFrXjhsczomEQ0u3jG+TqE6V9QHLA8GNZq/Rnot0KDugu3LhSYSlie8tSdooAN1Hov05asrUUp9qgg==}
+
+  '@xsai/generate-text@0.2.2':
+    resolution: {integrity: sha512-76MMlr8CXnriMh4n36NPo5nUMt8z1CZhCETo0/xm+Ge2fySCM1k2zKjhnR6IOtQtnFUVC/q0bnWyjcCiVANbEw==}
+
+  '@xsai/shared-chat@0.2.2':
+    resolution: {integrity: sha512-0t4HwbK2jm5Lrixg9RnIsYTtAvlQNUdJXs2taW7PFaXfL5ktMy2IwZwW2nqK+Ig0RcLCMp3sScZujERHSDMtmg==}
+
+  '@xsai/shared@0.2.2':
+    resolution: {integrity: sha512-bgalLd3samx36hDRRmu3M75LY5NfWwh3YRaMwY4Woy7X09JQx+vEqVpJcaIeqcmVqztm8NGYzj8hUru7lwPh0w==}
 
   '@zip.js/zip.js@2.7.60':
     resolution: {integrity: sha512-vA3rLyqdxBrVo1FWSsbyoecaqWTV+vgPRf0QKeM7kVDG0r+lHUqd7zQDv1TO9k4BcAoNzNDSNrrel24Mk6addA==}
@@ -5894,6 +5922,17 @@ snapshots:
   '@vue/shared@3.5.13': {}
 
   '@webgpu/types@0.1.54': {}
+
+  '@xsai/generate-text@0.2.2':
+    dependencies:
+      '@xsai/shared': 0.2.2
+      '@xsai/shared-chat': 0.2.2
+
+  '@xsai/shared-chat@0.2.2':
+    dependencies:
+      '@xsai/shared': 0.2.2
+
+  '@xsai/shared@0.2.2': {}
 
   '@zip.js/zip.js@2.7.60': {}
 

@@ -33,6 +33,11 @@ catalogs:
     three: ^0.176.0
     three-stdlib: ^2.36.0
 
+  xsai:
+    '@xsai/generate-text': &xsai ^0.2.2
+    '@xsai/shared': *xsai
+    '@xsai/shared-chat': *xsai
+
   yuka:
     '@recast-navigation/core': &recast-navigation ^0.39.0
     '@recast-navigation/three': *recast-navigation

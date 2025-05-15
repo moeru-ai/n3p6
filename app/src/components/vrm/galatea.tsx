@@ -36,8 +36,6 @@ export const Galatea = () => {
   const isWalk = useOrcustAutomatonState(galateaEntity)
 
   useEffect(() => {
-    console.warn('State changed, isWalk:', isWalk)
-
     if (initialized.current == null) {
       actions[isWalk ? 'walk' : 'idle']!
         .reset()
