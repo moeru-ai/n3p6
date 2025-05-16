@@ -7,6 +7,7 @@ words:
   - angvel
   - assetpack
   - bumpp
+  - Caddyfile
   - drei
   - foxact
   - generouted
@@ -34,12 +35,14 @@ words:
   - subgoal
   - subgoals
   - thumbstick
+  - travisvn
   - tris
   - tsup
   - uikit
   - verts
   - vrma
   - vrmc
+  - Xiaoyi
   - xsai
   - yuka
 ignoreWords: []

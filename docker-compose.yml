@@ -1,0 +1,27 @@
+services:
+  app:
+    container_name: openai-edge-tts
+    image: travisvn/openai-edge-tts:latest
+    restart: unless-stopped
+    expose:
+      - 5050
+    environment: # optionally define in -e argument when running docker command
+      # API_KEY: ${API_KEY:-your_api_key_here}
+      PORT: 5050
+      DEFAULT_VOICE: zh-CN-XiaoyiNeural
+      DEFAULT_RESPONSE_FORMAT: mp3
+      DEFAULT_SPEED: 1.0
+      DEFAULT_LANGUAGE: zh-CN
+      REQUIRE_API_KEY: False
+      REMOVE_FILTER: False
+      EXPAND_API: False
+      DETAILED_ERROR_LOGGING: False
+
+  caddy:
+    container_name: caddy
+    image: caddy:latest
+    restart: unless-stopped
+    ports:
+      - '5050:5050'
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile
