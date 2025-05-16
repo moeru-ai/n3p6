@@ -9,12 +9,14 @@ import { ComposeContextProvider } from 'foxact/compose-context-provider'
 import { Suspense, useEffect, useMemo } from 'react'
 import { Outlet, useLocation } from 'react-router'
 
+import { AudioBufferProvider } from '~/context/audio-buffer'
 import { useIsDarkValue } from '~/hooks/use-is-dark'
 
 const contexts = [
   <Defaults key="uikit-default" />,
   <EntityManagerProvider key="entity-manager" />,
   <ObstaclesProvider key="obstacles" />,
+  <AudioBufferProvider key="audio-buffer" />,
 ]
 
 const AppLayout = () => {

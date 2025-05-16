@@ -6,6 +6,7 @@ import { useEffect, useRef } from 'react'
 import { Vector3 } from 'three'
 import { GameEntity, Vector3 as YukaVector3 } from 'yuka'
 
+import { GalateaTTS } from '~/components/vrm/galatea-tts'
 import { useAnimations } from '~/hooks/use-animations'
 import { useGalatea } from '~/hooks/use-galatea'
 
@@ -71,6 +72,7 @@ export const Galatea = () => {
           rotation={[0, Math.PI, 0]}
           scale={1.05}
         />
+        <GalateaTTS />
       </group>
       <group ref={playerRef}></group>
     </>
