@@ -11,7 +11,6 @@ export const GalateaTTS = () => {
   const sound = useRef<PositionalAudio>(null)
   const listener = useMemo(() => new AudioListener(), [])
   const audioBuffer = useAudioBuffer()
-  // const audioCtx = useMemo(() => new AudioContext({ latencyHint: 'interactive' }), [])
 
   useEffect(() => {
     const _sound = sound.current

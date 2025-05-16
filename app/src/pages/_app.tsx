@@ -21,7 +21,7 @@ const contexts = [
 
 const AppLayout = () => {
   const { pathname } = useLocation()
-  const events = useMemo(() => pathname.includes('settings') ? undefined : noEvents, [pathname])
+  const events = useMemo(() => pathname.startsWith('/settings') ? undefined : noEvents, [pathname])
   const isDark = useIsDarkValue()
 
   useEffect(() => setPreferredColorScheme(isDark ? 'dark' : 'light'), [isDark])
