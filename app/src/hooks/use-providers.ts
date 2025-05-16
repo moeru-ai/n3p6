@@ -9,3 +9,15 @@ export const useLLMProvider = () => useLocalStorage<{
   baseURL: 'http://localhost:11434/v1/',
   model: '',
 })
+
+export const useTTSProvider = () => useLocalStorage<{
+  apiKey: string
+  baseURL: string
+  model: string
+  voice: string
+}>('n3p6/providers/tts', {
+  apiKey: '',
+  baseURL: '',
+  model: '',
+  voice: '',
+})

@@ -55,7 +55,7 @@ export const SettingsLayout = ({ children, sidebar, title }: PropsWithChildren<S
         </Button>
       </Container>
       <Card flexGrow={1} marginLeft="auto" maxWidth={panelMaxWidth} width="100%">
-        <Container gap={8} maxHeight={60} padding={8}>
+        <Container gap={8} height={60} padding={8}>
           <Button
             data-test-id="toggle-sidebar"
             onClick={() => setSidebarDisplay(display => display === 'none' ? 'flex' : 'none')}
@@ -70,9 +70,7 @@ export const SettingsLayout = ({ children, sidebar, title }: PropsWithChildren<S
           </Container>
         </Container>
         <Separator />
-        <Container flexDirection="column" gap={8} maxHeight={708} overflow="scroll" padding={16} width="100%">
-          {children}
-        </Container>
+        {children}
       </Card>
     </Container>
   )
