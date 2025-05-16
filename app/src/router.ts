@@ -10,6 +10,7 @@ export type Path =
   | `/debug/input`
   | `/debug/menu`
   | `/debug/planes`
+  | `/debug/positional-audio`
   | `/debug/settings`
   | `/debug/speech-recognition`
   | `/debug/tablet`

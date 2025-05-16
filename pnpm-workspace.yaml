@@ -34,7 +34,8 @@ catalogs:
     three-stdlib: ^2.36.0
 
   xsai:
-    '@xsai/generate-text': &xsai ^0.2.2
+    '@xsai/generate-speech': &xsai ^0.2.2
+    '@xsai/generate-text': *xsai
     '@xsai/shared': *xsai
     '@xsai/shared-chat': *xsai
 

@@ -78,6 +78,9 @@ catalogs:
       specifier: ^2.36.0
       version: 2.36.0
   xsai:
+    '@xsai/generate-speech':
+      specifier: ^0.2.2
+      version: 0.2.2
     '@xsai/generate-text':
       specifier: ^0.2.2
       version: 0.2.2
@@ -216,6 +219,9 @@ importers:
       '@recast-navigation/three':
         specifier: catalog:yuka
         version: 0.39.0(@types/three@0.176.0)(three@0.176.0)
+      '@xsai/generate-speech':
+        specifier: catalog:xsai
+        version: 0.2.2
       '@xsai/generate-text':
         specifier: catalog:xsai
         version: 0.2.2
@@ -1679,6 +1685,9 @@ packages:
 
   '@webgpu/types@0.1.54':
     resolution: {integrity: sha512-81oaalC8LFrXjhsczomEQ0u3jG+TqE6V9QHLA8GNZq/Rnot0KDugu3LhSYSlie8tSdooAN1Hov05asrUUp9qgg==}
+
+  '@xsai/generate-speech@0.2.2':
+    resolution: {integrity: sha512-ZRIMBsiWLg6UqfM420I3qLEQ+VpOEo6vWsOhx6/k7+K+zhhY8TCgFIFP7X9Gx7REUykKpYN2ak9wdY3HF9/H9A==}
 
   '@xsai/generate-text@0.2.2':
     resolution: {integrity: sha512-76MMlr8CXnriMh4n36NPo5nUMt8z1CZhCETo0/xm+Ge2fySCM1k2zKjhnR6IOtQtnFUVC/q0bnWyjcCiVANbEw==}
@@ -5942,6 +5951,10 @@ snapshots:
   '@vue/shared@3.5.13': {}
 
   '@webgpu/types@0.1.54': {}
+
+  '@xsai/generate-speech@0.2.2':
+    dependencies:
+      '@xsai/shared': 0.2.2
 
   '@xsai/generate-text@0.2.2':
     dependencies:

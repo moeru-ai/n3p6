@@ -29,6 +29,7 @@
     "@react-three/xr": "catalog:three",
     "@recast-navigation/core": "catalog:yuka",
     "@recast-navigation/three": "catalog:yuka",
+    "@xsai/generate-speech": "catalog:xsai",
     "@xsai/generate-text": "catalog:xsai",
     "@xsai/shared": "catalog:xsai",
     "@xsai/shared-chat": "catalog:xsai",
