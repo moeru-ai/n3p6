@@ -15,7 +15,6 @@ export type Path =
   | `/debug/speech-recognition`
   | `/debug/tablet`
   | `/debug/text`
-  | `/settings`
 
 export type Params = {
   

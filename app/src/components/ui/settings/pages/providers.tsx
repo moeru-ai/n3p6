@@ -25,7 +25,7 @@ const LLMProvider = () => {
       </CardHeader>
       <CardContent flexDirection="column" gap={16}>
         <Input onValueChange={setBaseURL} placeholder="baseURL, e.g. https://api.openai.com/v1/" value={baseURL} />
-        <Input onValueChange={setApiKey} placeholder="apiKey (optional), e.g. sk-******" value={apiKey} />
+        <Input onValueChange={setApiKey} placeholder="apiKey (optional), e.g. sk-******" type="password" value={apiKey} />
         <Input onValueChange={setModel} placeholder="model, e.g. gpt-4o" value={model} />
       </CardContent>
       <CardFooter>
@@ -62,7 +62,7 @@ const TTSProvider = () => {
       </CardHeader>
       <CardContent flexDirection="column" gap={16}>
         <Input onValueChange={setBaseURL} placeholder="baseURL, e.g. https://api.openai.com/v1/" value={baseURL} />
-        <Input onValueChange={setApiKey} placeholder="apiKey (optional), e.g. sk-******" value={apiKey} />
+        <Input onValueChange={setApiKey} placeholder="apiKey (optional), e.g. sk-******" type="password" value={apiKey} />
         <Input onValueChange={setModel} placeholder="model, e.g. gpt-4o-mini-tts" value={model} />
         <Input onValueChange={setVoice} placeholder="voice, e.g. coral" value={voice} />
       </CardContent>

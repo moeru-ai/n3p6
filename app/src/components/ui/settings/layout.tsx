@@ -2,11 +2,10 @@ import type { PropsWithChildren, ReactNode } from 'react'
 
 import { Container, Text } from '@react-three/uikit'
 import { Button, Card, colors, Separator } from '@react-three/uikit-default'
-import { ChevronLeftIcon, GithubIcon, PanelLeftIcon } from '@react-three/uikit-lucide'
+import { GithubIcon, PanelLeftIcon } from '@react-three/uikit-lucide'
 import { useState } from 'react'
 
 import { ToggleColorSchemeButton } from '~/components/ui/toggle-color-scheme-button'
-import { useNavigate } from '~/router'
 
 export interface SettingsLayoutProps {
   sidebar: ReactNode
@@ -15,7 +14,6 @@ export interface SettingsLayoutProps {
 
 export const SettingsLayout = ({ children, sidebar, title }: PropsWithChildren<SettingsLayoutProps>) => {
   const [sidebarDisplay, setSidebarDisplay] = useState<'flex' | 'none'>('flex')
-  const navigate = useNavigate()
 
   const panelMaxWidth = sidebarDisplay === 'flex' ? 768 : 1024
 
@@ -23,15 +21,11 @@ export const SettingsLayout = ({ children, sidebar, title }: PropsWithChildren<S
     <Container flexDirection="row" flexGrow={1} gap={12} height="100%" maxHeight={768} maxWidth={1024} padding={12} width="100%">
       <Container display={sidebarDisplay} flexDirection="column" flexGrow={1} gap={4} maxWidth={256} paddingY={8}>
         <Button
-          data-test-id="return-to-home"
           gap={8}
           hover={{ backgroundColor: colors.card }}
           justifyContent="flex-start"
-          // eslint-disable-next-line sonarjs/void-use
-          onClick={() => void navigate('/')}
           variant="ghost"
         >
-          <ChevronLeftIcon height={16} width={16} />
           <Text fontWeight={600}>N3P6 by Moeru AI</Text>
         </Button>
         <Button disabled justifyContent="flex-start" marginBottom={-8} variant="ghost">

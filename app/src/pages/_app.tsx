@@ -6,8 +6,8 @@ import { setPreferredColorScheme } from '@react-three/uikit'
 import { Defaults } from '@react-three/uikit-default'
 import { noEvents } from '@react-three/xr'
 import { ComposeContextProvider } from 'foxact/compose-context-provider'
-import { Suspense, useEffect, useMemo } from 'react'
-import { Outlet, useLocation } from 'react-router'
+import { Suspense, useEffect } from 'react'
+import { Outlet } from 'react-router'
 
 import { AudioBufferProvider } from '~/context/audio-buffer'
 import { useIsDarkValue } from '~/hooks/use-is-dark'
@@ -20,8 +20,6 @@ const contexts = [
 ]
 
 const AppLayout = () => {
-  const { pathname } = useLocation()
-  const events = useMemo(() => pathname.startsWith('/settings') ? undefined : noEvents, [pathname])
   const isDark = useIsDarkValue()
 
   useEffect(() => setPreferredColorScheme(isDark ? 'dark' : 'light'), [isDark])
@@ -31,7 +29,7 @@ const AppLayout = () => {
       <Loader />
       <Canvas
         camera={{ position: [0, 1.75, 3.5] }}
-        events={events}
+        events={noEvents}
         gl={{ localClippingEnabled: true }}
         style={{ flexGrow: 1, width: '100%' }}
       >
