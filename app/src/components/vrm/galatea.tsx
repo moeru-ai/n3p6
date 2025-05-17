@@ -72,7 +72,7 @@ export const Galatea = () => {
           rotation={[0, Math.PI, 0]}
           scale={1.05}
         />
-        <GalateaTTS />
+        <GalateaTTS vrm={galateaVRM} />
       </group>
       <group ref={playerRef}></group>
     </>

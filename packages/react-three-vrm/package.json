@@ -35,8 +35,8 @@
     "build": "pkgroll"
   },
   "peerDependencies": {
-    "@pixiv/three-vrm": "catalog:three",
-    "@pixiv/three-vrm-animation": "catalog:three",
+    "@pixiv/three-vrm": "catalog:vrm",
+    "@pixiv/three-vrm-animation": "catalog:vrm",
     "@react-three/drei": "catalog:three",
     "@react-three/fiber": "catalog:three",
     "@types/react": "catalog:react",

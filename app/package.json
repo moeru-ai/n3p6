@@ -16,8 +16,8 @@
     "@n3p6/react-three-yuka": "workspace:",
     "@n3p6/use-illuminance": "workspace:",
     "@n3p6/use-speech-recognition": "workspace:",
-    "@pixiv/three-vrm": "catalog:three",
-    "@pixiv/three-vrm-animation": "catalog:three",
+    "@pixiv/three-vrm": "catalog:vrm",
+    "@pixiv/three-vrm-animation": "catalog:vrm",
     "@pmndrs/xr": "catalog:three",
     "@react-three/drei": "catalog:three",
     "@react-three/fiber": "catalog:three",
@@ -40,6 +40,7 @@
     "swr": "^2.3.3",
     "three": "catalog:three",
     "three-stdlib": "catalog:three",
+    "wlipsync": "catalog:vrm",
     "yuka": "catalog:yuka",
     "zustand": "^5.0.4"
   },

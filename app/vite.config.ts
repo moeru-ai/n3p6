@@ -7,6 +7,12 @@ import tsconfigPaths from 'vite-tsconfig-paths'
 export default defineConfig(({ mode }) => ({
   assetsInclude: ['./assets/*'],
   build: { target: 'esnext' },
+  optimizeDeps: {
+    esbuildOptions: {
+      target: 'esnext',
+    },
+    // exclude: ['sqlocal'],
+  },
   plugins: [
     react({
       babel: { plugins: [
@@ -17,15 +23,10 @@ export default defineConfig(({ mode }) => ({
     tsconfigPaths(),
   ],
   publicDir: mode === 'development' ? 'public' : false,
-  //   optimizeDeps: {
-  //     esbuildOptions: {
-  //       target: 'esnext',
-  //     },
-  //     exclude: ['sqlocal'],
-  //   },
   resolve: {
     dedupe: ['react', 'three'],
   },
+  rollupOptions: { target: 'esnext' },
 //   server: {
 //     headers: {
 //       'Cross-Origin-Embedder-Policy': 'require-corp',

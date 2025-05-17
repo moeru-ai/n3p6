@@ -35,12 +35,6 @@ catalogs:
       specifier: ^7.5.3
       version: 7.5.3
   three:
-    '@pixiv/three-vrm':
-      specifier: ^3.4.0
-      version: 3.4.0
-    '@pixiv/three-vrm-animation':
-      specifier: ^3.4.0
-      version: 3.4.0
     '@pmndrs/xr':
       specifier: ^6.6.16
       version: 6.6.16
@@ -77,6 +71,16 @@ catalogs:
     three-stdlib:
       specifier: ^2.36.0
       version: 2.36.0
+  vrm:
+    '@pixiv/three-vrm':
+      specifier: ^3.4.0
+      version: 3.4.0
+    '@pixiv/three-vrm-animation':
+      specifier: ^3.4.0
+      version: 3.4.0
+    wlipsync:
+      specifier: ^1.2.0
+      version: 1.2.0
   xsai:
     '@xsai/generate-speech':
       specifier: ^0.2.2
@@ -181,10 +185,10 @@ importers:
         specifier: 'workspace:'
         version: link:../packages/use-speech-recognition
       '@pixiv/three-vrm':
-        specifier: catalog:three
+        specifier: catalog:vrm
         version: 3.4.0(three@0.176.0)
       '@pixiv/three-vrm-animation':
-        specifier: catalog:three
+        specifier: catalog:vrm
         version: 3.4.0(three@0.176.0)
       '@pmndrs/xr':
         specifier: catalog:three
@@ -252,6 +256,9 @@ importers:
       three-stdlib:
         specifier: catalog:three
         version: 2.36.0(three@0.176.0)
+      wlipsync:
+        specifier: catalog:vrm
+        version: 1.2.0
       yuka:
         specifier: catalog:yuka
         version: 0.7.8
@@ -310,10 +317,10 @@ importers:
   packages/react-three-vrm:
     dependencies:
       '@pixiv/three-vrm':
-        specifier: catalog:three
+        specifier: catalog:vrm
         version: 3.4.0(three@0.176.0)
       '@pixiv/three-vrm-animation':
-        specifier: catalog:three
+        specifier: catalog:vrm
         version: 3.4.0(three@0.176.0)
       '@react-three/drei':
         specifier: catalog:three
@@ -4366,6 +4373,9 @@ packages:
     resolution: {integrity: sha512-BLI3Tl1TW3Pvl70l3yq3Y64i+awpwXqsGBYWkkqMtnbXgrMD+yj7rhW0kuEDxzJaYXGjEW5ogapKNMEKNMjibA==}
     engines: {node: '>= 8'}
     hasBin: true
+
+  wlipsync@1.2.0:
+    resolution: {integrity: sha512-n8oChY090AaQJnlgYnWBFAQMHvWQnx4FtfhLfQSmYescZ/FFHY/tfthgIs3boeoGD5TD6fBut5zgk9yG9+sj2A==}
 
   word-wrap@1.2.5:
     resolution: {integrity: sha512-BN22B5eaMMI9UMtjrGd5g5eCYPpCPDUy0FJXbYsaT5zYxjFOckS53SQDE3pWkVoWpHXVb3BrYcEN4Twa55B5cA==}
@@ -9167,6 +9177,8 @@ snapshots:
   which@2.0.2:
     dependencies:
       isexe: 2.0.0
+
+  wlipsync@1.2.0: {}
 
   word-wrap@1.2.5: {}
 
