@@ -10,6 +10,7 @@ import { Suspense, useEffect } from 'react'
 import { Outlet } from 'react-router'
 
 import { AudioBufferProvider } from '~/context/audio-buffer'
+import { AudioContextProvider } from '~/context/audio-context'
 import { useIsDarkValue } from '~/hooks/use-is-dark'
 
 const contexts = [
@@ -17,6 +18,7 @@ const contexts = [
   <EntityManagerProvider key="entity-manager" />,
   <ObstaclesProvider key="obstacles" />,
   <AudioBufferProvider key="audio-buffer" />,
+  <AudioContextProvider key="audio-context" />,
 ]
 
 const AppLayout = () => {

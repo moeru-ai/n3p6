@@ -1,10 +1,11 @@
 import { Container, Root, Text } from '@react-three/uikit'
 import { Button, Input } from '@react-three/uikit-default'
 import { generateSpeech } from '@xsai/generate-speech'
-import { useMemo, useState } from 'react'
+import { useState } from 'react'
 
 import { Galatea } from '~/components/vrm/galatea'
 import { useSetAudioBuffer } from '~/context/audio-buffer'
+import { useAudioContext } from '~/context/audio-context'
 import { useTTSProvider } from '~/hooks/use-providers'
 
 const DebugPositionalAudio = () => {
@@ -12,8 +13,7 @@ const DebugPositionalAudio = () => {
   const [value, setValue] = useState<string>('')
   const [ttsProvider] = useTTSProvider()
   const setAudioBuffer = useSetAudioBuffer()
-
-  const audioContext = useMemo(() => new AudioContext({ latencyHint: 'interactive' }), [])
+  const audioContext = useAudioContext()
 
   const handleSubmit = async () => {
     setDisabled(true)
