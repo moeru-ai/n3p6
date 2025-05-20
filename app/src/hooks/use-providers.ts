@@ -21,3 +21,13 @@ export const useTTSProvider = () => useLocalStorage<{
   model: '',
   voice: '',
 })
+
+export const useSTTProvider = () => useLocalStorage<{
+  apiKey: string
+  baseURL: string
+  model: string
+}>('n3p6/providers/stt', {
+  apiKey: '',
+  baseURL: '',
+  model: '',
+})
