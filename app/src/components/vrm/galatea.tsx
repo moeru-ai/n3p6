@@ -7,6 +7,7 @@ import { Vector3 } from 'three'
 import { GameEntity, Vector3 as YukaVector3 } from 'yuka'
 
 import { GalateaTTS } from '~/components/vrm/galatea-tts'
+import { GalateaVAD } from '~/components/vrm/galatea-vad'
 import { useAnimations } from '~/hooks/use-animations'
 import { useGalatea } from '~/hooks/use-galatea'
 
@@ -73,6 +74,7 @@ export const Galatea = () => {
           scale={1.05}
         />
         <GalateaTTS vrm={galateaVRM} />
+        <GalateaVAD />
       </group>
       <group ref={playerRef}></group>
     </>
