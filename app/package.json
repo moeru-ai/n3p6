@@ -32,6 +32,7 @@
     "@ricky0123/vad-react": "^0.0.30",
     "@xsai/generate-speech": "catalog:xsai",
     "@xsai/generate-text": "catalog:xsai",
+    "@xsai/generate-transcription": "catalog:xsai",
     "@xsai/shared": "catalog:xsai",
     "@xsai/shared-chat": "catalog:xsai",
     "foxact": "catalog:",

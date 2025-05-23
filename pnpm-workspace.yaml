@@ -39,6 +39,7 @@ catalogs:
   xsai:
     '@xsai/generate-speech': &xsai ^0.2.2
     '@xsai/generate-text': *xsai
+    '@xsai/generate-transcription': *xsai
     '@xsai/shared': *xsai
     '@xsai/shared-chat': *xsai
 
