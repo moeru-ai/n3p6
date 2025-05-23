@@ -1,11 +1,10 @@
-import type { Message } from '@xsai/shared-chat'
-
 import { Container } from '@react-three/uikit'
 import { Button, Input } from '@react-three/uikit-default'
 import { SendIcon } from '@react-three/uikit-lucide'
 import { generateText } from '@xsai/generate-text'
 import { useState } from 'react'
 
+import { useMessages } from '~/hooks/use-messages'
 import { useLLMProvider } from '~/hooks/use-providers'
 
 export const NavbarChat = () => {
@@ -14,7 +13,7 @@ export const NavbarChat = () => {
 
   const [disabled, setDisabled] = useState(false)
 
-  const [msg, setMsg] = useState<Message[]>([])
+  const [msg, setMsg] = useMessages()
 
   const handleSubmit = async () => {
     setDisabled(true)
