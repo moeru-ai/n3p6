@@ -1,23 +1,28 @@
 import { Container } from '@react-three/uikit'
 import { Button, Input } from '@react-three/uikit-default'
 import { SendIcon } from '@react-three/uikit-lucide'
+import { generateSpeech } from '@xsai/generate-speech'
 import { generateText } from '@xsai/generate-text'
 import { useState, useTransition } from 'react'
 
+import { useSetAudioBuffer } from '~/context/audio-buffer'
+import { useAudioContext } from '~/context/audio-context'
 import { useMessages } from '~/hooks/use-messages'
-import { useLLMProvider } from '~/hooks/use-providers'
+import { useLLMProvider, useTTSProvider } from '~/hooks/use-providers'
 
 export const NavbarChat = () => {
+  const setAudioBuffer = useSetAudioBuffer()
+  const [isPending, startTransition] = useTransition()
   const [value, setValue] = useState('')
   const [llmProvider] = useLLMProvider()
-
-  const [isPending, startTransition] = useTransition()
+  const [ttsProvider] = useTTSProvider()
+  const audioContext = useAudioContext()
 
   const [msg, setMsg] = useMessages()
 
   const handleSubmit = async () =>
     startTransition(async () => {
-      const { messages, text } = await generateText({
+      const { messages, text: input } = await generateText({
         ...llmProvider,
         messages: [
           ...msg,
@@ -25,10 +30,13 @@ export const NavbarChat = () => {
         ],
       })
 
-      console.warn('Response:', text)
-      speechSynthesis.speak(new SpeechSynthesisUtterance(text))
+      if (input != null) {
+        setMsg(messages)
+        const arrayBuffer = await generateSpeech({ ...ttsProvider, input })
+        const audioBuffer = await audioContext.decodeAudioData(arrayBuffer)
+        setAudioBuffer(audioBuffer)
+      }
 
-      setMsg(messages)
       setValue('')
     })
 
