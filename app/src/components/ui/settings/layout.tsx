@@ -29,7 +29,7 @@ export const SettingsLayout = ({ children, sidebar, title }: PropsWithChildren<S
           justifyContent="flex-start"
           variant="ghost"
         >
-          <Text fontWeight={600}>N3P6 by Moeru AI</Text>
+          <Text fontWeight={600}>moeChat by Moeru AI</Text>
         </Button>
         <Button disabled justifyContent="flex-start" marginBottom={-8} variant="ghost">
           <Text fontSize={12} fontWeight={600}>Settings</Text>
@@ -58,7 +58,7 @@ export const SettingsLayout = ({ children, sidebar, title }: PropsWithChildren<S
           gap={8}
           hover={{ backgroundColor: colors.card }}
           justifyContent="flex-start"
-          onClick={() => window.open('https://github.com/moeru-ai/n3p6', '_blank', 'noopener')}
+          onClick={() => window.open('https://github.com/moeru-ai/chat', '_blank', 'noopener')}
           variant="ghost"
         >
           <GithubIcon height={16} width={16} />

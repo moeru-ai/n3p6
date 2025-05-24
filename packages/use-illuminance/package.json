@@ -4,13 +4,13 @@
   "version": "0.1.0-beta.1",
   "author": "Moeru AI",
   "license": "MIT",
-  "homepage": "https://github.com/moeru-ai/n3p6",
+  "homepage": "https://github.com/moeru-ai/chat",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/moeru-ai/n3p6.git",
+    "url": "git+https://github.com/moeru-ai/chat.git",
     "directory": "packages/use-illuminance"
   },
-  "bugs": "https://github.com/moeru-ai/n3p6/issues",
+  "bugs": "https://github.com/moeru-ai/chat/issues",
   "sideEffects": false,
   "exports": "./src/index.ts",
   "publishConfig": {

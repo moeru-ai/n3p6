@@ -5,13 +5,13 @@
   "private": true,
   "author": "Moeru AI",
   "license": "MIT",
-  "homepage": "https://github.com/moeru-ai/n3p6",
+  "homepage": "https://github.com/moeru-ai/chat",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/moeru-ai/n3p6.git",
+    "url": "git+https://github.com/moeru-ai/chat.git",
     "directory": "packages/orcust-automaton"
   },
-  "bugs": "https://github.com/moeru-ai/n3p6/issues",
+  "bugs": "https://github.com/moeru-ai/chat/issues",
   "sideEffects": [
     "./src/hooks/use-mixamo-animation.ts",
     "./src/hooks/use-vrm.ts",

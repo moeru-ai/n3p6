@@ -4,11 +4,10 @@
   "version": "0.1.0-beta.1",
   "private": true,
   "packageManager": "pnpm@10.10.0",
-  "repository": "github:moeru-ai/n3p6",
   "scripts": {
     "build": "pnpm -r build",
     "bump": "bumpp",
-    "dev": "pnpm -rF @n3p6/app dev",
+    "dev": "pnpm -rF @moeru-ai/chat dev",
     "lint": "eslint --cache .",
     "mixamo2vrma": "tsx scripts/mixamo2vrma.ts"
   },

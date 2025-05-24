@@ -1,10 +1,9 @@
 {
-  "name": "@n3p6/app",
+  "name": "@moeru-ai/chat",
   "type": "module",
   "version": "0.1.0-beta.1",
   "private": true,
   "scripts": {
-    "assetpack": "assetpack -c assetpack.config.ts",
     "build": "tsc -b && vite build",
     "dev": "vite",
     "preview": "vite preview"
