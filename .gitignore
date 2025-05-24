@@ -17,5 +17,5 @@ dist
 *.sln
 *.sw?
 
-# assetpack
-.assetpack
+# astro generated types
+.astro/

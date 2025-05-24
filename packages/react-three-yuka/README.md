@@ -1,10 +1,39 @@
 # @n3p6/react-three-yuka
 
+<!-- automd:badges color="black" bundlephobia -->
+
+[![npm version](https://img.shields.io/npm/v/@n3p6/react-three-yuka?color=black)](https://npmjs.com/package/@n3p6/react-three-yuka)
+[![npm downloads](https://img.shields.io/npm/dm/@n3p6/react-three-yuka?color=black)](https://npm.chart.dev/@n3p6/react-three-yuka)
+[![bundle size](https://img.shields.io/bundlephobia/minzip/@n3p6/react-three-yuka?color=black)](https://bundlephobia.com/package/@n3p6/react-three-yuka)
+
+<!-- /automd -->
+
 useful helpers for `yuka` to make your life easier.
 
 ## Usage
 
 ### Install
+
+<!-- automd:pm-install auto=false -->
+
+```sh
+# npm
+npm install @n3p6/react-three-yuka
+
+# yarn
+yarn add @n3p6/react-three-yuka
+
+# pnpm
+pnpm install @n3p6/react-three-yuka
+
+# bun
+bun install @n3p6/react-three-yuka
+
+# deno
+deno install @n3p6/react-three-yuka
+```
+
+<!-- /automd -->
 
 ### Example
 

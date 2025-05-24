@@ -1,10 +1,39 @@
 # @n3p6/react-three-vrm
 
+<!-- automd:badges color="black" bundlephobia -->
+
+[![npm version](https://img.shields.io/npm/v/@n3p6/react-three-vrm?color=black)](https://npmjs.com/package/@n3p6/react-three-vrm)
+[![npm downloads](https://img.shields.io/npm/dm/@n3p6/react-three-vrm?color=black)](https://npm.chart.dev/@n3p6/react-three-vrm)
+[![bundle size](https://img.shields.io/bundlephobia/minzip/@n3p6/react-three-vrm?color=black)](https://bundlephobia.com/package/@n3p6/react-three-vrm)
+
+<!-- /automd -->
+
 useful helpers for `@pixiv/three-vrm` to make your life easier.
 
 ## Usage
 
 ### Install
+
+<!-- automd:pm-install auto=false -->
+
+```sh
+# npm
+npm install @n3p6/react-three-vrm
+
+# yarn
+yarn add @n3p6/react-three-vrm
+
+# pnpm
+pnpm install @n3p6/react-three-vrm
+
+# bun
+bun install @n3p6/react-three-vrm
+
+# deno
+deno install @n3p6/react-three-vrm
+```
+
+<!-- /automd -->
 
 ### Example
 

@@ -5,9 +5,11 @@
   "private": true,
   "packageManager": "pnpm@10.10.0",
   "scripts": {
+    "automd": "pnpm -r exec automd",
     "build": "pnpm -r build",
     "bump": "bumpp",
     "dev": "pnpm -rF @moeru-ai/chat dev",
+    "docs:dev": "pnpm -rF @moeru-ai/chat-docs dev",
     "lint": "eslint --cache .",
     "mixamo2vrma": "tsx scripts/mixamo2vrma.ts"
   },
@@ -17,6 +19,7 @@
     "@importantimport/eslint-config": "^1.0.0-beta.2",
     "@importantimport/tsconfig": "^1.0.0-beta.2",
     "@vitejs/plugin-react": "^4.4.1",
+    "automd": "^0.4.0",
     "babel-plugin-react-compiler": "catalog:react",
     "bumpp": "^10.1.0",
     "eslint": "^9.26.0",
