@@ -32,6 +32,7 @@
     "@xsai/shared": "catalog:xsai",
     "@xsai/shared-chat": "catalog:xsai",
     "foxact": "catalog:",
+    "idb-keyval": "^6.2.2",
     "react": "catalog:react",
     "react-dom": "catalog:react",
     "react-router": "catalog:react",

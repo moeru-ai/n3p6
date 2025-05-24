@@ -2,10 +2,11 @@
 
 import { Text } from '@react-three/uikit'
 import { Button, colors } from '@react-three/uikit-default'
-import { BellRingIcon, CableIcon } from '@react-three/uikit-lucide'
+import { BellRingIcon, CableIcon, FileBoxIcon } from '@react-three/uikit-lucide'
 import { useMemo, useState } from 'react'
 
 import { SettingsLayout } from './layout'
+import { SettingsModel } from './pages/model'
 import { SettingsNotifications } from './pages/notifications'
 import { SettingsProviders } from './pages/providers'
 
@@ -30,6 +31,18 @@ export const Settings = () => {
             <Text>Providers</Text>
           </Button>
           <Button
+            backgroundColor={currentPage === 'model' ? colors.card : undefined}
+            data-test-id="sidebar-model"
+            gap={8}
+            hover={{ backgroundColor: colors.card }}
+            justifyContent="flex-start"
+            onClick={() => setCurrentPage('model')}
+            variant="secondary"
+          >
+            <FileBoxIcon height={16} width={16} />
+            <Text>Model</Text>
+          </Button>
+          <Button
             backgroundColor={currentPage === 'notifications' ? colors.card : undefined}
             data-test-id="sidebar-notifications"
             gap={8}
@@ -46,6 +59,7 @@ export const Settings = () => {
       title={title}
     >
       <SettingsProviders display={currentPage === 'providers' ? 'flex' : 'none'} />
+      <SettingsModel display={currentPage === 'model' ? 'flex' : 'none'} />
       <SettingsNotifications display={currentPage === 'notifications' ? 'flex' : 'none'} />
     </SettingsLayout>
   )
