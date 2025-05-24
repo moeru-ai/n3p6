@@ -1,5 +1,5 @@
 ---
-title: useVRM
+title: useVRMAnimation
 ---
 
 A convenience hook that uses `useLoader`, `GLTFLoader` and `VRMAnimationLoaderPlugin`.
