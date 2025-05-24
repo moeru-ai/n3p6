@@ -43,6 +43,7 @@
     "zustand": "^5.0.4"
   },
   "devDependencies": {
+    "@moeru-ai/chat-docs": "workspace:",
     "@types/react": "catalog:react",
     "@types/react-dom": "catalog:react",
     "@types/three": "catalog:three",

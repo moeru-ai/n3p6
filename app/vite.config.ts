@@ -1,7 +1,9 @@
 import generouted from '@generouted/react-router/plugin'
 import react from '@vitejs/plugin-react'
-import { defineConfig } from 'vite'
+import { defineConfig, Plugin } from 'vite'
 import tsconfigPaths from 'vite-tsconfig-paths'
+
+import { cp } from 'node:fs/promises'
 
 // https://vite.dev/config/
 export default defineConfig(({ mode }) => ({
@@ -21,6 +23,10 @@ export default defineConfig(({ mode }) => ({
     }),
     generouted(),
     tsconfigPaths(),
+    {
+      name: '@moeru-ai/chat-docs',
+      closeBundle: async () => cp('../docs/dist', './dist/docs', { recursive: true })
+    } satisfies Plugin
   ],
   publicDir: mode === 'development' ? 'public' : false,
   resolve: {

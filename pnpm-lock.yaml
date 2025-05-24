@@ -263,6 +263,9 @@ importers:
         specifier: ^5.0.4
         version: 5.0.4(@types/react@19.1.2)(react@19.1.0)(use-sync-external-store@1.4.0(react@19.1.0))
     devDependencies:
+      '@moeru-ai/chat-docs':
+        specifier: 'workspace:'
+        version: link:../docs
       '@types/react':
         specifier: catalog:react
         version: 19.1.2
@@ -2096,6 +2099,9 @@ packages:
 
   '@xsai/shared-chat@0.2.2':
     resolution: {integrity: sha512-0t4HwbK2jm5Lrixg9RnIsYTtAvlQNUdJXs2taW7PFaXfL5ktMy2IwZwW2nqK+Ig0RcLCMp3sScZujERHSDMtmg==}
+
+  '@xsai/shared-chat@0.3.0-beta.1':
+    resolution: {integrity: sha512-1lx5+TLxdukM4hHlH8xma7x6WR1rGVDBghVaNDiY1WS7yrTsDyEiphkRrfFR7sOw1/3hRNOX7cZ55W+LBueI2Q==}
 
   '@xsai/shared@0.2.2':
     resolution: {integrity: sha512-bgalLd3samx36hDRRmu3M75LY5NfWwh3YRaMwY4Woy7X09JQx+vEqVpJcaIeqcmVqztm8NGYzj8hUru7lwPh0w==}
@@ -7692,12 +7698,12 @@ snapshots:
 
   '@xsai/generate-speech@0.2.2':
     dependencies:
-      '@xsai/shared': 0.2.2
+      '@xsai/shared': 0.3.0-beta.1
 
   '@xsai/generate-text@0.2.2':
     dependencies:
-      '@xsai/shared': 0.2.2
-      '@xsai/shared-chat': 0.2.2
+      '@xsai/shared': 0.3.0-beta.1
+      '@xsai/shared-chat': 0.3.0-beta.1
 
   '@xsai/generate-transcription@0.2.2':
     dependencies:
@@ -7705,7 +7711,11 @@ snapshots:
 
   '@xsai/shared-chat@0.2.2':
     dependencies:
-      '@xsai/shared': 0.2.2
+      '@xsai/shared': 0.3.0-beta.1
+
+  '@xsai/shared-chat@0.3.0-beta.1':
+    dependencies:
+      '@xsai/shared': 0.3.0-beta.1
 
   '@xsai/shared@0.2.2': {}
 
