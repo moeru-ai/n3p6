@@ -2,10 +2,14 @@ import type { ContainerProperties } from '@react-three/uikit'
 
 import { Container, Text } from '@react-three/uikit'
 import { Button } from '@react-three/uikit-default'
-import { FileUpIcon } from '@react-three/uikit-lucide'
+import { FileUpIcon, RotateCcwIcon } from '@react-three/uikit-lucide'
 import { useCallback, useEffect, useMemo } from 'react'
 
+import { useModelStore } from '~/hooks/use-model-store'
+
 export const SettingsModel = (props: ContainerProperties) => {
+  const { resetModel, setModel } = useModelStore()
+
   const handleFileUpload = useCallback(async (event: Event) => {
     const { files } = event?.target as HTMLInputElement
     if (files == null)
@@ -16,14 +20,14 @@ export const SettingsModel = (props: ContainerProperties) => {
       return
 
     const reader = new FileReader()
-    const buffer: ArrayBuffer = await new Promise((resolve, reject) => {
-      reader.onload = () => resolve(reader.result as ArrayBuffer)
+    const url: string = await new Promise((resolve, reject) => {
+      reader.onload = () => resolve(reader.result as string)
       reader.onerror = () => reject(reader.error)
-      reader.readAsArrayBuffer(file)
+      reader.readAsDataURL(file)
     })
 
-    console.warn(buffer)
-  }, [])
+    setModel(url)
+  }, [setModel])
 
   const input = useMemo(() => {
     const input = document.createElement('input')
@@ -48,6 +52,10 @@ export const SettingsModel = (props: ContainerProperties) => {
       <Button data-test-id="upload-model" onClick={() => input.click()}>
         <FileUpIcon height={16} width={16} />
         <Text>Upload Model</Text>
+      </Button>
+      <Button data-test-id="reset-model" onClick={resetModel} variant="destructive">
+        <RotateCcwIcon height={16} width={16} />
+        <Text>Reset Model</Text>
       </Button>
     </Container>
   )
