@@ -50,6 +50,7 @@ export const AvatarSampleA = () =>
 ```
 
 ###### useVRM & useVRMAnimation
+
 ```tsx
 import { useVRM, useVRMAnimation } from '@n3p6/react-three-vrm'
 import { useAnimations } from '@react-three/drei'
@@ -61,11 +62,9 @@ import animationUrl from './assets/motions/waiting.vrma'
 export const AvatarSampleA = () => {
   const vrm = useVRM(vrmUrl)
   const animation = useVRMAnimation(animationUrl, vrm)
-  const { actions } = useAnimations([animation], vrm.scene,)
+  const { actions } = useAnimations([animation], vrm.scene)
 
-  useEffect(() => {
-    actions.Clip!.play()
-  }, [actions])
+  useEffect(() => actions.Clip!.play(), [actions])
 
   return (
     <primitive
