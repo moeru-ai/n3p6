@@ -184,9 +184,6 @@ importers:
       '@n3p6/use-illuminance':
         specifier: 'workspace:'
         version: link:../packages/use-illuminance
-      '@n3p6/use-speech-recognition':
-        specifier: 'workspace:'
-        version: link:../packages/use-speech-recognition
       '@pixiv/three-vrm':
         specifier: catalog:vrm
         version: 3.4.0(three@0.176.0)
@@ -388,18 +385,6 @@ importers:
       foxact:
         specifier: 'catalog:'
         version: 0.2.45(react@19.1.0)
-      react:
-        specifier: catalog:react
-        version: 19.1.0
-
-  packages/use-speech-recognition:
-    dependencies:
-      '@types/dom-speech-recognition':
-        specifier: ^0.0.6
-        version: 0.0.6
-      '@types/react':
-        specifier: catalog:react
-        version: 19.1.2
       react:
         specifier: catalog:react
         version: 19.1.0
@@ -1438,9 +1423,6 @@ packages:
 
   '@types/debug@4.1.12':
     resolution: {integrity: sha512-vIChWdVG3LG1SMxEvI/AK+FWJthlrqlTu7fbrlywTkkaONwk/UAGaULXRlf8vkzFBLVm0zkMdCquhL5aOjhXPQ==}
-
-  '@types/dom-speech-recognition@0.0.6':
-    resolution: {integrity: sha512-o7pAVq9UQPJL5RDjO1f/fcpfFHdgiMnR4PoIU2N/ZQrYOS3C5rzdOJMsrpqeBCbii2EE9mERXgqspQqPDdPahw==}
 
   '@types/draco3d@1.4.10':
     resolution: {integrity: sha512-AX22jp8Y7wwaBgAixaSvkoG4M/+PlAcm3Qs4OW8yT9DM4xUpWKeFhLueTAyZF39pviAdcDdeJoACapiAceqNcw==}
@@ -5732,8 +5714,6 @@ snapshots:
   '@types/debug@4.1.12':
     dependencies:
       '@types/ms': 2.1.0
-
-  '@types/dom-speech-recognition@0.0.6': {}
 
   '@types/draco3d@1.4.10': {}
 

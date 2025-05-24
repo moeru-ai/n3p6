@@ -15,7 +15,6 @@
     "@n3p6/react-three-vrm": "workspace:",
     "@n3p6/react-three-yuka": "workspace:",
     "@n3p6/use-illuminance": "workspace:",
-    "@n3p6/use-speech-recognition": "workspace:",
     "@pixiv/three-vrm": "catalog:vrm",
     "@pixiv/three-vrm-animation": "catalog:vrm",
     "@pmndrs/xr": "catalog:three",
