@@ -5,15 +5,11 @@ import { components, hooks, utils } from '@generouted/react-router/client'
 
 export type Path =
   | `/`
-  | `/debug/animations`
   | `/debug/illuminance`
-  | `/debug/input`
   | `/debug/menu`
   | `/debug/planes`
   | `/debug/positional-audio`
   | `/debug/settings`
-  | `/debug/speech-recognition`
-  | `/debug/tablet`
   | `/debug/text`
   | `/debug/vad-stt`
 
