@@ -18,19 +18,19 @@ const lipSyncMap = {
   U: 'ou',
 }
 
-export const useLipSync = (audioBufferSource: AudioBufferSourceNode, vrm: VRM) => {
+export const useLipSync = (audioNode: AudioNode, vrm: VRM) => {
   const audioContext = useAudioContext()
 
   const { data: lipSyncNode } = useSWR('wlipsync/createWLipSyncNode', async () => createWLipSyncNode(audioContext, profile as Profile))
 
   useEffect(() => {
     if (lipSyncNode)
-      audioBufferSource.connect(lipSyncNode)
+      audioNode.connect(lipSyncNode)
 
     return () => {
-      audioBufferSource.disconnect()
+      audioNode.disconnect()
     }
-  }, [audioBufferSource, lipSyncNode])
+  }, [audioNode, lipSyncNode])
 
   useFrame(() => {
     if (lipSyncNode) {
