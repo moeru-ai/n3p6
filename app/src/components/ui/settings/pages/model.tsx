@@ -49,11 +49,11 @@ export const SettingsModel = (props: ContainerProperties) => {
 
   return (
     <Container flexDirection="column" gap={16} overflow="scroll" padding={16} {...props}>
-      <Button data-test-id="upload-model" onClick={() => input.click()}>
+      <Button data-test-id="upload-model" gap={8} onClick={() => input.click()}>
         <FileUpIcon height={16} width={16} />
         <Text>Upload Model</Text>
       </Button>
-      <Button data-test-id="reset-model" onClick={resetModel} variant="destructive">
+      <Button data-test-id="reset-model" gap={8} onClick={resetModel} variant="destructive">
         <RotateCcwIcon height={16} width={16} />
         <Text>Reset Model</Text>
       </Button>
