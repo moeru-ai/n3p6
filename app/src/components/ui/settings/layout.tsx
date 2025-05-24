@@ -2,7 +2,7 @@ import type { PropsWithChildren, ReactNode } from 'react'
 
 import { Container, Text } from '@react-three/uikit'
 import { Button, Card, colors, Separator } from '@react-three/uikit-default'
-import { GithubIcon, PanelLeftIcon } from '@react-three/uikit-lucide'
+import { ExternalLinkIcon, GithubIcon, PanelLeftIcon } from '@react-three/uikit-lucide'
 import { useState } from 'react'
 
 import { ToggleColorSchemeButton } from '~/components/ui/toggle-color-scheme-button'
@@ -34,8 +34,21 @@ export const SettingsLayout = ({ children, sidebar, title }: PropsWithChildren<S
         {sidebar}
         <Container flexGrow={1} />
         <Button disabled justifyContent="flex-start" marginBottom={-8} variant="ghost">
-          <Text fontSize={12} fontWeight={600}>Community</Text>
+          <Text fontSize={12} fontWeight={600}>Extra</Text>
         </Button>
+        {import.meta.env.PROD && (
+          <Button
+            data-test-id="oculus-open-url"
+            gap={8}
+            hover={{ backgroundColor: colors.card }}
+            justifyContent="flex-start"
+            onClick={() => window.open(`https://www.oculus.com/open_url/?url=${encodeURIComponent(window.location.href)}`, '_blank', 'noopener')}
+            variant="ghost"
+          >
+            <ExternalLinkIcon height={16} width={16} />
+            <Text>Open in Meta Quest</Text>
+          </Button>
+        )}
         <Button
           data-test-id="github"
           gap={8}
