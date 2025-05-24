@@ -98,12 +98,6 @@ catalogs:
       specifier: ^0.2.2
       version: 0.2.2
   yuka:
-    '@recast-navigation/core':
-      specifier: ^0.39.0
-      version: 0.39.0
-    '@recast-navigation/three':
-      specifier: ^0.39.0
-      version: 0.39.0
     '@types/yuka':
       specifier: ^0.7.4
       version: 0.7.4
@@ -217,12 +211,6 @@ importers:
       '@react-three/xr':
         specifier: catalog:three
         version: 6.6.16(@react-three/fiber@9.1.2(@types/react@19.1.2)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(three@0.176.0))(@types/react@19.1.2)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(three@0.176.0)
-      '@recast-navigation/core':
-        specifier: catalog:yuka
-        version: 0.39.0
-      '@recast-navigation/three':
-        specifier: catalog:yuka
-        version: 0.39.0(@types/three@0.176.0)(three@0.176.0)
       '@ricky0123/vad-react':
         specifier: ^0.0.30
         version: 0.0.30(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
@@ -352,9 +340,6 @@ importers:
       '@react-three/fiber':
         specifier: catalog:three
         version: 9.1.2(@types/react@19.1.2)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(three@0.176.0)
-      '@recast-navigation/core':
-        specifier: catalog:yuka
-        version: 0.39.0
       '@types/react':
         specifier: catalog:react
         version: 19.1.2
@@ -1206,21 +1191,6 @@ packages:
       react: '>=18'
       react-dom: '>=18'
       three: '*'
-
-  '@recast-navigation/core@0.39.0':
-    resolution: {integrity: sha512-l48GHrimIUR+9ugAsjIecdUh5ohHULrFYUn5EqClafV5HJB/cPFBbN4n9HV2jDamCjGRGEhtSpId7NpkhoF0qQ==}
-
-  '@recast-navigation/generators@0.39.0':
-    resolution: {integrity: sha512-ymiacmEWK4SGY/FUlr6/n9/FgvA9NikPR57JyCGbteScEG10UYByrPGXJQU/UXuzUhUbmtKlPJAk2KP+MLgxJA==}
-
-  '@recast-navigation/three@0.39.0':
-    resolution: {integrity: sha512-zk2EnZSoMY1P2uYexGFnfoOG92kUD94B1R+7pz4MMOjcryqCKzGhTSalThyY8SbNi9r4MrKe7Xd50W4vS/1k8A==}
-    peerDependencies:
-      '@types/three': 0.x.x
-      three: 0.x.x
-
-  '@recast-navigation/wasm@0.39.0':
-    resolution: {integrity: sha512-1P/8pqXtwJSVseLBtO0AOdqQe1XnhPFTVvG9FMORFVFunYqkKXxULgni8x3fsutkQisyY+X7YQoIMLvZR4lKFA==}
 
   '@ricky0123/vad-react@0.0.30':
     resolution: {integrity: sha512-uHSJdpQgi2UpL1Z6PgJWQ3wRy+zXLWkT9zBwGIBK3NDloZPKf0xJuXDw0aoypfS+Url1dJafi+M2vyaFBh+9wA==}
@@ -5521,24 +5491,6 @@ snapshots:
     transitivePeerDependencies:
       - '@types/react'
       - immer
-
-  '@recast-navigation/core@0.39.0':
-    dependencies:
-      '@recast-navigation/wasm': 0.39.0
-
-  '@recast-navigation/generators@0.39.0':
-    dependencies:
-      '@recast-navigation/core': 0.39.0
-      '@recast-navigation/wasm': 0.39.0
-
-  '@recast-navigation/three@0.39.0(@types/three@0.176.0)(three@0.176.0)':
-    dependencies:
-      '@recast-navigation/core': 0.39.0
-      '@recast-navigation/generators': 0.39.0
-      '@types/three': 0.176.0
-      three: 0.176.0
-
-  '@recast-navigation/wasm@0.39.0': {}
 
   '@ricky0123/vad-react@0.0.30(react-dom@19.1.0(react@19.1.0))(react@19.1.0)':
     dependencies:

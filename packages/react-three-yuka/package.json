@@ -12,19 +12,12 @@
   },
   "bugs": "https://github.com/moeru-ai/chat/issues",
   "sideEffects": false,
-  "exports": {
-    ".": "./src/index.ts",
-    "./recast-navigation": "./src/recast-navigation/index.ts"
-  },
+  "exports": "./src/index.ts",
   "publishConfig": {
     "exports": {
       ".": {
         "types": "./dist/index.d.ts",
         "default": "./dist/index.js"
-      },
-      "./recast-navigation": {
-        "types": "./dist/recast-navigation/index.d.ts",
-        "default": "./dist/recast-navigation/index.js"
       },
       "./package.json": "./package.json"
     },
@@ -39,18 +32,12 @@
   },
   "peerDependencies": {
     "@react-three/fiber": "catalog:three",
-    "@recast-navigation/core": "catalog:yuka",
     "@types/react": "catalog:react",
     "@types/three": "catalog:three",
     "@types/yuka": "catalog:yuka",
     "react": "catalog:react",
     "three": "catalog:three",
     "yuka": "catalog:yuka"
-  },
-  "peerDependenciesMeta": {
-    "@recast-navigation/core": {
-      "optional": true
-    }
   },
   "dependencies": {
     "foxact": "catalog:"

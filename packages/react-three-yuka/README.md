@@ -72,37 +72,6 @@ export const Cube = () => {
 }
 ```
 
-###### InitRecastNavigation (./recast-navigation)
-
-Call the functions of recast-navigation under this component.
-
-```tsx
-import { InitRecastNavigation } from '@n3p6/react-three-yuka/recast-navigation'
-import { Outlet } from 'react-router'
-
-export const Layout = () => (
-  <InitRecastNavigation>
-    <Outlet />
-  </InitRecastNavigation>
-)
-```
-
-###### toYukaNavMesh (./recast-navigation)
-
-```ts
-import type { Mesh } from 'three'
-import type { NavMesh } from 'yuka'
-
-import { toYukaNavMesh } from '@n3p6/react-three-yuka/recast-navigation'
-import { threeToSoloNavMesh } from '@recast-navigation/three'
-
-const meshes: Mesh[] = [/* ... */]
-
-const { navMesh } = threeToSoloNavMesh(meshes, { /* config */})
-
-const yukaNavMesh: NavMesh = toYukaNavMesh(navMesh!)
-```
-
 # License
 
 [MIT](../../LICENSE.md)

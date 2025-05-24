@@ -25,8 +25,6 @@
     "@react-three/uikit-default": "catalog:three",
     "@react-three/uikit-lucide": "catalog:three",
     "@react-three/xr": "catalog:three",
-    "@recast-navigation/core": "catalog:yuka",
-    "@recast-navigation/three": "catalog:yuka",
     "@ricky0123/vad-react": "^0.0.30",
     "@xsai/generate-speech": "catalog:xsai",
     "@xsai/generate-text": "catalog:xsai",
