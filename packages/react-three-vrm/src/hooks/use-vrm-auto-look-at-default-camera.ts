@@ -4,7 +4,7 @@ import { useThree } from '@react-three/fiber'
 import { useEffect } from 'react'
 
 export const useVRMAutoLookAtDefaultCamera = (vrm: VRM) => {
-  const { camera } = useThree()
+  const camera = useThree(({ camera }) => camera)
 
   useEffect(() => {
     if (vrm.lookAt)

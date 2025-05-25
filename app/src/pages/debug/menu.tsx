@@ -13,7 +13,7 @@ import { Settings } from '~/components/ui/settings'
 
 export const FloatingMenu = ({ children, ...props }: PropsWithChildren<JSX.IntrinsicElements['group']>) => {
   const menuRef = useRef<Group>(null)
-  const { camera } = useThree()
+  const camera = useThree(({ camera }) => camera)
 
   const localPosition = useMemo(() => new Vector3(), [])
 

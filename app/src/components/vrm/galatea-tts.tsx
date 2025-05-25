@@ -10,7 +10,7 @@ import { useAudioContext } from '~/context/audio-context'
 import { useLipSync } from '~/hooks/use-lip-sync'
 
 export const GalateaTTS = ({ vrm }: { vrm: VRM }) => {
-  const { camera } = useThree()
+  const camera = useThree(({ camera }) => camera)
   const sound = useRef<PositionalAudio>(null)
   const listener = useMemo(() => new AudioListener(), [])
   const audioBuffer = useAudioBuffer()

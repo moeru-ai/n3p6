@@ -5,7 +5,7 @@ import { useGameEntity } from '@n3p6/react-three-yuka'
 import { useModelStore } from '~/hooks/use-model-store'
 
 export const useGalatea = () => {
-  const { model } = useModelStore()
+  const model = useModelStore(({ model }) => model)
   const galateaVRM = useVRM(model)
 
   useVRMAutoBlink(galateaVRM, 5000)

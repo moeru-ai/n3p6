@@ -16,7 +16,7 @@ export interface SettingsLayoutProps {
 export const SettingsLayout = ({ children, sidebar, title }: PropsWithChildren<SettingsLayoutProps>) => {
   const [sidebarDisplay, setSidebarDisplay] = useState<'flex' | 'none'>('flex')
 
-  const { mode } = useXR()
+  const mode = useXR(({ mode }) => mode)
 
   const panelMaxWidth = sidebarDisplay === 'flex' ? 768 : 1024
 

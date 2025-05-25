@@ -8,7 +8,10 @@ import { useCallback, useEffect, useMemo } from 'react'
 import { useModelStore } from '~/hooks/use-model-store'
 
 export const SettingsModel = (props: ContainerProperties) => {
-  const { resetModel, setModel } = useModelStore()
+  const { resetModel, setModel } = useModelStore(({ resetModel, setModel }) => ({
+    resetModel,
+    setModel,
+  }))
 
   const handleFileUpload = useCallback(async (event: Event) => {
     const { files } = event?.target as HTMLInputElement
