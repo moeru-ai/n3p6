@@ -3,7 +3,7 @@ import type { PropsWithChildren, ReactNode } from 'react'
 import { Container, Text } from '@react-three/uikit'
 import { Button, Card, colors, Separator } from '@react-three/uikit-default'
 import { ExternalLinkIcon, GithubIcon, PanelLeftIcon } from '@react-three/uikit-lucide'
-import { useXR } from '@react-three/xr'
+import { IfInSessionMode } from '@react-three/xr'
 import { useState } from 'react'
 
 import { ToggleColorSchemeButton } from '~/components/ui/toggle-color-scheme-button'
@@ -15,8 +15,6 @@ export interface SettingsLayoutProps {
 
 export const SettingsLayout = ({ children, sidebar, title }: PropsWithChildren<SettingsLayoutProps>) => {
   const [sidebarDisplay, setSidebarDisplay] = useState<'flex' | 'none'>('flex')
-
-  const mode = useXR(({ mode }) => mode)
 
   const panelMaxWidth = sidebarDisplay === 'flex' ? 768 : 1024
 
@@ -39,8 +37,7 @@ export const SettingsLayout = ({ children, sidebar, title }: PropsWithChildren<S
         <Button disabled justifyContent="flex-start" marginBottom={-8} variant="ghost">
           <Text fontSize={12} fontWeight={600}>Extra</Text>
         </Button>
-        {/* eslint-disable-next-line @masknet/jsx-no-logical */}
-        {import.meta.env.PROD && mode === 'inline' && (
+        <IfInSessionMode deny={['immersive-ar', 'immersive-vr']}>
           <Button
             data-test-id="oculus-open-url"
             gap={8}
@@ -52,7 +49,7 @@ export const SettingsLayout = ({ children, sidebar, title }: PropsWithChildren<S
             <ExternalLinkIcon height={16} width={16} />
             <Text>Open in Meta Quest</Text>
           </Button>
-        )}
+        </IfInSessionMode>
         <Button
           data-test-id="github"
           gap={8}
