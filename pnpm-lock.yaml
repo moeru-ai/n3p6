@@ -290,6 +290,12 @@ importers:
       astro:
         specifier: ^5.6.1
         version: 5.8.0(@types/node@22.13.4)(idb-keyval@6.2.2)(jiti@2.4.2)(rollup@4.40.1)(tsx@4.19.4)(typescript@5.8.3)(yaml@2.7.0)
+      starlight-sidebar-topics:
+        specifier: ^0.6.0
+        version: 0.6.0(@astrojs/starlight@0.34.3(astro@5.8.0(@types/node@22.13.4)(idb-keyval@6.2.2)(jiti@2.4.2)(rollup@4.40.1)(tsx@4.19.4)(typescript@5.8.3)(yaml@2.7.0)))
+      starlight-sidebar-topics-dropdown:
+        specifier: ^0.5.1
+        version: 0.5.1(@astrojs/starlight@0.34.3(astro@5.8.0(@types/node@22.13.4)(idb-keyval@6.2.2)(jiti@2.4.2)(rollup@4.40.1)(tsx@4.19.4)(typescript@5.8.3)(yaml@2.7.0)))(starlight-sidebar-topics@0.6.0(@astrojs/starlight@0.34.3(astro@5.8.0(@types/node@22.13.4)(idb-keyval@6.2.2)(jiti@2.4.2)(rollup@4.40.1)(tsx@4.19.4)(typescript@5.8.3)(yaml@2.7.0))))
       starlight-theme-nova:
         specifier: ^0.7.2
         version: 0.7.2(@astrojs/starlight@0.34.3(astro@5.8.0(@types/node@22.13.4)(idb-keyval@6.2.2)(jiti@2.4.2)(rollup@4.40.1)(tsx@4.19.4)(typescript@5.8.3)(yaml@2.7.0)))(typescript@5.8.3)
@@ -2103,14 +2109,14 @@ packages:
   '@xsai/shared-chat@0.2.2':
     resolution: {integrity: sha512-0t4HwbK2jm5Lrixg9RnIsYTtAvlQNUdJXs2taW7PFaXfL5ktMy2IwZwW2nqK+Ig0RcLCMp3sScZujERHSDMtmg==}
 
-  '@xsai/shared-chat@0.3.0-beta.1':
-    resolution: {integrity: sha512-1lx5+TLxdukM4hHlH8xma7x6WR1rGVDBghVaNDiY1WS7yrTsDyEiphkRrfFR7sOw1/3hRNOX7cZ55W+LBueI2Q==}
+  '@xsai/shared-chat@0.3.0-beta.2':
+    resolution: {integrity: sha512-RsUXOewyEiyMkjt68DHC5M+P41M0zq0wjQyA48ydpxrM/fqNQrG2aeTcsV6ylbNyAQaolauhwPG1CPC5A/9xhQ==}
 
   '@xsai/shared@0.2.2':
     resolution: {integrity: sha512-bgalLd3samx36hDRRmu3M75LY5NfWwh3YRaMwY4Woy7X09JQx+vEqVpJcaIeqcmVqztm8NGYzj8hUru7lwPh0w==}
 
-  '@xsai/shared@0.3.0-beta.1':
-    resolution: {integrity: sha512-aLE4bakXQtPK097VtLdzx0pBFr/gVBhCqQZShzLsoBTPa9LimGBBlaGZXGxGSW3tG+9TCXQgEKLJpERvz9G71A==}
+  '@xsai/shared@0.3.0-beta.2':
+    resolution: {integrity: sha512-H9a6K0n8p05qGz9EutqhEXzP86YYMYAiwWv/d4eEVdnjHa51pdxiB93PTNFn3snkCcCG5oahli6am5RDIf23Zg==}
 
   '@zag-js/dom-query@1.12.4':
     resolution: {integrity: sha512-EICuVDdjmCnTX/vkO/t51XpaOFKQbMnD74AprQjOosrY7bXs0VFmLbQ5hHmOZd7rr7GbNfd3VyO7VmyeZoF32w==}
@@ -5011,6 +5017,19 @@ packages:
   stable-hash@0.0.5:
     resolution: {integrity: sha512-+L3ccpzibovGXFK+Ap/f8LOS0ahMrHTf3xu7mMLSpEGU0EO9ucaysSylKo9eRDFNhWve/y275iPmIZ4z39a9iA==}
 
+  starlight-sidebar-topics-dropdown@0.5.1:
+    resolution: {integrity: sha512-vEKQZnl90dVdqQWTauUs+L4I9cOqmw0gnNa6C9dB8KgXE1QxFAJikEMDDS9IF24kGRL+7dXr+ZZWWhY6Ve+mEA==}
+    engines: {node: ^18.17.1 || ^20.3.0 || >=21.0.0}
+    peerDependencies:
+      '@astrojs/starlight': '>=0.30'
+      starlight-sidebar-topics: '>=0.6'
+
+  starlight-sidebar-topics@0.6.0:
+    resolution: {integrity: sha512-ysmOR7zaHYKtk18/mpW4MbEMDioR/ZBsisu9bdQrq0v9BlHWpW7gAdWlqFWO9zdv1P7l0Mo1WKd0wJ0UtqOVEQ==}
+    engines: {node: '>=18'}
+    peerDependencies:
+      '@astrojs/starlight': '>=0.32.0'
+
   starlight-theme-nova@0.7.2:
     resolution: {integrity: sha512-kYd/gYFGhnRSM4YNERTdQPOmUBaPiu3TSNoKppQXlXzMFNVrHsEmp5jY3qgtEI0n559I2gpTUfvvx3IdFHVp2w==}
     peerDependencies:
@@ -7704,28 +7723,28 @@ snapshots:
 
   '@xsai/generate-speech@0.2.2':
     dependencies:
-      '@xsai/shared': 0.3.0-beta.1
+      '@xsai/shared': 0.3.0-beta.2
 
   '@xsai/generate-text@0.2.2':
     dependencies:
-      '@xsai/shared': 0.3.0-beta.1
-      '@xsai/shared-chat': 0.3.0-beta.1
+      '@xsai/shared': 0.3.0-beta.2
+      '@xsai/shared-chat': 0.3.0-beta.2
 
   '@xsai/generate-transcription@0.2.2':
     dependencies:
-      '@xsai/shared': 0.3.0-beta.1
+      '@xsai/shared': 0.3.0-beta.2
 
   '@xsai/shared-chat@0.2.2':
     dependencies:
-      '@xsai/shared': 0.3.0-beta.1
+      '@xsai/shared': 0.3.0-beta.2
 
-  '@xsai/shared-chat@0.3.0-beta.1':
+  '@xsai/shared-chat@0.3.0-beta.2':
     dependencies:
-      '@xsai/shared': 0.3.0-beta.1
+      '@xsai/shared': 0.3.0-beta.2
 
   '@xsai/shared@0.2.2': {}
 
-  '@xsai/shared@0.3.0-beta.1': {}
+  '@xsai/shared@0.3.0-beta.2': {}
 
   '@zag-js/dom-query@1.12.4':
     dependencies:
@@ -11582,6 +11601,16 @@ snapshots:
   spdx-license-ids@3.0.21: {}
 
   stable-hash@0.0.5: {}
+
+  starlight-sidebar-topics-dropdown@0.5.1(@astrojs/starlight@0.34.3(astro@5.8.0(@types/node@22.13.4)(idb-keyval@6.2.2)(jiti@2.4.2)(rollup@4.40.1)(tsx@4.19.4)(typescript@5.8.3)(yaml@2.7.0)))(starlight-sidebar-topics@0.6.0(@astrojs/starlight@0.34.3(astro@5.8.0(@types/node@22.13.4)(idb-keyval@6.2.2)(jiti@2.4.2)(rollup@4.40.1)(tsx@4.19.4)(typescript@5.8.3)(yaml@2.7.0)))):
+    dependencies:
+      '@astrojs/starlight': 0.34.3(astro@5.8.0(@types/node@22.13.4)(idb-keyval@6.2.2)(jiti@2.4.2)(rollup@4.40.1)(tsx@4.19.4)(typescript@5.8.3)(yaml@2.7.0))
+      starlight-sidebar-topics: 0.6.0(@astrojs/starlight@0.34.3(astro@5.8.0(@types/node@22.13.4)(idb-keyval@6.2.2)(jiti@2.4.2)(rollup@4.40.1)(tsx@4.19.4)(typescript@5.8.3)(yaml@2.7.0)))
+
+  starlight-sidebar-topics@0.6.0(@astrojs/starlight@0.34.3(astro@5.8.0(@types/node@22.13.4)(idb-keyval@6.2.2)(jiti@2.4.2)(rollup@4.40.1)(tsx@4.19.4)(typescript@5.8.3)(yaml@2.7.0))):
+    dependencies:
+      '@astrojs/starlight': 0.34.3(astro@5.8.0(@types/node@22.13.4)(idb-keyval@6.2.2)(jiti@2.4.2)(rollup@4.40.1)(tsx@4.19.4)(typescript@5.8.3)(yaml@2.7.0))
+      picomatch: 4.0.2
 
   starlight-theme-nova@0.7.2(@astrojs/starlight@0.34.3(astro@5.8.0(@types/node@22.13.4)(idb-keyval@6.2.2)(jiti@2.4.2)(rollup@4.40.1)(tsx@4.19.4)(typescript@5.8.3)(yaml@2.7.0)))(typescript@5.8.3):
     dependencies:
