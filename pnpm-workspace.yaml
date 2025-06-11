@@ -3,6 +3,10 @@ packages:
   - docs
   - packages/*
 
+overrides:
+  react: catalog:react
+  react-dom: catalog:react
+
 catalog:
   foxact: ^0.2.45
 
