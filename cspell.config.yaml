@@ -34,6 +34,7 @@ words:
   - pixiv
   - pkgroll
   - pmndrs
+  - rolldown
   - sonarjs
   - stdlib
   - subgoal
@@ -44,6 +45,7 @@ words:
   - tsup
   - uikit
   - verts
+  - vite
   - vrma
   - vrmc
   - wlipsync
