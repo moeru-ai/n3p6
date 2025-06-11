@@ -8,6 +8,7 @@ export default defineConfig({
   {
     ignores: [
       'app/src/router.ts',
+      'app/src/assets/lip-sync/profile.json',
       'cspell.config.yaml',
     ],
   },
