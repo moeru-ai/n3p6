@@ -1,3 +1,4 @@
+import { toSystemMessage } from '@n3p6/ccc'
 import { Container } from '@react-three/uikit'
 import { Button, Input } from '@react-three/uikit-default'
 import { SendIcon } from '@react-three/uikit-lucide'
@@ -7,6 +8,7 @@ import { useState, useTransition } from 'react'
 
 import { useSetAudioBuffer } from '~/context/audio-buffer'
 import { useAudioContext } from '~/context/audio-context'
+import { useCharacterCard } from '~/hooks/use-character-card'
 import { useMessages } from '~/hooks/use-messages'
 import { useLLMProvider, useTTSProvider } from '~/hooks/use-providers'
 
@@ -18,6 +20,8 @@ export const NavbarChat = () => {
   const [ttsProvider] = useTTSProvider()
   const audioContext = useAudioContext()
 
+  const [character] = useCharacterCard()
+
   const [msg, setMsg] = useMessages()
 
   const handleSubmit = async () =>
@@ -25,13 +29,18 @@ export const NavbarChat = () => {
       const { messages, text: input } = await generateText({
         ...llmProvider,
         messages: [
+          ...(character
+            ? [toSystemMessage(character, { mode: 'inline', userName: 'User' })]
+            : []),
           ...msg,
           { content: value, role: 'user' },
         ],
       })
+      if (import.meta.env.DEV)
+        console.warn('Response:', input)
 
       if (input != null) {
-        setMsg(messages)
+        setMsg(messages.slice(1))
         const arrayBuffer = await generateSpeech({ ...ttsProvider, input })
         const audioBuffer = await audioContext.decodeAudioData(arrayBuffer)
         setAudioBuffer(audioBuffer)

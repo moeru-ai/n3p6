@@ -1,0 +1,38 @@
+{
+  "name": "@n3p6/ccc",
+  "type": "module",
+  "version": "0.1.0-beta.2",
+  "private": true,
+  "author": "Moeru AI",
+  "license": "MIT",
+  "homepage": "https://github.com/moeru-ai/chat",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/moeru-ai/chat.git",
+    "directory": "packages/ccc"
+  },
+  "bugs": "https://github.com/moeru-ai/chat/issues",
+  "sideEffects": false,
+  "exports": "./src/index.ts",
+  "publishConfig": {
+    "exports": {
+      ".": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "./package.json": "./package.json"
+    },
+    "main": "./dist/index.js",
+    "types": "./dist/index.d.ts"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "pkgroll"
+  },
+  "dependencies": {
+    "@lenml/char-card-reader": "^1.0.6",
+    "@xsai/shared-chat": "catalog:xsai"
+  }
+}

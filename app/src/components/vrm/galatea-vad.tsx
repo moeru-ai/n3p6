@@ -1,5 +1,7 @@
 import type { Message } from '@xsai/shared-chat'
 
+import { toSystemMessage } from '@n3p6/ccc'
+import { useXR } from '@react-three/xr'
 import { useMicVAD, utils } from '@ricky0123/vad-react'
 import { generateSpeech } from '@xsai/generate-speech'
 import { generateText } from '@xsai/generate-text'
@@ -9,6 +11,7 @@ import { useEffect, useRef } from 'react'
 
 import { useSetAudioBuffer } from '~/context/audio-buffer'
 import { useAudioContext } from '~/context/audio-context'
+import { useCharacterCard } from '~/hooks/use-character-card'
 import { useMessages } from '~/hooks/use-messages'
 import { useLLMProvider, useSTTProvider, useTTSProvider } from '~/hooks/use-providers'
 
@@ -16,6 +19,9 @@ export const GalateaVAD = () => {
   const [llmProvider] = useLLMProvider()
   const [sttProvider] = useSTTProvider()
   const [ttsProvider] = useTTSProvider()
+
+  const mode = useXR(({ mode }) => mode)
+  const [character] = useCharacterCard()
 
   const [msg, setMsg] = useMessages()
   const msgRef = useRef<Message[]>(msg)
@@ -56,6 +62,9 @@ export const GalateaVAD = () => {
       const { messages, text: input } = await generateText({
         ...llmProvider,
         messages: [
+          ...(character
+            ? [toSystemMessage(character, { mode, userName: 'User' })]
+            : []),
           ...msgRef.current,
           { content, role: 'user' },
         ],
@@ -64,7 +73,7 @@ export const GalateaVAD = () => {
         console.warn('Response:', input)
 
       if (input != null) {
-        setMsg(messages)
+        setMsg(messages.slice(1))
         const arrayBuffer = await generateSpeech({ ...ttsProvider, input })
         const audioBuffer = await audioContext.decodeAudioData(arrayBuffer)
         setAudioBuffer(audioBuffer)
@@ -72,7 +81,7 @@ export const GalateaVAD = () => {
     }
 
     void processAudio()
-  }, [file, llmProvider, sttProvider, ttsProvider, audioContext, setMsg, setAudioBuffer])
+  }, [file, llmProvider, sttProvider, ttsProvider, audioContext, character, mode, setMsg, setAudioBuffer])
 
   return null
 }
