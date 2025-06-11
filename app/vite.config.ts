@@ -10,7 +10,6 @@ import tsconfigPaths from 'vite-tsconfig-paths'
 export default defineConfig(({ mode }) => ({
   assetsInclude: ['./assets/*'],
   build: { target: 'esnext' },
-  // optimizeDeps: { exclude: ['sqlocal'] },
   plugins: [
     react({
       babel: { plugins: [
@@ -29,10 +28,4 @@ export default defineConfig(({ mode }) => ({
     dedupe: ['react', 'three'],
   },
   rollupOptions: { target: 'esnext' },
-//   server: {
-//     headers: {
-//       'Cross-Origin-Embedder-Policy': 'require-corp',
-//       'Cross-Origin-Opener-Policy': 'same-origin',
-//     },
-//   },
 }))
