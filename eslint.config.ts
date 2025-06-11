@@ -1,4 +1,4 @@
-import { GLOB_TSX } from '@antfu/eslint-config'
+import { GLOB_MARKDOWN, GLOB_MARKDOWN_CODE, GLOB_TSX } from '@antfu/eslint-config'
 import { defineConfig } from '@importantimport/eslint-config'
 
 export default defineConfig({
@@ -22,6 +22,12 @@ export default defineConfig({
     files: [GLOB_TSX],
     rules: {
       'react-hooks/react-compiler': 'error',
+    },
+  },
+  {
+    files: [GLOB_MARKDOWN, GLOB_MARKDOWN_CODE],
+    rules: {
+      '@masknet/no-top-level': 'off',
     },
   },
 ])

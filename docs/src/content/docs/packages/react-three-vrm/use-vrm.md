@@ -6,7 +6,6 @@ A convenience hook that uses `useLoader`, `GLTFLoader` and `VRMLoaderPlugin`.
 
 ```tsx
 import { useVRM } from '@n3p6/react-three-vrm'
-import { useAnimations } from '@react-three/drei'
 
 export const AvatarSampleA = () => {
   const vrm = useVRM(url)
