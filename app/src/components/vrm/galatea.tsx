@@ -31,7 +31,7 @@ export const Galatea = () => {
     const { x, z } = camera.getWorldPosition(vec.current)
     playerEntity.position.copy(yukaVec.current.set(x, 0, z))
 
-    // eslint-disable-next-line react-compiler/react-compiler
+    // eslint-disable-next-line react-hooks/react-compiler
     actions.walk!.timeScale = Math.min(0.75, galateaEntity.getSpeed() / galateaEntity.maxSpeed)
   })
 

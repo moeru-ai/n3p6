@@ -8,7 +8,7 @@ export const useVRMAutoLookAtDefaultCamera = (vrm: VRM) => {
 
   useEffect(() => {
     if (vrm.lookAt)
-      // eslint-disable-next-line react-compiler/react-compiler
+
       vrm.lookAt.target = camera
 
     return () => {
