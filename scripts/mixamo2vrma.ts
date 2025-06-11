@@ -1,4 +1,3 @@
-#!/usr/bin/env node
 /* eslint-disable @masknet/no-default-error */
 /* eslint-disable @masknet/no-top-level */
 
