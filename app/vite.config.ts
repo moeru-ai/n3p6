@@ -2,6 +2,7 @@ import type { Plugin } from 'vite'
 
 import generouted from '@generouted/react-router/plugin'
 import react from '@vitejs/plugin-react'
+import reactOxc from '@vitejs/plugin-react-oxc'
 import { cp } from 'node:fs/promises'
 import { defineConfig } from 'vite'
 import tsconfigPaths from 'vite-tsconfig-paths'
@@ -12,11 +13,13 @@ export default defineConfig(({ mode }) => ({
   build: { target: 'esnext' },
   // optimizeDeps: { exclude: ['sqlocal'] },
   plugins: [
-    react({
-      babel: { plugins: [
-        ['babel-plugin-react-compiler', { target: '19' }],
-      ] },
-    }),
+    mode === 'development'
+      ? reactOxc()
+      : react({
+          babel: { plugins: [
+            ['babel-plugin-react-compiler', { target: '19' }],
+          ] },
+        }),
     generouted(),
     tsconfigPaths(),
     {

@@ -50,6 +50,7 @@
     "@types/three": "catalog:three",
     "@types/yuka": "catalog:yuka",
     "@vitejs/plugin-react": "^4.4.1",
+    "@vitejs/plugin-react-oxc": "^0.2.2",
     "vite": "npm:rolldown-vite@^6.3.18",
     "vite-tsconfig-paths": "^5.1.4"
   }

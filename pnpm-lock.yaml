@@ -273,6 +273,9 @@ importers:
       '@vitejs/plugin-react':
         specifier: ^4.4.1
         version: 4.4.1(rolldown-vite@6.3.18(@types/node@22.13.4)(esbuild@0.25.3)(jiti@2.4.2)(tsx@4.19.4)(yaml@2.7.0))
+      '@vitejs/plugin-react-oxc':
+        specifier: ^0.2.2
+        version: 0.2.2(rolldown-vite@6.3.18(@types/node@22.13.4)(esbuild@0.25.3)(jiti@2.4.2)(tsx@4.19.4)(yaml@2.7.0))
       vite:
         specifier: npm:rolldown-vite@^6.3.18
         version: rolldown-vite@6.3.18(@types/node@22.13.4)(esbuild@0.25.3)(jiti@2.4.2)(tsx@4.19.4)(yaml@2.7.0)
@@ -1620,6 +1623,9 @@ packages:
     cpu: [x64]
     os: [win32]
 
+  '@rolldown/pluginutils@1.0.0-beta.11':
+    resolution: {integrity: sha512-L/gAA/hyCSuzTF1ftlzUSI/IKr2POHsv1Dd78GfqkR83KMNuswWD61JxGV2L7nRwBBBSDr6R1gCkdTmoN7W4ag==}
+
   '@rolldown/pluginutils@1.0.0-beta.11-commit.0a985f3':
     resolution: {integrity: sha512-BzOULtKKG5aXllquK5TQKwonut+cN7KtWSt9UUAwlipWyNPKViJs+vFVTBwdvgSsHrWefNVjHkC9rO1eeYKkDA==}
 
@@ -2117,6 +2123,12 @@ packages:
     resolution: {integrity: sha512-Yy19y6O2GJq8f7CHf7L0nxL8bf4PZCPaVOCgJrusOeFHY1LvHgYXnmnXg6N5iwAnbgbZCDjo60SiM6IPJi9C5g==}
     peerDependencies:
       react: ^19.1.0
+
+  '@vitejs/plugin-react-oxc@0.2.2':
+    resolution: {integrity: sha512-wI3DrcTLOs989T8IxKQZyk49/aHw+sZS/fcI5n9IY8T/nkN8oVGP4S9CWlSiZFR2mcZysuZTacq48yBRIOvX6w==}
+    engines: {node: '>=20.0.0'}
+    peerDependencies:
+      vite: ^6.3.0 || ^7.0.0-beta.0
 
   '@vitejs/plugin-react@4.4.1':
     resolution: {integrity: sha512-IpEm5ZmeXAP/osiBXVVP5KjFMzbWOonMs0NaQQl+xYnUAcq4oHUBsF2+p4MgKWG4YMmFYJU8A6sxRPuowllm6w==}
@@ -7364,6 +7376,8 @@ snapshots:
   '@rolldown/binding-win32-x64-msvc@1.0.0-beta.11-commit.0a985f3':
     optional: true
 
+  '@rolldown/pluginutils@1.0.0-beta.11': {}
+
   '@rolldown/pluginutils@1.0.0-beta.11-commit.0a985f3': {}
 
   '@rollup/plugin-alias@5.1.1(rollup@4.40.1)':
@@ -7857,6 +7871,11 @@ snapshots:
     dependencies:
       '@use-gesture/core': 10.3.1
       react: 19.1.0
+
+  '@vitejs/plugin-react-oxc@0.2.2(rolldown-vite@6.3.18(@types/node@22.13.4)(esbuild@0.25.3)(jiti@2.4.2)(tsx@4.19.4)(yaml@2.7.0))':
+    dependencies:
+      '@rolldown/pluginutils': 1.0.0-beta.11
+      vite: rolldown-vite@6.3.18(@types/node@22.13.4)(esbuild@0.25.3)(jiti@2.4.2)(tsx@4.19.4)(yaml@2.7.0)
 
   '@vitejs/plugin-react@4.4.1(rolldown-vite@6.3.18(@types/node@22.13.4)(esbuild@0.25.3)(jiti@2.4.2)(tsx@4.19.4)(yaml@2.7.0))':
     dependencies:
