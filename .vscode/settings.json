@@ -48,7 +48,8 @@
     "pcss",
     "postcss"
   ],
-  "cSpell.words": [
-    "mixamo"
-  ]
+
+  "eslint.nodePath": "",
+  "eslint.runtime": "node",
+  "eslint.options": { "flags": ["unstable_native_nodejs_ts_config"] }
 }

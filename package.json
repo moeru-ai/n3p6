@@ -10,7 +10,7 @@
     "bump": "bumpp",
     "dev": "pnpm -rF @moeru-ai/chat dev",
     "docs:dev": "pnpm -rF @moeru-ai/chat-docs dev",
-    "lint": "eslint --cache .",
+    "lint": "eslint --flag unstable_native_nodejs_ts_config --cache .",
     "mixamo2vrma": "tsx scripts/mixamo2vrma.ts"
   },
   "devDependencies": {
