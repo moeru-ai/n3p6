@@ -20,6 +20,7 @@ words:
   - importantimport
   - Janny
   - keyval
+  - Kokoro
   - koota
   - lenml
   - linvel
@@ -31,6 +32,8 @@ words:
   - moeru
   - moeru-ai
   - msdf
+  - Ollama
+  - ONNX
   - onreading
   - orcust
   - packagephobia
@@ -42,6 +45,7 @@ words:
   - rolldown
   - Seraphina
   - sonarjs
+  - Speaches
   - stdlib
   - subgoal
   - subgoals
