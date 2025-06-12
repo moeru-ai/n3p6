@@ -285,6 +285,9 @@ importers:
       astro:
         specifier: ^5.9.2
         version: 5.9.2(@types/node@22.13.4)(idb-keyval@6.2.2)(jiti@2.4.2)(lightningcss@1.30.1)(rollup@4.40.1)(tsx@4.20.1)(typescript@5.8.3)(yaml@2.8.0)
+      starlight-auto-sidebar:
+        specifier: ^0.1.2
+        version: 0.1.2(@astrojs/starlight@0.34.3(astro@5.9.2(@types/node@22.13.4)(idb-keyval@6.2.2)(jiti@2.4.2)(lightningcss@1.30.1)(rollup@4.40.1)(tsx@4.20.1)(typescript@5.8.3)(yaml@2.8.0)))
       starlight-sidebar-topics:
         specifier: ^0.6.0
         version: 0.6.0(@astrojs/starlight@0.34.3(astro@5.9.2(@types/node@22.13.4)(idb-keyval@6.2.2)(jiti@2.4.2)(lightningcss@1.30.1)(rollup@4.40.1)(tsx@4.20.1)(typescript@5.8.3)(yaml@2.8.0)))
@@ -2106,8 +2109,14 @@ packages:
   '@xsai/shared-chat@0.3.0-beta.3':
     resolution: {integrity: sha512-LtHGPVog0YjZ+lp7FM7MX0BfuEczSGsWC8EIeucdQ3IrZf9MYn23AUnhKZZNSz4cIkywmNGAF1oQzRrRiT/CoA==}
 
+  '@xsai/shared-chat@0.3.0-beta.4':
+    resolution: {integrity: sha512-7vD3XLl5I3RKntFGJTPRe5fGner+49KwRj7MQAUSjykvQGtJ6CoEGcZcQdhnqrsRZga8b2urpiMRZZCHL4avzg==}
+
   '@xsai/shared@0.3.0-beta.3':
     resolution: {integrity: sha512-oEwhwLeh2xXb5J0Wt/K/4zQrdBxBvFV9v3aG5UOr4AoZpXsUm3F6Hf+XB2aMX0KegFVhV2dhXe00f7XBa2vFeg==}
+
+  '@xsai/shared@0.3.0-beta.4':
+    resolution: {integrity: sha512-Jf/AMvk/MAZu1prsr67mCXwfjjXyDaKgkL/a/3oJ1PKub0VLrtu7W7J8ZE1YOTqPhfiuSjaDxKMoUJe+BY++QA==}
 
   '@zag-js/dom-query@1.12.4':
     resolution: {integrity: sha512-EICuVDdjmCnTX/vkO/t51XpaOFKQbMnD74AprQjOosrY7bXs0VFmLbQ5hHmOZd7rr7GbNfd3VyO7VmyeZoF32w==}
@@ -4882,6 +4891,12 @@ packages:
   spdx-license-ids@3.0.21:
     resolution: {integrity: sha512-Bvg/8F5XephndSK3JffaRqdT+gyhfqIPwDHpX80tJrF8QQRYMo8sNMeaZ2Dp5+jhwKnUmIOyFFQfHRkjJm5nXg==}
 
+  starlight-auto-sidebar@0.1.2:
+    resolution: {integrity: sha512-7wxR9r/dMGl0ISjO7LxmSQHFdUN/UdiEDWQ+ehv5AL8udEYgItZIvPrUWv5tAg4EF5Okj451mRp8s1bU9f6fmA==}
+    engines: {node: '>=18.17.1'}
+    peerDependencies:
+      '@astrojs/starlight': '>=0.32.0'
+
   starlight-sidebar-topics-dropdown@0.5.1:
     resolution: {integrity: sha512-vEKQZnl90dVdqQWTauUs+L4I9cOqmw0gnNa6C9dB8KgXE1QxFAJikEMDDS9IF24kGRL+7dXr+ZZWWhY6Ve+mEA==}
     engines: {node: ^18.17.1 || ^20.3.0 || >=21.0.0}
@@ -7582,22 +7597,28 @@ snapshots:
 
   '@xsai/generate-speech@0.3.0-beta.3':
     dependencies:
-      '@xsai/shared': 0.3.0-beta.3
+      '@xsai/shared': 0.3.0-beta.4
 
   '@xsai/generate-text@0.3.0-beta.3':
     dependencies:
-      '@xsai/shared': 0.3.0-beta.3
-      '@xsai/shared-chat': 0.3.0-beta.3
+      '@xsai/shared': 0.3.0-beta.4
+      '@xsai/shared-chat': 0.3.0-beta.4
 
   '@xsai/generate-transcription@0.3.0-beta.3':
     dependencies:
-      '@xsai/shared': 0.3.0-beta.3
+      '@xsai/shared': 0.3.0-beta.4
 
   '@xsai/shared-chat@0.3.0-beta.3':
     dependencies:
-      '@xsai/shared': 0.3.0-beta.3
+      '@xsai/shared': 0.3.0-beta.4
+
+  '@xsai/shared-chat@0.3.0-beta.4':
+    dependencies:
+      '@xsai/shared': 0.3.0-beta.4
 
   '@xsai/shared@0.3.0-beta.3': {}
+
+  '@xsai/shared@0.3.0-beta.4': {}
 
   '@zag-js/dom-query@1.12.4':
     dependencies:
@@ -11241,6 +11262,11 @@ snapshots:
       spdx-license-ids: 3.0.21
 
   spdx-license-ids@3.0.21: {}
+
+  starlight-auto-sidebar@0.1.2(@astrojs/starlight@0.34.3(astro@5.9.2(@types/node@22.13.4)(idb-keyval@6.2.2)(jiti@2.4.2)(lightningcss@1.30.1)(rollup@4.40.1)(tsx@4.20.1)(typescript@5.8.3)(yaml@2.8.0))):
+    dependencies:
+      '@astrojs/starlight': 0.34.3(astro@5.9.2(@types/node@22.13.4)(idb-keyval@6.2.2)(jiti@2.4.2)(lightningcss@1.30.1)(rollup@4.40.1)(tsx@4.20.1)(typescript@5.8.3)(yaml@2.8.0))
+      github-slugger: 2.0.0
 
   starlight-sidebar-topics-dropdown@0.5.1(@astrojs/starlight@0.34.3(astro@5.9.2(@types/node@22.13.4)(idb-keyval@6.2.2)(jiti@2.4.2)(lightningcss@1.30.1)(rollup@4.40.1)(tsx@4.20.1)(typescript@5.8.3)(yaml@2.8.0)))(starlight-sidebar-topics@0.6.0(@astrojs/starlight@0.34.3(astro@5.9.2(@types/node@22.13.4)(idb-keyval@6.2.2)(jiti@2.4.2)(lightningcss@1.30.1)(rollup@4.40.1)(tsx@4.20.1)(typescript@5.8.3)(yaml@2.8.0)))):
     dependencies:

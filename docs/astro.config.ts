@@ -1,5 +1,6 @@
 import starlight from '@astrojs/starlight'
 import { defineConfig } from 'astro/config'
+// import starlightAutoSidebar from 'starlight-auto-sidebar'
 import starlightSidebarTopics from 'starlight-sidebar-topics'
 import starlightThemeNova from 'starlight-theme-nova'
 
@@ -21,7 +22,19 @@ export default defineConfig({
         src: './public/favicon.png',
       },
       plugins: [
-        starlightThemeNova(),
+        // starlightAutoSidebar(),
+        starlightThemeNova({
+          nav: [
+            {
+              href: 'https://blog.moeru.ai',
+              label: 'Blog',
+            },
+            {
+              href: 'https://github.com/moeru-ai/chat/releases',
+              label: 'Changelog',
+            },
+          ],
+        }),
         starlightSidebarTopics([
           {
             icon: 'open-book',
@@ -43,10 +56,10 @@ export default defineConfig({
           },
         ]),
       ],
-
       social: [{ href: 'https://github.com/moeru-ai/chat', icon: 'github', label: 'GitHub' }],
       title: 'moeChat Docs',
     }),
   ],
+  markdown: { smartypants: false },
   site: 'https://chat.moeru.ai',
 })
