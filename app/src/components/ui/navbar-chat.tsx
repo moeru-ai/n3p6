@@ -11,7 +11,7 @@ export const NavbarChat = () => {
   const { send } = useChat()
 
   const handleSubmit = useCallback(() => startTransition(async () => {
-    send(value)
+    await send(value)
     setValue('')
   }), [send, value])
 

@@ -21,7 +21,7 @@ export const useChat = () => {
   const audioContext = useAudioContext()
   const setAudioBuffer = useSetAudioBuffer()
 
-  const send = (content: string) => async () => {
+  const send = async (content: string) => {
     const { messages, text: input } = await generateText({
       ...llmProvider,
       messages: [

@@ -37,7 +37,7 @@ export const GalateaVAD = () => {
       if (import.meta.env.DEV)
         console.warn('Transcription:', content)
 
-      send(content)
+      await send(content)
     })
   }, [send, file, sttProvider])
 
