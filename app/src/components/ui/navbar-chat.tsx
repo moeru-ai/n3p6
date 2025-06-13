@@ -1,53 +1,19 @@
-import { toSystemMessage } from '@n3p6/ccc'
 import { Container } from '@react-three/uikit'
 import { Button, Input } from '@react-three/uikit-default'
 import { SendIcon } from '@react-three/uikit-lucide'
-import { generateSpeech } from '@xsai/generate-speech'
-import { generateText } from '@xsai/generate-text'
-import { useState, useTransition } from 'react'
+import { useCallback, useState, useTransition } from 'react'
 
-import { useSetAudioBuffer } from '~/context/audio-buffer'
-import { useAudioContext } from '~/context/audio-context'
-import { useCharacterCard } from '~/hooks/use-character-card'
-import { useMessages } from '~/hooks/use-messages'
-import { useLLMProvider, useTTSProvider } from '~/hooks/use-providers'
+import { useChat } from '~/hooks/use-chat'
 
 export const NavbarChat = () => {
-  const setAudioBuffer = useSetAudioBuffer()
   const [isPending, startTransition] = useTransition()
   const [value, setValue] = useState('')
-  const [llmProvider] = useLLMProvider()
-  const [ttsProvider] = useTTSProvider()
-  const audioContext = useAudioContext()
+  const { send } = useChat()
 
-  const [character] = useCharacterCard()
-
-  const [msg, setMsg] = useMessages()
-
-  const handleSubmit = async () =>
-    startTransition(async () => {
-      const { messages, text: input } = await generateText({
-        ...llmProvider,
-        messages: [
-          ...(character
-            ? [toSystemMessage(character, { mode: 'inline', userName: 'User' })]
-            : []),
-          ...msg,
-          { content: value, role: 'user' },
-        ],
-      })
-      if (import.meta.env.DEV)
-        console.warn('Response:', input)
-
-      if (input != null) {
-        setMsg(messages.slice(1))
-        const arrayBuffer = await generateSpeech({ ...ttsProvider, input })
-        const audioBuffer = await audioContext.decodeAudioData(arrayBuffer)
-        setAudioBuffer(audioBuffer)
-      }
-
-      setValue('')
-    })
+  const handleSubmit = useCallback(() => startTransition(async () => {
+    send(value)
+    setValue('')
+  }), [send, value])
 
   return (
     <Container gap={8} justifyContent="center">
@@ -62,7 +28,6 @@ export const NavbarChat = () => {
       <Button
         data-test-id="send-message"
         disabled={isPending}
-        // eslint-disable-next-line ts/no-misused-promises
         onClick={handleSubmit}
         size="icon"
         variant="secondary"
