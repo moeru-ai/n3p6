@@ -22,6 +22,10 @@ export const useChat = () => {
   const setAudioBuffer = useSetAudioBuffer()
 
   const send = async (content: string) => {
+    if (import.meta.env.DEV)
+      // eslint-disable-next-line no-console
+      console.log('useChat Request:', content)
+
     const { messages, text: input } = await generateText({
       ...llmProvider,
       messages: [
@@ -32,8 +36,10 @@ export const useChat = () => {
         { content, role: 'user' },
       ],
     })
+
     if (import.meta.env.DEV)
-      console.warn('Response:', input)
+      // eslint-disable-next-line no-console
+      console.log('useChat Response:', input)
 
     if (input != null) {
       setMsg(messages.slice(1))
