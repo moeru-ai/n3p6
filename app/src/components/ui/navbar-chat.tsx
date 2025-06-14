@@ -1,7 +1,7 @@
 import { Container } from '@react-three/uikit'
 import { Button, Input } from '@react-three/uikit-default'
 import { SendIcon } from '@react-three/uikit-lucide'
-import { useCallback, useState, useTransition } from 'react'
+import { useState, useTransition } from 'react'
 
 import { useChat } from '~/hooks/use-chat'
 
@@ -10,10 +10,10 @@ export const NavbarChat = () => {
   const [value, setValue] = useState('')
   const { send } = useChat()
 
-  const handleSubmit = useCallback(() => startTransition(async () => {
+  const handleSubmit = () => startTransition(async () => {
     await send(value)
     setValue('')
-  }), [send, value])
+  })
 
   return (
     <Container gap={8} justifyContent="center">

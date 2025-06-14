@@ -1,7 +1,7 @@
 import { Text } from '@react-three/drei'
 import { useMicVAD, utils } from '@ricky0123/vad-react'
 import { generateTranscription } from '@xsai/generate-transcription'
-import { useEffect, useState } from 'react'
+import { startTransition, useEffect, useState } from 'react'
 
 import { useSTTProvider } from '~/hooks/use-providers'
 
@@ -24,14 +24,15 @@ const DebugVadStt = () => {
     if (!file)
       return
 
-    const getTranscription = async () => {
+    startTransition(async () => {
       const { text } = await generateTranscription({ ...sttProvider, file })
 
-      console.warn('Transcription:', text)
-      setText(text)
-    }
+      if (import.meta.env.DEV)
+        // eslint-disable-next-line no-console
+        console.log('Transcription:', text)
 
-    void getTranscription()
+      setText(text)
+    })
   }, [file, sttProvider])
 
   return (
