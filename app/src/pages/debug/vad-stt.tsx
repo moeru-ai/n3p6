@@ -31,7 +31,8 @@ const DebugVadStt = () => {
         // eslint-disable-next-line no-console
         console.log('Transcription:', text)
 
-      setText(text)
+      // https://react.dev/reference/react/useTransition#react-doesnt-treat-my-state-update-after-await-as-a-transition
+      startTransition(() => setText(text))
     })
   }, [file, sttProvider])
 

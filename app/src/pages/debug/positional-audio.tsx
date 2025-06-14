@@ -24,8 +24,11 @@ const DebugPositionalAudio = () => {
 
       const audioBuffer = await audioContext.decodeAudioData(arrayBuffer)
 
-      setAudioBuffer(audioBuffer)
-      setValue('')
+      // https://react.dev/reference/react/useTransition#react-doesnt-treat-my-state-update-after-await-as-a-transition
+      startTransition(() => {
+        setAudioBuffer(audioBuffer)
+        setValue('')
+      })
     })
 
   return (

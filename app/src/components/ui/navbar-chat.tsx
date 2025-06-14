@@ -12,7 +12,8 @@ export const NavbarChat = () => {
 
   const handleSubmit = () => startTransition(async () => {
     await send(value)
-    setValue('')
+    // https://react.dev/reference/react/useTransition#react-doesnt-treat-my-state-update-after-await-as-a-transition
+    startTransition(() => setValue(''))
   })
 
   return (
