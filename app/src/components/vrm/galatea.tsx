@@ -10,10 +10,11 @@ import { GalateaTTS } from '~/components/vrm/galatea-tts'
 import { GalateaVAD } from '~/components/vrm/galatea-vad'
 import { useAnimations } from '~/hooks/use-animations'
 import { useGalatea } from '~/hooks/use-galatea'
+import { GalateaKiss } from './galatea-kiss'
 
 export const Galatea = () => {
   const { galateaEntity, galateaRef, galateaVRM } = useGalatea()
-  const { actions } = useAnimations(galateaVRM)
+  const { actions, mixer } = useAnimations(galateaVRM)
 
   const initialized = useRef<true>(null)
 
@@ -75,6 +76,7 @@ export const Galatea = () => {
         />
         <GalateaTTS vrm={galateaVRM} />
         <GalateaVAD />
+        <GalateaKiss actions={actions} mixer={mixer} vrm={galateaVRM} />
       </group>
       <group ref={playerRef}></group>
     </>
