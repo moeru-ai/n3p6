@@ -2109,14 +2109,14 @@ packages:
   '@xsai/shared-chat@0.3.0-beta.3':
     resolution: {integrity: sha512-LtHGPVog0YjZ+lp7FM7MX0BfuEczSGsWC8EIeucdQ3IrZf9MYn23AUnhKZZNSz4cIkywmNGAF1oQzRrRiT/CoA==}
 
-  '@xsai/shared-chat@0.3.0-beta.4':
-    resolution: {integrity: sha512-7vD3XLl5I3RKntFGJTPRe5fGner+49KwRj7MQAUSjykvQGtJ6CoEGcZcQdhnqrsRZga8b2urpiMRZZCHL4avzg==}
+  '@xsai/shared-chat@0.3.0-beta.6':
+    resolution: {integrity: sha512-LaGtBRLdHpC8wJmwaxqQZQcCmAsGOaVcc9K4M0KBK+EVLtyN50qLXPCWVx0007QR9eP9HMzM6KHaq1FGIsMBmA==}
 
   '@xsai/shared@0.3.0-beta.3':
     resolution: {integrity: sha512-oEwhwLeh2xXb5J0Wt/K/4zQrdBxBvFV9v3aG5UOr4AoZpXsUm3F6Hf+XB2aMX0KegFVhV2dhXe00f7XBa2vFeg==}
 
-  '@xsai/shared@0.3.0-beta.4':
-    resolution: {integrity: sha512-Jf/AMvk/MAZu1prsr67mCXwfjjXyDaKgkL/a/3oJ1PKub0VLrtu7W7J8ZE1YOTqPhfiuSjaDxKMoUJe+BY++QA==}
+  '@xsai/shared@0.3.0-beta.6':
+    resolution: {integrity: sha512-EeqkD4+ijKKbxr9Jy9kRnJOcPBErWL8TK2wOdxwhVQuh7VbrYQwaheGjOz9g5OWwM6A0vCje/+TyHz+tURhhqw==}
 
   '@zag-js/dom-query@1.12.4':
     resolution: {integrity: sha512-EICuVDdjmCnTX/vkO/t51XpaOFKQbMnD74AprQjOosrY7bXs0VFmLbQ5hHmOZd7rr7GbNfd3VyO7VmyeZoF32w==}
@@ -7597,28 +7597,28 @@ snapshots:
 
   '@xsai/generate-speech@0.3.0-beta.3':
     dependencies:
-      '@xsai/shared': 0.3.0-beta.4
+      '@xsai/shared': 0.3.0-beta.6
 
   '@xsai/generate-text@0.3.0-beta.3':
     dependencies:
-      '@xsai/shared': 0.3.0-beta.4
-      '@xsai/shared-chat': 0.3.0-beta.4
+      '@xsai/shared': 0.3.0-beta.6
+      '@xsai/shared-chat': 0.3.0-beta.6
 
   '@xsai/generate-transcription@0.3.0-beta.3':
     dependencies:
-      '@xsai/shared': 0.3.0-beta.4
+      '@xsai/shared': 0.3.0-beta.6
 
   '@xsai/shared-chat@0.3.0-beta.3':
     dependencies:
-      '@xsai/shared': 0.3.0-beta.4
+      '@xsai/shared': 0.3.0-beta.6
 
-  '@xsai/shared-chat@0.3.0-beta.4':
+  '@xsai/shared-chat@0.3.0-beta.6':
     dependencies:
-      '@xsai/shared': 0.3.0-beta.4
+      '@xsai/shared': 0.3.0-beta.6
 
   '@xsai/shared@0.3.0-beta.3': {}
 
-  '@xsai/shared@0.3.0-beta.4': {}
+  '@xsai/shared@0.3.0-beta.6': {}
 
   '@zag-js/dom-query@1.12.4':
     dependencies:
