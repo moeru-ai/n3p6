@@ -12,11 +12,11 @@
     "sync": "astro sync"
   },
   "dependencies": {
-    "@astrojs/starlight": "^0.34.3",
-    "astro": "^5.9.2",
+    "@astrojs/starlight": "^0.35.2",
+    "astro": "^5.12.6",
     "starlight-auto-sidebar": "^0.1.2",
     "starlight-sidebar-topics": "^0.6.0",
     "starlight-sidebar-topics-dropdown": "^0.5.1",
-    "starlight-theme-nova": "^0.7.4"
+    "starlight-theme-nova": "^0.9.1"
   }
 }

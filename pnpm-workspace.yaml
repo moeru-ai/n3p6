@@ -13,34 +13,34 @@ catalog:
 catalogs:
   react:
     '@generouted/react-router': ^1.20.0
-    '@types/react': ^19.1.7
-    '@types/react-dom': ^19.1.6
+    '@types/react': ^19.1.9
+    '@types/react-dom': ^19.1.7
     babel-plugin-react-compiler: 19.1.0-rc.2
-    react: &react ^19.1.0
+    react: &react ^19.1.1
     react-dom: *react
-    react-router: ^7.6.2
+    react-router: ^7.7.1
 
   three:
-    '@pmndrs/xr': &xr ^6.6.17
-    '@react-three/drei': ^10.1.2
-    '@react-three/fiber': ^9.1.2
+    '@pmndrs/xr': &xr ^6.6.20
+    '@react-three/drei': ^10.6.1
+    '@react-three/fiber': ^9.3.0
     '@react-three/handle': *xr
     '@react-three/rapier': ^2.1.0
-    '@react-three/uikit': &uikit ^0.8.19
+    '@react-three/uikit': &uikit ^0.8.21
     '@react-three/uikit-default': *uikit
     '@react-three/uikit-lucide': *uikit
     '@react-three/xr': *xr
-    '@types/three': ^0.177.0
-    three: ^0.177.0
+    '@types/three': ^0.178.1
+    three: ^0.178.0
     three-stdlib: ^2.36.0
 
   vrm:
-    '@pixiv/three-vrm': &three-vrm ^3.4.1
+    '@pixiv/three-vrm': &three-vrm ^3.4.2
     '@pixiv/three-vrm-animation': *three-vrm
     wlipsync: ^1.2.1
 
   xsai:
-    '@xsai/generate-speech': &xsai ^0.3.0-beta.3
+    '@xsai/generate-speech': &xsai ^0.3.4
     '@xsai/generate-text': *xsai
     '@xsai/generate-transcription': *xsai
     '@xsai/shared': *xsai

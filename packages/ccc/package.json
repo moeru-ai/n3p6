@@ -32,7 +32,7 @@
     "build": "pkgroll"
   },
   "dependencies": {
-    "@lenml/char-card-reader": "^1.0.6",
+    "@lenml/char-card-reader": "^1.0.7",
     "@xsai/shared-chat": "catalog:xsai"
   }
 }
