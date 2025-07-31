@@ -42,7 +42,7 @@ export const useChat = () => {
       console.log('useChat Response:', input)
 
     if (input != null) {
-      setMsg(messages.slice(1))
+      setMsg(character ? messages.slice(1) : messages)
       const arrayBuffer = await generateSpeech({ ...ttsProvider, input })
       const audioBuffer = await audioContext.decodeAudioData(arrayBuffer)
       setAudioBuffer(audioBuffer)
