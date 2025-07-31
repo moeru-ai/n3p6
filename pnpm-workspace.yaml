@@ -29,6 +29,7 @@ catalogs:
     '@react-three/uikit': &uikit ^0.8.21
     '@react-three/uikit-default': *uikit
     '@react-three/uikit-lucide': *uikit
+    '@react-three/viverse': ^0.1.10
     '@react-three/xr': *xr
     '@types/three': ^0.178.1
     three: ^0.178.0

@@ -1,6 +1,7 @@
 import type { PropsWithChildren } from 'react'
 
-import { OrbitControls, Stats } from '@react-three/drei'
+import { Stats } from '@react-three/drei'
+import { BvhPhysicsWorld } from '@react-three/viverse'
 import { createXRStore, PointerEvents, XR } from '@react-three/xr'
 
 import { Environment } from '~/components/environment'
@@ -18,16 +19,15 @@ export const Stage = ({ children }: PropsWithChildren) => {
   })
 
   return (
-    <>
+    <BvhPhysicsWorld>
       {import.meta.env.DEV && <Stats />}
       <PointerEvents />
-      <OrbitControls />
       <XR store={store}>
         <Player />
         {children}
         <Environment />
         <Navbar />
       </XR>
-    </>
+    </BvhPhysicsWorld>
   )
 }

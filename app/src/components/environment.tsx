@@ -1,10 +1,13 @@
 import { Grid, Stars } from '@react-three/drei'
-import { RigidBody } from '@react-three/rapier'
+// import { RigidBody } from '@react-three/rapier'
 import { colors } from '@react-three/uikit-default'
+import { FixedBvhPhysicsBody } from '@react-three/viverse'
 import { IfInSessionMode } from '@react-three/xr'
 import { useMemo } from 'react'
 
 import { useIsDarkValue } from '~/hooks/use-is-dark'
+
+import { TransparentPrototypeBox } from './3d/transparent-prototype-box'
 
 export const Environment = () => {
   const isDark = useIsDarkValue()
@@ -19,23 +22,28 @@ export const Environment = () => {
   return (
     <>
       <ambientLight intensity={intensity} />
-      <RigidBody includeInvisible type="fixed">
-        <mesh position={[0, 0, 0]} visible={false}>
-          <boxGeometry args={[50, 0.1, 50]} />
-        </mesh>
-        <mesh position={[0, 5 / 2, -50 / 2]} visible={false}>
-          <boxGeometry args={[50, 5, 0.1]} />
-        </mesh>
-        <mesh position={[0, 5 / 2, 50 / 2]} visible={false}>
-          <boxGeometry args={[50, 5, 0.1]} />
-        </mesh>
-        <mesh position={[-50 / 2, 5 / 2, 0]} visible={false}>
-          <boxGeometry args={[0.1, 5, 50]} />
-        </mesh>
-        <mesh position={[50 / 2, 5 / 2, 0]} visible={false}>
-          <boxGeometry args={[0.1, 5, 50]} />
-        </mesh>
-      </RigidBody>
+      <FixedBvhPhysicsBody>
+        <TransparentPrototypeBox
+          position={[0, 0, 0]}
+          scale={[50, 0.1, 50]}
+        />
+        <TransparentPrototypeBox
+          position={[0, 5 / 2, -50 / 2]}
+          scale={[50, 5, 0.1]}
+        />
+        <TransparentPrototypeBox
+          position={[0, 5 / 2, 50 / 2]}
+          scale={[50, 5, 0.1]}
+        />
+        <TransparentPrototypeBox
+          position={[-50 / 2, 5 / 2, 0]}
+          scale={[0.1, 5, 50]}
+        />
+        <TransparentPrototypeBox
+          position={[50 / 2, 5 / 2, 0]}
+          scale={[0.1, 5, 50]}
+        />
+      </FixedBvhPhysicsBody>
 
       <IfInSessionMode deny="immersive-ar">
         <Grid

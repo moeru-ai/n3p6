@@ -1,8 +1,10 @@
-import { VRM } from "@pixiv/three-vrm"
-import { useFrame } from "@react-three/fiber"
-import { useXRInputSourceState } from "@react-three/xr"
-import { useCallback } from "react"
-import { AnimationAction, AnimationMixer, LoopOnce } from "three"
+import type { VRM } from '@pixiv/three-vrm'
+import type { AnimationAction, AnimationMixer } from 'three'
+
+import { useFrame } from '@react-three/fiber'
+import { useXRInputSourceState } from '@react-three/xr'
+import { useCallback } from 'react'
+import { LoopOnce } from 'three'
 
 export const GalateaKiss = ({ actions, mixer, vrm }: {
   actions: Record<string, AnimationAction | null>
@@ -21,22 +23,23 @@ export const GalateaKiss = ({ actions, mixer, vrm }: {
       .play()
 
     mixer.removeEventListener('finished', handleFinished)
-  }, [mixer])
+  }, [mixer, actions.idle, actions.kiss, vrm.expressionManager])
 
   useFrame(() => {
-     if (controllerRight?.gamepad?.['a-button']?.state === 'pressed') {
-      vrm.expressionManager?.setValue('blink', 1)
+    if (controllerRight?.gamepad?.['a-button']?.state !== 'pressed')
+      return
 
-      actions
-        .kiss!
-          .reset()
-          .setLoop(LoopOnce, 1)
-          .crossFadeFrom(actions.idle!, 0.5)
-          .play()
-          // .crossFadeTo(actions.idle!, 0.5)
+    vrm.expressionManager?.setValue('blink', 1)
 
-      mixer.addEventListener('finished', handleFinished)
-    }
+    actions
+      .kiss!
+      .reset()
+      .setLoop(LoopOnce, 1)
+      .crossFadeFrom(actions.idle!, 0.5)
+      .play()
+    // .crossFadeTo(actions.idle!, 0.5)
+
+    mixer.addEventListener('finished', handleFinished)
   })
 
   return null

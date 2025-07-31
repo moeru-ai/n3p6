@@ -6,11 +6,11 @@ import { useEffect, useRef } from 'react'
 import { Vector3 } from 'three'
 import { GameEntity, Vector3 as YukaVector3 } from 'yuka'
 
+import { GalateaKiss } from '~/components/vrm/galatea-kiss'
 import { GalateaTTS } from '~/components/vrm/galatea-tts'
 import { GalateaVAD } from '~/components/vrm/galatea-vad'
 import { useAnimations } from '~/hooks/use-animations'
 import { useGalatea } from '~/hooks/use-galatea'
-import { GalateaKiss } from './galatea-kiss'
 
 export const Galatea = () => {
   const { galateaEntity, galateaRef, galateaVRM } = useGalatea()

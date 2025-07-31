@@ -1,38 +1,33 @@
-import type { RapierRigidBody } from '@react-three/rapier'
-import type { Vector3 } from 'three'
+import type { Group } from 'three'
 
-import { CapsuleCollider, euler, quat, RigidBody } from '@react-three/rapier'
-import { useXRControllerLocomotion, XROrigin } from '@react-three/xr'
+import { useFrame } from '@react-three/fiber'
+import { FirstPersonCharacterCameraBehavior, LocomotionKeyboardInput, PointerCaptureInput, SimpleCharacter, useXRControllerInput } from '@react-three/viverse'
 import { useRef } from 'react'
 
-export const Player = () => {
-  const userRigidBodyRef = useRef<RapierRigidBody>(null)
+import { SnapRotateXROrigin } from './snap-rotate-xr-origin'
 
-  useXRControllerLocomotion((velocity: Vector3, rotationVelocityY: number) => {
-    if (!userRigidBodyRef.current)
+export const Player = () => {
+  const ref = useRef<Group>(null)
+  const input = useXRControllerInput()
+
+  // https://pmndrs.github.io/viverse/tutorials/simple-game#step-5:-adding-respawn-logic
+  useFrame(() => {
+    if (ref.current == null)
       return
 
-    userRigidBodyRef.current.setLinvel({ x: velocity.x, y: 0, z: velocity.z }, true)
-    userRigidBodyRef.current.setRotation(
-      quat(userRigidBodyRef.current.rotation())
-        .multiply(quat().setFromEuler(euler().set(0, rotationVelocityY, 0, 'YXZ'))),
-      true,
-    )
+    if (ref.current.position.y < -10)
+      ref.current.position.set(0, 0, 0)
   })
 
   return (
-    <RigidBody
-      canSleep={false}
-      colliders={false}
-      enabledRotations={[false, false, false]}
-      // includeInvisible
-      // mass={1}
-      position={[0, 2, 0]}
-      ref={userRigidBodyRef}
-      type="dynamic"
+    <SimpleCharacter
+      // cameraBehavior={false}
+      cameraBehavior={FirstPersonCharacterCameraBehavior}
+      input={[input, LocomotionKeyboardInput, PointerCaptureInput]}
+      model={false}
+      ref={ref}
     >
-      <CapsuleCollider args={[0.5, 0.35]} />
-      <XROrigin position={[0, -1.25, 0]} />
-    </RigidBody>
+      <SnapRotateXROrigin />
+    </SimpleCharacter>
   )
 }

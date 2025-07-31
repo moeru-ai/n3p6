@@ -1,7 +1,6 @@
 import { EntityManagerProvider, ObstaclesProvider } from '@n3p6/react-three-yuka'
 import { Loader } from '@react-three/drei'
 import { Canvas } from '@react-three/fiber'
-import { Physics } from '@react-three/rapier'
 import { setPreferredColorScheme } from '@react-three/uikit'
 import { Defaults } from '@react-three/uikit-default'
 import { noEvents } from '@react-three/xr'
@@ -30,19 +29,13 @@ const AppLayout = () => {
     <>
       <Loader />
       <Canvas
-        camera={{ position: [0, 1.75, 3.5] }}
         events={noEvents}
         gl={{ localClippingEnabled: true }}
         style={{ flexGrow: 1, width: '100%' }}
       >
         <ComposeContextProvider contexts={contexts}>
           <Suspense fallback={null}>
-            <Physics
-              debug={import.meta.env.DEV}
-              gravity={[0, -9.81, 0]}
-            >
-              <Outlet />
-            </Physics>
+            <Outlet />
           </Suspense>
         </ComposeContextProvider>
       </Canvas>
