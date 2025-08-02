@@ -1,13 +1,13 @@
 import { Grid, Stars } from '@react-three/drei'
 // import { RigidBody } from '@react-three/rapier'
 import { colors } from '@react-three/uikit-default'
-import { FixedBvhPhysicsBody } from '@react-three/viverse'
+import { FixedBvhPhysicsBody, PrototypeBox } from '@react-three/viverse'
 import { IfInSessionMode } from '@react-three/xr'
 import { useMemo } from 'react'
 
 import { useIsDarkValue } from '~/hooks/use-is-dark'
 
-import { TransparentPrototypeBox } from './3d/transparent-prototype-box'
+// import { TransparentPrototypeBox } from './3d/transparent-prototype-box'
 
 export const Environment = () => {
   const isDark = useIsDarkValue()
@@ -23,11 +23,11 @@ export const Environment = () => {
     <>
       <ambientLight intensity={intensity} />
       <FixedBvhPhysicsBody>
-        <TransparentPrototypeBox
+        <PrototypeBox
           position={[0, 0, 0]}
           scale={[50, 0.1, 50]}
         />
-        <TransparentPrototypeBox
+        {/* <TransparentPrototypeBox
           position={[0, 5 / 2, -50 / 2]}
           scale={[50, 5, 0.1]}
         />
@@ -42,7 +42,7 @@ export const Environment = () => {
         <TransparentPrototypeBox
           position={[50 / 2, 5 / 2, 0]}
           scale={[0.1, 5, 50]}
-        />
+        /> */}
       </FixedBvhPhysicsBody>
 
       <IfInSessionMode deny="immersive-ar">
