@@ -2,6 +2,7 @@ import type { CharacterCard } from '@lenml/char-card-reader'
 import type { SystemMessage } from '@xsai/shared-chat'
 
 export interface ToSystemMessageOptions {
+  defaultCategories?: string
   mode?: 'immersive-ar' | 'immersive-vr' | 'inline' | null
   userDescription: string
   userName: string
@@ -33,6 +34,15 @@ export const toSystemMessage = (card: CharacterCard, options: ToSystemMessageOpt
         : []),
       '</USER_INFO>',
     ],
+    ...(
+      options.defaultCategories != null
+        ? [
+            '<MEMORIES>',
+            options.defaultCategories,
+            '</MEMORIES>',
+          ]
+        : []
+    ),
     [
       '<RESPONSE_INSTRUCTION>',
       '- Employ character-specific speech patterns and onomatopoeia',
