@@ -35,6 +35,7 @@
     "@xsai/shared-chat": "catalog:xsai",
     "foxact": "catalog:",
     "idb-keyval": "^6.2.2",
+    "memu-js": "^0.1.8",
     "react": "catalog:react",
     "react-dom": "catalog:react",
     "react-router": "catalog:react",
