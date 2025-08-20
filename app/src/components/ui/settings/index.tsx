@@ -2,14 +2,14 @@
 
 import { Text } from '@react-three/uikit'
 import { Button, colors } from '@react-three/uikit-default'
-import { BellRingIcon, CableIcon, FileBoxIcon, MemoryStickIcon, UserPenIcon } from '@react-three/uikit-lucide'
+import { CableIcon, FileBoxIcon, MemoryStickIcon, UserPenIcon, UserRoundCogIcon } from '@react-three/uikit-lucide'
 import { useMemo, useState } from 'react'
 
 import { SettingsLayout } from './layout'
 import { SettingsCharacter } from './pages/character'
 import { SettingsMemory } from './pages/memory'
 import { SettingsModel } from './pages/model'
-import { SettingsNotifications } from './pages/notifications'
+import { SettingsProfile } from './pages/profile'
 import { SettingsProviders } from './pages/providers'
 
 export const Settings = () => {
@@ -69,16 +69,16 @@ export const Settings = () => {
             <Text>Memory</Text>
           </Button>
           <Button
-            backgroundColor={currentPage === 'notifications' ? colors.card : undefined}
-            data-test-id="sidebar-notifications"
+            backgroundColor={currentPage === 'profile' ? colors.card : undefined}
+            data-test-id="sidebar-profile"
             gap={8}
             hover={{ backgroundColor: colors.card }}
             justifyContent="flex-start"
-            onClick={() => setCurrentPage('notifications')}
+            onClick={() => setCurrentPage('profile')}
             variant="secondary"
           >
-            <BellRingIcon height={16} width={16} />
-            <Text>Notifications</Text>
+            <UserRoundCogIcon height={16} width={16} />
+            <Text>Profile</Text>
           </Button>
         </>
       )}
@@ -88,7 +88,7 @@ export const Settings = () => {
       <SettingsModel display={currentPage === 'model' ? 'flex' : 'none'} />
       <SettingsCharacter display={currentPage === 'character' ? 'flex' : 'none'} />
       <SettingsMemory display={currentPage === 'memory' ? 'flex' : 'none'} />
-      <SettingsNotifications display={currentPage === 'notifications' ? 'flex' : 'none'} />
+      <SettingsProfile display={currentPage === 'profile' ? 'flex' : 'none'} />
     </SettingsLayout>
   )
 }

@@ -9,9 +9,12 @@ import { useAudioContext } from '~/context/audio-context'
 import { useCharacterCard } from './use-character-card'
 import { useMessages } from './use-messages'
 import { useLLMProvider, useTTSProvider } from './use-providers'
+import { useUserProfile } from './use-user-profile'
 
 export const useChat = () => {
   const mode = useXR(({ mode }) => mode)
+
+  const [user] = useUserProfile()
 
   const [llmProvider] = useLLMProvider()
   const [ttsProvider] = useTTSProvider()
@@ -30,7 +33,7 @@ export const useChat = () => {
       ...llmProvider,
       messages: [
         ...(character
-          ? [toSystemMessage(character, { mode, userName: 'User' })]
+          ? [toSystemMessage(character, { mode, userDescription: user.description, userName: user.name })]
           : []),
         ...msg,
         { content, role: 'user' },
