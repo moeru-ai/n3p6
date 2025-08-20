@@ -10,6 +10,7 @@ import { Outlet } from 'react-router'
 
 import { AudioBufferProvider } from '~/context/audio-buffer'
 import { AudioContextProvider } from '~/context/audio-context'
+import { MemuClientProvider } from '~/context/memu-client'
 import { useIsDarkValue } from '~/hooks/use-is-dark'
 
 const contexts = [
@@ -18,6 +19,7 @@ const contexts = [
   <ObstaclesProvider key="obstacles" />,
   <AudioBufferProvider key="audio-buffer" />,
   <AudioContextProvider key="audio-context" />,
+  <MemuClientProvider key="memu-client" />,
 ]
 
 const AppLayout = () => {

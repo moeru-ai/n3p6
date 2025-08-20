@@ -2,11 +2,12 @@
 
 import { Text } from '@react-three/uikit'
 import { Button, colors } from '@react-three/uikit-default'
-import { BellRingIcon, CableIcon, FileBoxIcon, UserPenIcon } from '@react-three/uikit-lucide'
+import { BellRingIcon, CableIcon, FileBoxIcon, MemoryStickIcon, UserPenIcon } from '@react-three/uikit-lucide'
 import { useMemo, useState } from 'react'
 
 import { SettingsLayout } from './layout'
 import { SettingsCharacter } from './pages/character'
+import { SettingsMemory } from './pages/memory'
 import { SettingsModel } from './pages/model'
 import { SettingsNotifications } from './pages/notifications'
 import { SettingsProviders } from './pages/providers'
@@ -56,6 +57,18 @@ export const Settings = () => {
             <Text>Character</Text>
           </Button>
           <Button
+            backgroundColor={currentPage === 'memory' ? colors.card : undefined}
+            data-test-id="sidebar-memory"
+            gap={8}
+            hover={{ backgroundColor: colors.card }}
+            justifyContent="flex-start"
+            onClick={() => setCurrentPage('memory')}
+            variant="secondary"
+          >
+            <MemoryStickIcon height={16} width={16} />
+            <Text>Memory</Text>
+          </Button>
+          <Button
             backgroundColor={currentPage === 'notifications' ? colors.card : undefined}
             data-test-id="sidebar-notifications"
             gap={8}
@@ -74,6 +87,7 @@ export const Settings = () => {
       <SettingsProviders display={currentPage === 'providers' ? 'flex' : 'none'} />
       <SettingsModel display={currentPage === 'model' ? 'flex' : 'none'} />
       <SettingsCharacter display={currentPage === 'character' ? 'flex' : 'none'} />
+      <SettingsMemory display={currentPage === 'memory' ? 'flex' : 'none'} />
       <SettingsNotifications display={currentPage === 'notifications' ? 'flex' : 'none'} />
     </SettingsLayout>
   )
